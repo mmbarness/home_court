@@ -34,6 +34,8 @@ class NavBar extends React.Component {
   }
 
   render() {
+      window.navProps = this.props;
+      window.navState = this.state;
       return (
         <div className="nav-bar">
             <h1 id="header-home-court-text">Home Court</h1>

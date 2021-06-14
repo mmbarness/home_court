@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+import User from './models/Event';
 
 const EventSchema = new Schema({
   title: {
@@ -14,9 +15,8 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
-  attendees: {
-    
-  },
+  attendees: [User]
+  ,
   description: {
     type: String,
     required: true
@@ -25,8 +25,8 @@ const EventSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
   },
-  invitationLink: {
-    // going to be routed to events/:eventId show page or modal
+  inviteLink: {
+    // going to store route to events/:eventId show page or modal
     type: String,
     required: true
   },

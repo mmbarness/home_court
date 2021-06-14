@@ -1,8 +1,9 @@
-import React from 'react';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch } from 'react-router-dom';
-import NavBarContainer from './nav/navbar_container';
+import React from "react";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import { Switch } from "react-router-dom";
+import NavBarContainer from "./nav/navbar_container";
 
+<<<<<<< HEAD
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -11,6 +12,12 @@ import Footer from './footer'
 
 
 import '../style/css/application.css'
+=======
+import MainPage from "./main/main_page";
+import LoginFormContainer from "./session/login_form_container";
+import SignupFormContainer from "./session/signup_form_container";
+import ProfileContainer from "./profile/profile_container";
+>>>>>>> user-auth-forms
 
 const App = () => (
   <div className="top">

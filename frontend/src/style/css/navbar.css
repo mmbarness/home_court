@@ -1,0 +1,30 @@
+.nav-bar {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.Links1 {
+    width: 15vw;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-self: center;
+}
+
+.Links2 {
+    width: 10vmin;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    padding: 1vmin;
+    padding-right: 2vmin;
+}
+
+#logout-button {
+    height: 20px;
+}
+
+#header-home-court-text{
+    align-self: center;
+}

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../backend/config/keys');
 const passport = require('passport');
 
-const User = require('../../models/User');
+const { User } = require('../../models/User');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
@@ -73,7 +73,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(password, user.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: user.id, name: user.name};
+            const payload = {id: user.id, username: user.username};
 
             jwt.sign(
                 payload,

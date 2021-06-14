@@ -1,5 +1,5 @@
 const Validator = require('validator');
-const validText = require('./valid-text');
+const validText = require('./valid-title');
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};

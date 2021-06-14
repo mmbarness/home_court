@@ -10,7 +10,7 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
-  place_id: {
+  placeId: {
     type: String,
     required: true
   },
@@ -21,15 +21,24 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
-  host: {
-
+  postedBy: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'users'
   },
-  invitation_link: {
-
+  invitationLink: {
+    // going to be routed to events/:eventId show page or modal
+    type: String,
+    required: true
   },
-  start_date: {
+  dateCreated: {
     type: Date,
     default: Date.now
+  },
+  startDate: {
+    type: Date,
+  },
+  endDate: {
+    type: Date,
   }
 });
 

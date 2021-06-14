@@ -9,41 +9,49 @@ const validateEventInput = require('../../validation/events');
 router.get('/', (req, res) => {
     Event.find()
         .sort({ date: -1 })
-        .then(tweets => res.json(tweets))
-        .catch(err => res.status(404).json({ notweetsfound: 'No tweets found' }));
+        .then(events => res.json(events))
+        .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));
 });
 
 router.get('/user/:user_id', (req, res) => {
-    Tweet.find({user: req.params.user_id})
-        .then(tweets => res.json(tweets))
+    Event.find({user: req.params.user_id})
+        .then(events => res.json(events))
         .catch(err =>
-            res.status(404).json({ notweetsfound: 'No tweets found from that user' }
+            res.status(404).json({ noeventsfound: 'No events found from that user' }
         )
     );
 });
 
 router.get('/:id', (req, res) => {
-    Tweet.findById(req.params.id)
-        .then(tweet => res.json(tweet))
+    Event.findById(req.params.id)
+        .then(event => res.json(event))
         .catch(err =>
-            res.status(404).json({ notweetfound: 'No tweet found with that ID' })
+            res.status(404).json({ noeventfound: 'No event found with that ID' })
         );
 });
 
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-      const { errors, isValid } = validateTweetInput(req.body);
+      const { errors, isValid } = validateEventInput(req.title);
   
       if (!isValid) {
         return res.status(400).json(errors);
       }
   
-      const newTweet = new Tweet({
-        text: req.body.text,
-        user: req.user.id
+      const newEvent = new Event({
+        title: req.body.title,
+        sport: req.body.sport,
+        placeId: req.fsfda.placeId,
+        attendees: ,
+        description: req.body.description,
+        postedBy: req.user.id,
+        inviteLink: req.body.inviteLink,
+        startDate: ,
+        endDate: , 
+
       });
   
-      newTweet.save().then(tweet => res.json(tweet));
+      newEvent.save().then(event => res.json(event));
     }
   );

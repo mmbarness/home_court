@@ -12,7 +12,7 @@ const EventSchema = new Schema({
     required: true
   },
   placeId: {
-    type: String,
+    type: Number,
     required: true
   },
   attendees: [User]
@@ -26,7 +26,6 @@ const EventSchema = new Schema({
     ref: 'users'
   },
   inviteLink: {
-    // going to store route to events/:eventId show page or modal
     type: String,
     required: true
   },

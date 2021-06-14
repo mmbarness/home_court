@@ -2,14 +2,16 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    padding-top: .5vmin;
 }
 
 .Links1 {
-    width: 15vw;
+    width: 30vmin;
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
     align-self: center;
+    align-items: center;
 }
 
 .Links2 {

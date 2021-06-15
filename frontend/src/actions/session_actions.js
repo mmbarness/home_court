@@ -20,9 +20,10 @@ export const receiveErrors = errors => ({
     errors
 });
 
-export const logoutUser = () => ({
+export const logoutUser = () => {
+    return({
     type: RECEIVE_USER_LOGOUT
-});
+})};
 
 export const signup = user => dispatch => (
     APIUtil.signup(user).then(() => (
@@ -41,7 +42,7 @@ export const login = user => dispatch => (
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
-        dispatch(receiveErrors(err.response.data));
+        dispatch(receiveErrors(err));
     })
 )
 

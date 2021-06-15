@@ -8,26 +8,24 @@ const validateEventInput = require('../../validation/events');
 
 router.get('/', (req, res) => {
     Event.find()
-        .sort({ dateCreated: -1 })
-        .then(events => res.json(events))
-        .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));
+      .sort({ dateCreated: -1 })
+      .then(events => res.json(events))
+      .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));
 });
 
 router.get('/user/:user_id', (req, res) => {
     Event.find({user: req.params.user_id})
-        .then(events => res.json(events))
-        .catch(err =>
-            res.status(404).json({ noeventsfound: 'No events found from that user' }
-        )
-    );
+      .then(events => res.json(events))
+      .catch(err =>
+        res.status(404).json({ noeventsfound: 'No events found from that user' })
+      );
 });
 
 router.get('/:id', (req, res) => {
     Event.findById(req.params.id)
-        .then(event => res.json(event))
-        .catch(err =>
-            res.status(404).json({ noeventfound: 'No event found with that ID' })
-        );
+      .then(event => res.json(event))
+      .catch(err =>
+        res.status(404).json({ noeventfound: 'No event found with that ID' }));
 });
 
 router.post('/',
@@ -35,7 +33,7 @@ router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validateEventInput(req.body);
-  
+
       if (!isValid) {
         return res.status(400).json(errors);
       }
@@ -51,9 +49,8 @@ router.post('/',
         startDate: req.body.startDate,
         endDate: req.body.endDate
       });
-  
       newEvent.save().then(event => res.json(event));
     }
   );
 
-  module.exports = router;
+module.exports = router;

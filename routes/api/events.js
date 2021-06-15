@@ -8,7 +8,7 @@ const validateEventInput = require('../../validation/events');
 
 router.get('/', (req, res) => {
     Event.find()
-        .sort({ date: -1 })
+        .sort({ dateCreated: -1 })
         .then(events => res.json(events))
         .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));
 });

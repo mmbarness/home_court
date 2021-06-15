@@ -20,9 +20,10 @@ export const receiveErrors = errors => ({
     errors
 });
 
-export const logoutUser = () => ({
+export const logoutUser = () => {
+    return({
     type: RECEIVE_USER_LOGOUT
-});
+})};
 
 export const signup = user => dispatch => (
     APIUtil.signup(user).then(() => (

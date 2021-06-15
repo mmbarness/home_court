@@ -1,4 +1,5 @@
 import React from "react";
+import EventMap from "../map/event_map";
 import EventsIndex from "../events/events_index";
 
 class MainPage extends React.Component {
@@ -8,7 +9,9 @@ class MainPage extends React.Component {
         <section className="main-page-events">
           <EventsIndex />
         </section>
-        <section className="main-page-map"> google map goes here</section>
+        <section className="main-page-map">
+          <EventMap />
+        </section>
       </div>
     );
   }

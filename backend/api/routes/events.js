@@ -58,20 +58,6 @@ router.post('/',
       });
       newEvent.save().then(event => res.json(event));
     }
-
-    const newEvent = new Event({
-      title: req.body.title,
-      sport: req.body.sport,
-      placeId: req.body.placeId,
-      attendees: [req.user],
-      description: req.body.description,
-      postedBy: req.user.id,
-      inviteLink: req.body.inviteLink,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate,
-    });
-    newEvent.save().then((event) => res.json(event));
-  }
 );
 
 module.exports = router;

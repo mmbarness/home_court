@@ -2,11 +2,12 @@
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    padding-top: .5vmin;
+    padding: 1vmin;
+    background-color: aquamarine;
 }
 
 .Links1 {
-    width: 30vmin;
+    width: auto;
     display: flex;
     flex-flow: row;
     justify-content: space-evenly;
@@ -21,12 +22,19 @@
     align-self: center;
     padding: 1vmin;
     padding-right: 2vmin;
+
 }
 
 #logout-button {
-    height: 20px;
+    height: 2vmax;
+    margin-right: 1vmin;
 }
 
 #header-home-court-text{
     align-self: center;
+}
+
+#profile-link{
+    align-self: center;
+    padding-right: 1vmax;
 }

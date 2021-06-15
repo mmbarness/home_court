@@ -2,7 +2,8 @@ import * as APIUtil from "../util/event_api_util";
 
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
-export const REMOVE_EVENT_ERRORS = "REMOVE_EVENT";
+export const REMOVE_EVENT = "REMOVE_EVENT";
+export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 // export const RECEIVE_NEW_EVENT = "RECEIVE_NEW_EVENT";
 
 export const receiveEvents = (events) => {
@@ -16,6 +17,13 @@ export const receiveEvent = (event) => {
   return {
     type: RECEIVE_EVENT,
     event,
+  };
+};
+
+export const removeEvent = (eventId) => {
+  return {
+    type: (REMOVE_EVENT = "REMOVE_EVENT"),
+    eventId,
   };
 };
 

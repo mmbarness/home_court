@@ -5,7 +5,7 @@ export const getEvents = () => {
 };
 
 export const getEvent = (eventId) => {
-  return aixs.get(`api/events/${eventId}`);
+  return axios.get(`api/events/${eventId}`);
 };
 
 export const createEvent = (data) => {

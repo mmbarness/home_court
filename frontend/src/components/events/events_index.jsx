@@ -1,5 +1,5 @@
 import React from "react";
-import EventCard from "./event_card";
+import EventIndexItem from "./event_index_item";
 
 class EventsIndex extends React.Component {
   componentDidMount() {
@@ -13,7 +13,7 @@ class EventsIndex extends React.Component {
       <div>
         <h1>Find a Game Near You</h1>
         {eventsArr.map((event, i) => (
-          <EventCard key={i} event={event} />
+          <EventIndexItem key={i} event={event} />
         ))}
       </div>
     );

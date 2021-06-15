@@ -1,10 +1,6 @@
 import React from "react";
 
-class EventCard extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchEvent();
-  // }
-
+class EventIndexItem extends React.Component {
   render() {
     const { event } = this.props;
 
@@ -12,4 +8,4 @@ class EventCard extends React.Component {
   }
 }
 
-export default EventCard;
+export default EventIndexItem;

@@ -8,8 +8,8 @@ export const NavBarHook = () => {
 
     let loggedIn = useSelector(state => state.session.isAuthenticated)
     let currentUser = useSelector(state => state.session.user)
+    
     const dispatch = useDispatch();
-    debugger;
     const logoutUser = (e) => {
       e.preventDefault();
       (dispatch(logout()))

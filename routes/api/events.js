@@ -28,6 +28,17 @@ router.get('/:id', (req, res) => {
         res.status(404).json({ noeventfound: 'No event found with that ID' }));
 });
 
+router.delete('/:id', (req, res) => {
+  Event.findByIdAndRemove(req.params.id)
+    .exec()
+    .then(doc => {
+      if (!doc) { return res.status(404).end(); }
+      return res.status(204).end();
+    })
+    .catch(err =>
+      res.status(404).json({ noeventfound: 'No event found with that ID' }));
+})
+
 router.post('/',
 // require_logged_in
     passport.authenticate('jwt', { session: false }),

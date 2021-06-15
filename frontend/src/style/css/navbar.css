@@ -1,0 +1,40 @@
+.nav-bar {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 1vmin;
+    background-color: aquamarine;
+}
+
+.Links1 {
+    width: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-self: center;
+    align-items: center;
+}
+
+.Links2 {
+    width: 10vmin;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    padding: 1vmin;
+    padding-right: 2vmin;
+
+}
+
+#logout-button {
+    height: 2vmax;
+    margin-right: 1vmin;
+}
+
+#header-home-court-text{
+    align-self: center;
+}
+
+#profile-link{
+    align-self: center;
+    padding-right: 1vmax;
+}

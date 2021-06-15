@@ -3,9 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const db = require('./backend/config/keys').mongoURI;
-const User = require('./models/User');
 const users = require('./routes/api/users');
-const bodyParser = require('body-parser')
+const events = require('./routes/api/events');
+const bodyParser = require('body-parser');
+
 app.use(passport.initialize());
 require('./backend/config/passport')(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,6 +23,8 @@ mongoose
 
 
 app.use("/api/users", users);
+app.use("/api/events", events);
+
 
 
 

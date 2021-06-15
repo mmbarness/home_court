@@ -2,6 +2,7 @@ import React from "react";
 import EventMap from "../map/event_map";
 import EventsIndex from "../events/events_index";
 import { connect } from "react-redux";
+import "../../style/css/main_page.css";
 
 class MainPage extends React.Component {
   render() {

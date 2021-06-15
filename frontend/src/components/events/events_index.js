@@ -7,12 +7,14 @@ class EventsIndex extends React.Component {
   }
 
   render() {
+    const eventsArr = Object.values(this.props.events);
+
     return (
       <div>
-        this is the events index
-        {/* {this.props.events.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))} */}
+        <h1>Find a Game Near You</h1>
+        {eventsArr.map((event, i) => (
+          <EventCard key={i} event={event} />
+        ))}
       </div>
     );
   }

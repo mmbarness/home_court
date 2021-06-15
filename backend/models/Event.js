@@ -15,14 +15,14 @@ const EventSchema = new Schema({
   location: {
     type: String
   },
-  lat: {
-    type: mongoose.Decimal128,
-    required: true
-  },
-  lng: {
-    type: mongoose.Decimal128,
-    required: true
-  },
+  // lat: {
+  //   type: mongoose.Decimal128,
+  //   required: true
+  // },
+  // lng: {
+  //   type: mongoose.Decimal128,
+  //   required: true
+  // },
   attendees: {
     type: [UserSchema]
   },

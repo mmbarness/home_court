@@ -7,7 +7,7 @@ const Event = require("../../models/Event");
 const validateEventInput = require("../../validation/events");
 
 router.get('/', (req, res) => {
-    Event.find({endDate: { $lt: new Date() }})
+    Event.find({endDate: { $gte: new Date() }})
       .sort({ dateCreated: -1 })
       .then(events => res.json(events))
       .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));

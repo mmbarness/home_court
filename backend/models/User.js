@@ -16,7 +16,7 @@ const UserSchema = new Schema({
     },
     location: {
       type: String,
-      required: true
+      // required: true
     },
     // friendsList: [{
     //   type: Schema.ObjectId,

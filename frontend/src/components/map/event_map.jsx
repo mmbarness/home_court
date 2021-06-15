@@ -1,7 +1,7 @@
 import React from 'react'
 import {
     GoogleMap,
-    LoadScript,
+    useLoadScript,
     Marker,
     InfoWindow,
 } from '@react-google-maps/api';
@@ -17,37 +17,37 @@ const mapContainerStyle = {
 }
 
 //Manhattan
-const center = {
-    lat: 40.783058,
-    lng: -73.971252,
-}
 
-class EventMap extends React.Component {
-    constructor(props) {
-        super(props)
+function EventMap() {
+
+    const center = {
+        lat: 40.783058,
+        lng: -73.971252,
     }
+
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        libraries: ['places']
+    })
 
     // const options = {
-        //     styles: ,
-        
-        // }
-        
-    render() {  
-        return (
-            <LoadScript
-                googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-            >
-                <GoogleMap
-                    mapContainerStyle={mapContainerStyle}
-                    center={center}
-                    zoom={14}
-                >
-                    { /* Child components, such as markers, info windows, etc. */}
-                    <></>
-                </GoogleMap>
-            </LoadScript>
-        )
-    }
+    //     styles: ,
+
+    // }
+
+    if (loadError) return 'Error loading maps';
+    if (!isLoaded) return 'Loading the map';
+
+    return (
+        <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={center}
+            zoom={14}
+        >
+            { /* Child components, such as markers, info windows, etc. */}
+            <></>
+        </GoogleMap>
+    )
 }
 
 

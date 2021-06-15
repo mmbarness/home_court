@@ -7,20 +7,11 @@ const Event = require('../../models/Event');
 const validateEventInput = require('../../validation/events');
 
 router.get('/', (req, res) => {
-    Event.find()
+    Event.find({endDate: { $lt: new Date() }})
       .sort({ dateCreated: -1 })
       .then(events => res.json(events))
       .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));
 });
-
-
-// router.get('/user/:user_id', (req, res) => {
-//     Event.find({user: req.params.user_id})
-//       .then(events => res.json(events))
-//       .catch(err =>
-//         res.status(404).json({ noeventsfound: 'No events found from that user' })
-//       );
-// });
 
 router.get('/:id', (req, res) => {
     Event.findById(req.params.id)
@@ -41,7 +32,6 @@ router.delete('/:id', (req, res) => {
 })
 
 router.post('/',
-// require_logged_in
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validateEventInput(req.body);
@@ -53,7 +43,9 @@ router.post('/',
       const newEvent = new Event({
         title: req.body.title,
         sport: req.body.sport,
-        placeId: req.body.placeId,
+        location: req.body.location,
+        lat: req.body.lat,
+        lng: req.body.lng,
         attendees: [req.user],
         description: req.body.description,
         postedBy: req.user.id,

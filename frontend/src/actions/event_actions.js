@@ -22,7 +22,7 @@ export const receiveEvent = (event) => {
 
 export const removeEvent = (eventId) => {
   return {
-    type: (REMOVE_EVENT = "REMOVE_EVENT"),
+    type: REMOVE_EVENT,
     eventId,
   };
 };

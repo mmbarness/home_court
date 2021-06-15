@@ -14,10 +14,20 @@ const UserSchema = new Schema({
       type: String,
       required: true
     },
-    date: {
-      type: Date,
-      default: Date.now
+    location: {
+      type: String,
+      required: true
+    },
+    // friendsList: [{
+    //   type: Schema.ObjectId,
+    //   ref: "users"
+    // }],
+    profilePic: {
+      // AWS url link
+      type: String 
     }
+  }, {
+    timestamps: true
   })
 
 const User = mongoose.model('users', UserSchema);

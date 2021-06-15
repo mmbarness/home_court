@@ -42,7 +42,11 @@ export const login = user => dispatch => (
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
+<<<<<<< HEAD
         dispatch(receiveErrors(err.response.data))
+=======
+        dispatch(receiveErrors(err.response.data));
+>>>>>>> 3e606be42ea085a29e504cd911e2d9319e87e627
     })
 )
 

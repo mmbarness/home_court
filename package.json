@@ -4,7 +4,7 @@
   "description": "a sick app",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run frontend\"",
+    "start": "node app.js",
     "server": "nodemon app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
@@ -38,9 +38,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "use-places-autocomplete": "^1.9.3",
-    "validator": "^13.6.0"
-  },
-  "devDependencies": {
+    "validator": "^13.6.0",
     "nodemon": "^2.0.7"
   }
 }

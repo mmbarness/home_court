@@ -12,6 +12,10 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
     "debug": "concurrently \"nodemon --inspect app.js\" \"npm run frontend\""
   },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mmbarness/home_court.git"
@@ -34,9 +38,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "use-places-autocomplete": "^1.9.3",
-    "validator": "^13.6.0"
-  },
-  "devDependencies": {
+    "validator": "^13.6.0",
     "nodemon": "^2.0.7"
   }
 }

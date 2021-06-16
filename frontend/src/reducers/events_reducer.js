@@ -13,8 +13,7 @@ const eventsReducer = (state = { all: {}, user: {} }, action) => {
       nextState.all = action.events.data;
       return nextState;
     case RECEIVE_EVENT:
-      return state;
-    // return Object.assign({}, action.event.data)
+      return Object.assign(nextState.all, action.event.data);
     case RECEIVE_USER_EVENTS:
       nextState.user = action.events.data;
       return nextState;

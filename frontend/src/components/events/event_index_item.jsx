@@ -7,6 +7,7 @@ class EventIndexItem extends React.Component {
       attending: false,
     };
     this.openEventModal = this.openEventModal.bind(this);
+    this.joinEvent = this.joinEvent.bind(this);
   }
 
   openEventModal() {
@@ -14,7 +15,7 @@ class EventIndexItem extends React.Component {
   }
 
   joinEvent() {
-    
+    this.props.updateEvent({ attendees: this.props.currentUser });
   }
 
   render() {
@@ -23,20 +24,20 @@ class EventIndexItem extends React.Component {
     return (
       <div className="event-index-item">
         <h1>
-          <button className="event-index-item-title" onClick={this.openEventModal}>
+          <button
+            className="event-index-item-title"
+            onClick={this.openEventModal}
+          >
             {event.title}
           </button>
         </h1>
         <h1>{event.sport}</h1>
-        <div>
-          <h3>Number of attendees:</h3>
-          <p>{event.attendees.length}</p>
-        </div>
+        <p>Number of attendees: {event.attendees.length}</p>
         <div>
           <h3>Description:</h3>
           <p>{event.description}</p>
         </div>
-        <button>Join this event</button>
+        <button onClick={this.joinEvent}>Join this event</button>
       </div>
     );
   }

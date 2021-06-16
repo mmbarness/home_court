@@ -14,9 +14,12 @@ const UserSchema = new Schema({
       type: String,
       required: true
     },
-    location: {
+    address: {
       type: String,
-      // required: true
+    },
+    coordinates: {
+      lat: {type: mongoose.Decimal128,},
+      long: {type: mongoose.Decimal128}
     },
     // friendsList: [{
     //   type: Schema.ObjectId,

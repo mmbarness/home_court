@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.14.6",
     "@reach/combobox": "^0.15.1",
     "@react-google-maps/api": "^2.2.0",
     "axios": "^0.21.1",

@@ -14,13 +14,16 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Mate+SC&display=swap');
+
 a:link {
   text-decoration: none;
 }
 
-body {
-  font-family: "Roboto Slab";
-  background-color: #fffafa;
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFAFA;
 }
 
 .top {
@@ -31,6 +34,8 @@ body {
 
 .content {
   flex: 1 0 auto;
+  display: flex;
+  flex-flow: column;
 }
 
 .footer {

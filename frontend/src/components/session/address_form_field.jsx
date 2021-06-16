@@ -4,6 +4,7 @@ import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocompl
 import {formatRelative} from 'date-fns'
 import {Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from '@reach/combobox'
 import "@reach/combobox/styles.css"
+import '../../style/css/typeahead-combobox.css'
 import { useState } from 'react';
 import parser from 'parse-address'
 
@@ -66,8 +67,8 @@ const Search = (props) => {
 
 
     return (
-        <Combobox onSelect={(address) => {handleSelect(address)}}> 
-            <ComboboxInput id="address-input"
+        <Combobox classname="address-form-field" onSelect={(address) => {handleSelect(address)}}> 
+            <ComboboxInput id="address-input" 
                 value={value} 
                 onChange={(e) => {
                     setValue(e.target.value)
@@ -76,7 +77,7 @@ const Search = (props) => {
                 disabled={!ready}
                 placeholder ="Enter an address"
             />
-            <ComboboxPopover>
+            <ComboboxPopover className="address-type-ahead">
                 {status === "OK" && data.map(({id, description}) => (<ComboboxOption key ={id} value={description}/>) )} 
             </ComboboxPopover>
         </Combobox>

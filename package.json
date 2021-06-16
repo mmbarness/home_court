@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mmbarness/home_court#readme",
   "dependencies": {
+    "@reach/combobox": "^0.15.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^6.2.0",

@@ -19,3 +19,7 @@ export const updateEvent = (data) => {
 export const deleteEvent = (eventId) => {
   return axios.delete(`api/events/${eventId}`);
 };
+
+export const getUserEvents = (id) => {
+  return axios.get(`/api/user/${id}`);
+};

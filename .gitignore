@@ -6,8 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 #config/keys
-
-backend/config/keys_dev.js
+keys_dev.js 
 
 # Dependency directories
 node_modules/

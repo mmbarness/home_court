@@ -16,10 +16,10 @@ const UserSchema = new Schema({
     },
     address: { 
       type: String,
-      coordinates: {
-        lat: {type: mongoose.Decimal128,},
-        long: {type: mongoose.Decimal128}
-      }
+    },
+    coordinates: {
+      lat: {type: mongoose.Decimal128,},
+      long: {type: mongoose.Decimal128}
     },
     // friendsList: [{
     //   type: Schema.ObjectId,

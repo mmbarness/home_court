@@ -13,13 +13,13 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(404).json({ noeventsfound: "No events found" }));
 });
 
-// router.get('/user/:user_id', (req, res) => {
-//     Event.find({user: req.params.user_id})
-//       .then(events => res.json(events))
-//       .catch(err =>
-//         res.status(404).json({ noeventsfound: 'No events found from that user' })
-//       );
-// });
+router.get("/user/:user_id", (req, res) => {
+  Event.find({ user: req.params.user_id })
+    .then((events) => res.json(events))
+    .catch((err) =>
+      res.status(404).json({ noeventsfound: "No events found from that user" })
+    );
+});
 
 router.get("/:id", (req, res) => {
   Event.findById(req.params.id)

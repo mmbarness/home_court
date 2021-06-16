@@ -1,30 +1,27 @@
 import React from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
+import EventShowContainer from "../events/event_show_container";
 
 function Modal({ modal, closeModal }) {
-  // if (!modal) {
-  //   return null;
-  // }
-  // let component;
-  // switch (modal) {
-  //   case "login":
-  //     component = <LoginFormContainer />;
-  //     break;
-  //   case "signup":
-  //     component = <SignupFormContainer />;
-  //     break;
-  //   default:
-  //     return null;
-  // }
-  // return (
-  //   <div className="modal-background" onClick={closeModal}>
-  //     <div className="modal-child" onClick={(e) => e.stopPropagation()}>
-  //       {component}
-  //     </div>
-  //   </div>
-  // );
-  return <div>modal it up</div>;
+  if (!modal) {
+    return null;
+  }
+  let component;
+  switch (modal) {
+    case "event-show":
+      component = <EventShowContainer />;
+      break;
+    default:
+      return null;
+  }
+  return (
+    <div className="modal-background" onClick={closeModal}>
+      <div className="modal-child" onClick={(e) => e.stopPropagation()}>
+        {component}
+      </div>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {

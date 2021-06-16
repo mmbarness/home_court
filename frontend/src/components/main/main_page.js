@@ -4,7 +4,28 @@ import EventsIndex from "../events/events_index.jsx";
 import "../../style/css/main_page.css";
 import "../../style/css/events.css";
 
+let center;
+
 class MainPage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      center: {
+        lat: 40.7299653, //this.props.currentUser.addres.lng
+        lng: -73.9157633,
+      }
+    }
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition( position => {
+      center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      this.setState({center: center})
+    }, () => (null));
+  }
   render() {
     return (
       <div className="main-page">
@@ -18,6 +39,9 @@ class MainPage extends React.Component {
           />
         </section>
         <section className="main-page-map">
+          <EventMap
+          center={this.state.center}
+          events={eventMarkers}/>
           <EventMap eventMarkers={eventMarkers} />
         </section>
       </div>

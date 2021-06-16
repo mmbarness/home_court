@@ -20,7 +20,6 @@ class EventsIndex extends React.Component {
     // const myEvents = eventsArr.filter((event) => {
     //   // console.log(event);
     //   // console.log(this.props.currentUser);
-    //   // debugger;
     //   return event.attendees.includes(
     //     (event) => event.username === this.props.currentUser.username
     //   );

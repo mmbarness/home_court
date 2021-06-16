@@ -3,7 +3,8 @@ export const CLOSE_MODAL = "CLOSE_MODAL";
 
 export const openModal = (modal) => ({
   type: OPEN_MODAL,
-  modal,
+  modal: modal.modal,
+  event: modal.event,
 });
 
 export const closeModal = () => ({

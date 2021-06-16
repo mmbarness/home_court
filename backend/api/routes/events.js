@@ -6,11 +6,23 @@ const passport = require("passport");
 const Event = require("../../models/Event");
 const validateEventInput = require("../../validation/events");
 
+// gets all events whose endDate has not passed the current time
 router.get('/', (req, res) => {
     Event.find({endDate: { $gte: new Date() }})
       .sort({ dateCreated: -1 })
       .then(events => res.json(events))
       .catch(err => res.status(404).json({ noeventsfound: 'No events found' }));
+});
+
+// gets all events created by the user
+router.get('/user/:user_id', (req, res) => {
+  Event.find({ postedBy: req.params.user_id, endDate: { $gte: new Date() }})
+      .sort({ date: -1 })
+      .then(events => res.json(events))
+      .catch(err =>
+          res.status(404).json({ noeventsfound: 'No events found from that user' }
+      )
+  );
 });
 
 router.get('/:id', (req, res) => {

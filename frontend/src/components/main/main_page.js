@@ -42,7 +42,6 @@ class MainPage extends React.Component {
           <EventMap
           center={this.state.center}
           events={eventMarkers}/>
-          <EventMap eventMarkers={eventMarkers} />
         </section>
       </div>
     );

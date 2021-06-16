@@ -38,11 +38,13 @@ function EventMap(props) {
         mapRef.current.setZoom(14);
     }, []);
 
-    const eventsArr = Object.values(props.events);
+    // const eventsArr = Object.values(props.events);
    
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
-   console.log(props.center)
+    console.log(props)
+    console.log(props.center)
+    console.log(props.events)
     return (
         <div>
             <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
@@ -57,7 +59,7 @@ function EventMap(props) {
                     if (selected) setSelected(null)
                 }}
             >
-            {eventsArr.map((event, i) => (
+            {props.events.map((event, i) => (
                 <Marker key={i}
                     position={{ lat: event.lat, lng: event.lng }}                        
                     icon={{

@@ -18,8 +18,9 @@ const options = {
 }
 
 export const AddressFormField = (props) => {
+
     const {isLoaded, loadError} = useLoadScript({
-        googleMapsApiKey: "AIzaSyDprq1l0V4_yFP67ZU3s10s-LvGGul_Ovw",
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
         libraries
     })
 

@@ -16,7 +16,7 @@ const EventSchema = new Schema({
     type: String
   },
   lat: {
-    type: mongoose.Decimal128git log
+    type: mongoose.Decimal128
   },
   long: {
     type: mongoose.Decimal128

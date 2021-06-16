@@ -28,6 +28,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {
     "extends": "react-app"

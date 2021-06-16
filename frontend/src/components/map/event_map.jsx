@@ -24,9 +24,7 @@ const options = {
 function EventMap(props) {
 
     const center = selectCenter()
-
-    const [selected, setSelected] = React.useState(null)
-    
+    const [selected, setSelected] = React.useState(null)    
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries: libraries
@@ -37,14 +35,14 @@ function EventMap(props) {
     
     return (
         <div>
-            <h1>Home Court <span role='img' aria-label='ball'>🤾</span></h1>
+            <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
             <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
                 zoom={14}
                 options={options}
-                onClick={(event) => {
-                    console.log(event)
+                onClick={() => {
+                    if (selected) setSelected(null)
                 }}
             >
             {props.eventMarkers.map((event, i) => (
@@ -65,13 +63,17 @@ function EventMap(props) {
                 {selected ? (
                 <InfoWindow 
                     position={{lat: selected.lat, lng: selected.lng}}
+                        options={ {pixelOffset: new window.google.maps.Size(0,-12)}}
                     onCloseClick={() => {
                         setSelected(null);
                     }}
                 >
                     <div>
-                        <h2>{selected.title}</h2>
+                        <h1>{selected.title}</h1>
+                            <p>Start: {selected.startDate.toLocaleTimeString()}</p>
+                            <p>End: {selected.endDate.toLocaleTimeString()}</p>
                         
+
                     </div>
                 </InfoWindow>): null }
             </GoogleMap>
@@ -95,12 +97,14 @@ function selectIcon(sport) {
     switch (sport) {
         // case 'spikeball':
         //     return '/spikeball.svg'
-        // case 'soccer':
-        //     return '/soccer.svg'
-        // case 'basketball':
-        //     return '/basketball.svg'
-        default:
+        case 'soccer':
             return '/soccer.svg'
+        case 'basketball':
+            return '/basketball.svg'
+        case 'volleyball':
+            return '/volleyball.svg'
+        default:
+            return '/basketball.svg'
     }
 }
 

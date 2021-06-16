@@ -10,11 +10,16 @@ const EventSchema = new Schema({
   },
   sport: {
     type: String,
-    required: true
+    enum: ['basketball', 'soccer', 'volleyball', 'spikeball'],
   },
-  placeId: {
-    type: Number,
-    required: true
+  location: {
+    type: String
+  },
+  lat: {
+    type: mongoose.Decimal128
+  },
+  long: {
+    type: mongoose.Decimal128
   },
   attendees: {
     type: [UserSchema]
@@ -27,7 +32,6 @@ const EventSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
   },
-  // store a path to event/:event_id modal
   inviteLink: {
     type: String,
     required: true

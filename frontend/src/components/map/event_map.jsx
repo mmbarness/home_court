@@ -1,55 +1,111 @@
 import React from 'react'
 import {
     GoogleMap,
-    LoadScript,
+    useLoadScript,
     Marker,
     InfoWindow,
 } from '@react-google-maps/api';
+import mapStyles from './map_styles';
 // import ReactDOM from 'react-dom';
 // import { withRouter } from 'react-router-dom';
 // import MarkerManager from '../../util/marker_manager';
 
 const libraries = ['places']
-
 const mapContainerStyle = {
-    width: "45vw",
-    height: "60vh",
+    width: "80vw",
+    height: "80vh",
+}
+const options = {
+    styles: mapStyles,
+    disableDefaultUI: true,
+    zoomControl: true
 }
 
-//Manhattan
-const center = {
-    lat: 40.783058,
-    lng: -73.971252,
-}
+function EventMap(props) {
 
-class EventMap extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+    const center = selectCenter()
+    const [selected, setSelected] = React.useState(null)    
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        libraries: libraries
+    })
 
-    // const options = {
-        //     styles: ,
-        
-        // }
-        
-    render() {  
-        return (
-            <LoadScript
-                googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+    if (loadError) return 'Error loading maps';
+    if (!isLoaded) return 'Loading the map';
+    
+    return (
+        <div>
+            <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
+            <GoogleMap
+                mapContainerStyle={mapContainerStyle}
+                center={center}
+                zoom={14}
+                options={options}
+                onClick={() => {
+                    if (selected) setSelected(null)
+                }}
             >
-                <GoogleMap
-                    mapContainerStyle={mapContainerStyle}
-                    center={center}
-                    zoom={14}
+            {props.eventMarkers.map((event, i) => (
+                <Marker key={i}
+                    position={{ lat: event.lat, lng: event.lng }}                        
+                    icon={{
+                        url: selectIcon(event.sport),
+                        scaledSize: new window.google.maps.Size(30,30),
+                        origin: new window.google.maps.Point(0,0),
+                        anchor: new window.google.maps.Point(15,15)
+                    }}
+                    onClick={() => {
+                        setSelected(event)
+                    }}
+                />
+                ))}
+                
+                {selected ? (
+                <InfoWindow 
+                    position={{lat: selected.lat, lng: selected.lng}}
+                        options={ {pixelOffset: new window.google.maps.Size(0,-12)}}
+                    onCloseClick={() => {
+                        setSelected(null);
+                    }}
                 >
-                    { /* Child components, such as markers, info windows, etc. */}
-                    <></>
-                </GoogleMap>
-            </LoadScript>
-        )
-    }
-}
+                    <div>
+                        <h1>{selected.title}</h1>
+                            <p>Start: {selected.startDate.toLocaleTimeString()}</p>
+                            <p>End: {selected.endDate.toLocaleTimeString()}</p>
+                        
 
+                    </div>
+                </InfoWindow>): null }
+            </GoogleMap>
+        </div>
+    )
+}
 
 export default EventMap
+
+//Brooklyn
+const brooklyn = {
+    lat: 40.701000,
+    lng: -73.941011
+}
+
+function selectCenter(geo = brooklyn) {
+    return geo
+}
+
+function selectIcon(sport) {
+    switch (sport) {
+        // case 'spikeball':
+        //     return '/spikeball.svg'
+        case 'soccer':
+            return '/soccer.svg'
+        case 'basketball':
+            return '/basketball.svg'
+        case 'volleyball':
+            return '/volleyball.svg'
+        default:
+            return '/basketball.svg'
+    }
+}
+
 

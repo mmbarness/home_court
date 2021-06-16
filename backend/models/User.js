@@ -21,12 +21,12 @@ const UserSchema = new Schema({
       lat: {type: mongoose.Decimal128,},
       long: {type: mongoose.Decimal128}
     },
-    // friendsList: [{
-    //   type: Schema.ObjectId,
-    //   ref: "users"
-    // }],
+    eventList: [{
+      type: Schema.ObjectId,
+      ref: "event"
+    }],
+    // AWS url link
     profilePic: {
-      // AWS url link
       type: String 
     }
   }, {

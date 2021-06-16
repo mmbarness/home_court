@@ -6,7 +6,7 @@ import "../../style/css/main_page.css";
 
 class MainPage extends React.Component {
   render() {
-    console.log(eventMarkers)
+    // console.log(eventMarkers)
     return (
       <div className="main-page">
         <section className="main-page-events">
@@ -16,7 +16,7 @@ class MainPage extends React.Component {
           />
         </section>
         <section className="main-page-map">
-          <EventMap eventMarkers={eventMarkers}/>
+          {/* <EventMap eventMarkers={eventMarkers}/> */}
         </section>
       </div>
     );

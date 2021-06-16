@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Event = require("../../models/Event");
+const { User } = require("../../models/User");
 const validateEventInput = require("../../validation/events");
 
 // gets all events whose endDate has not passed the current time
@@ -23,6 +24,34 @@ router.get('/user/:user_id', (req, res) => {
           res.status(404).json({ noeventsfound: 'No events found from that user' }
       )
   );
+});
+
+router.patch('/:event_id/add_attendee', (req, res) => {
+  let user = req.body.user
+  Event.findOneAndUpdate(
+    {"_id": req.params.event_id},
+    {$push: {'attendees': 
+    {user}}
+  }).then(event => User.findOneAndUpdate(
+    {"_id": req.body.user_id},
+    {$push: {'eventList': 
+    event.id}
+  }))
+  .then(event => res.json(event))
+  .catch(err =>
+    res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
+  })
+
+// gets all events user is attending
+router.get('/eventList/user/:user_id/', (req, res) => {
+  User.find({ _id: req.params.user_id }).then(user => {
+    Event.find({ endDate: { $gte: new Date() }})
+      .sort({ date: -1 })
+      .then(events => res.json(events))
+      .catch(err =>
+          res.status(404).json({ noeventsfound: 'No attendance events found from that user' }
+      )
+  )});
 });
 
 router.get('/:id', (req, res) => {
@@ -60,7 +89,7 @@ router.post('/',
         sport: req.body.sport,
         location: req.body.location,
         lat: req.body.lat,
-        lng: req.body.lng,
+        long: req.body.long,
         attendees: [req.user],
         description: req.body.description,
         postedBy: req.user.id,

@@ -105,7 +105,7 @@ router.post(
         endDate: req.body.endDate
       });
       // push event into user eventList
-      
+    
       newEvent.save().then(event => res.json(event));
     }
 );

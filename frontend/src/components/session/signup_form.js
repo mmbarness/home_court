@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import AddressFormField from './address_form_field';
-
+import '../../style/css/session_forms.css'
+import '../../style/css/typeahead-combobox.css'
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -75,31 +76,26 @@ class SignupForm extends React.Component {
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
-            <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
-            <br/>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
               />
-            <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <br/>
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
-            <br/>
             <AddressFormField updateAddress={this.updateAddress}/>
             <input type="submit" value="Submit" />
             {this.renderErrors()}

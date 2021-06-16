@@ -1,4 +1,5 @@
 import React from 'react'
+import ResetMapButton from './reset_map_button'
 import {
     GoogleMap,
     useLoadScript,
@@ -6,9 +7,6 @@ import {
     InfoWindow,
 } from '@react-google-maps/api';
 import mapStyles from './map_styles';
-// import ReactDOM from 'react-dom';
-// import { withRouter } from 'react-router-dom';
-// import MarkerManager from '../../util/marker_manager';
 
 const libraries = ['places']
 const mapContainerStyle = {
@@ -23,29 +21,43 @@ const options = {
 
 function EventMap(props) {
 
-    const center = selectCenter()
-    const [selected, setSelected] = React.useState(null)    
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries: libraries
+        libraries,
     })
 
+    const [selected, setSelected] = React.useState(null)    
+
+    const mapRef = React.useRef();
+    const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+    }, []);
+
+    const panTo = React.useCallback(({lat, lng}) => {
+        mapRef.current.panTo({lat, lng});
+        mapRef.current.setZoom(14);
+    }, []);
+
+    const eventsArr = Object.values(props.events);
+   
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
-    
+   console.log(props.center)
     return (
         <div>
             <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
+            <ResetMapButton panTo={panTo} center={props.center} />
             <GoogleMap
+                onLoad={onMapLoad}
                 mapContainerStyle={mapContainerStyle}
-                center={center}
+                center={props.center}
                 zoom={14}
                 options={options}
                 onClick={() => {
                     if (selected) setSelected(null)
                 }}
             >
-            {props.eventMarkers.map((event, i) => (
+            {eventsArr.map((event, i) => (
                 <Marker key={i}
                     position={{ lat: event.lat, lng: event.lng }}                        
                     icon={{
@@ -89,10 +101,6 @@ const brooklyn = {
     lng: -73.941011
 }
 
-function selectCenter(geo = brooklyn) {
-    return geo
-}
-
 function selectIcon(sport) {
     switch (sport) {
         // case 'spikeball':
@@ -107,5 +115,9 @@ function selectIcon(sport) {
             return '/basketball.svg'
     }
 }
+
+// function Locate({panTo}) {
+//     return <button><img src='volleyball.svg' alt='center' /></button>
+// }
 
 

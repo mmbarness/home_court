@@ -4,6 +4,7 @@ import MainPage from "./main_page";
 
 const mapStateToProps = (state) => ({
   events: state.events,
+  currentUser: state.session.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

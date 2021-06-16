@@ -1,4 +1,4 @@
-const db = require('../config/keys').mongoURI;
+const db = require('../config/keys_dev').mongoURI;
 import seeder from 'mongoose-seed';
 
 seeder.connect(db, function () {

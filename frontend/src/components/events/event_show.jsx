@@ -26,29 +26,24 @@ class EventShow extends React.Component {
     const { event } = this.props;
 
     return (
-      <div className="event-index-item">
-        <div>
-        <div onClick={this.props.closeModal} className="close-x">
-          <MdClose size={28} />
+      <div className="event-modal-container">
+        <div className="login-form-box">
+          <div>
+            <div onClick={this.props.closeModal} className="close-x">
+              <MdClose size={28} />
+            </div>
+
+          </div>
+
+          <h1 className="login-form-header">{event.title}</h1>
+          <h1>{event.sport}</h1>
+          <p>Number of attendees: {event.attendees.length}</p>
+          <div>
+            <h3>Description:</h3>
+            <p>{event.description}</p>
+          </div>
+          <button onClick={this.joinEvent}>Join this event</button>
         </div>
-        modal open
-      </div>
-        
-        <h1>
-          <button
-            className="event-index-item-title"
-            onClick={this.openEventModal}
-          >
-            {event.title}
-          </button>
-        </h1>
-        <h1>{event.sport}</h1>
-        <p>Number of attendees: {event.attendees.length}</p>
-        <div>
-          <h3>Description:</h3>
-          <p>{event.description}</p>
-        </div>
-        <button onClick={this.joinEvent}>Join this event</button>
       </div>
     );
   }

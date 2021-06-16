@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import AddressFormField from './address_form_field';
+import '../../style/css/session_forms.css'
+import '../../style/css/typeahead-combobox.css'
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -9,18 +11,29 @@ class SignupForm extends React.Component {
       username: '',
       password: '',
       password2: '',
+      address: {
+        addressObj: {
+          street_address: '',
+          city: '',
+          state: '',
+          zip_code: '',
+          googleMapLink: ''
+        },
+        addressString: "",
+        coordinates: "",
+      },
       errors: {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.updateAddress = this.updateAddress.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
       this.props.history.push('/login');
     }
-
     this.setState({errors: nextProps.errors})
   }
 
@@ -28,6 +41,10 @@ class SignupForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  updateAddress({addressString, coordinates, addressObj}){
+    return this.setState(() => ({address: {addressString, coordinates, addressObj}}))
   }
 
   handleSubmit(e) {
@@ -38,7 +55,6 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
     this.props.signup(user, this.props.history); 
   }
 
@@ -55,35 +71,32 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
-            <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
-            <br/>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
               />
-            <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <br/>
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
-            <br/>
+            <AddressFormField updateAddress={this.updateAddress}/>
             <input type="submit" value="Submit" />
             {this.renderErrors()}
           </div>

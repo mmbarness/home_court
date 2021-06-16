@@ -16,17 +16,17 @@ const UserSchema = new Schema({
     },
     address: { 
       type: String,
-      coordinates: {
-        lat: {type: mongoose.Decimal128,},
-        long: {type: mongoose.Decimal128}
-      }
     },
-    // friendsList: [{
-    //   type: Schema.ObjectId,
-    //   ref: "users"
-    // }],
+    coordinates: {
+      lat: {type: mongoose.Decimal128,},
+      long: {type: mongoose.Decimal128}
+    },
+    eventList: [{
+      type: Schema.ObjectId,
+      ref: "event"
+    }],
+    // AWS url link
     profilePic: {
-      // AWS url link
       type: String 
     }
   }, {

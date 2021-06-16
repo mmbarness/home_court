@@ -37,6 +37,8 @@ router.post('/register', (req, res) => {
             email: req.body.email,
             password: req.body.password,
             address: req.body.address,
+            coordinates: req.body.coordinates,
+            eventsList: req.body.eventsList,
             profilePic: req.body.profilePic,
             coordinates: req.body.coordinates
           })

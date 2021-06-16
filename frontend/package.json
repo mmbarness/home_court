@@ -3,25 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "@reach/combobox": "^0.15.1",
     "@react-google-maps/api": "^2.2.0",
-    "dotenv": "^10.0.0",
     "axios": "^0.21.1",
+    "date-fns": "^2.22.1",
+    "dotenv": "^10.0.0",
     "jwt-decode": "^2.2.0",
+    "parse-address": "^1.1.2",
     "react": "^17.0.2",
+    "react-cool-onclickoutside": "^1.6.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "use-places-autocomplete": "^1.9.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {

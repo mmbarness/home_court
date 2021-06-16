@@ -22,8 +22,8 @@ const options = {
 function EventMap(props) {
 
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries,
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+        libraries: libraries
     })
 
     const [selected, setSelected] = React.useState(null)    

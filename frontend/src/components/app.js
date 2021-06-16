@@ -7,12 +7,15 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
 import Footer from "./footer";
+import Modal from "../components/modal/modal.jsx";
 
 import "../style/css/application.css";
 import { NavBarHook } from "./nav/navbar_hook";
+import "../style/css/modal.css";
 
 const App = () => (
   <div className="top">
+    <Modal />
     <div className="content">
       <NavBarHook />
       <Switch>

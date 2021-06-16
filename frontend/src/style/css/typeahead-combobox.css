@@ -1,0 +1,9 @@
+.address-type-ahead{
+    list-style-type: none;
+}
+
+#address-input{
+    width: 35vmin;
+    padding: 1vmin;
+    margin: .5vmin;
+}

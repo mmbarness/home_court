@@ -22,7 +22,7 @@
     align-self: center;
     padding: 1vmin;
     padding-right: 2vmin;
-
+    font-family: 'Mate SC', serif;
 }
 
 #logout-button {
@@ -31,6 +31,7 @@
 }
 
 #header-home-court-text{
+    font-family: 'Mate SC', serif;
     align-self: center;
 }
 

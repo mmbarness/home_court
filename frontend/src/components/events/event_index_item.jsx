@@ -11,7 +11,10 @@ class EventIndexItem extends React.Component {
   }
 
   openEventModal() {
-    this.props.openModal("event-show");
+    this.props.openModal({
+      modal: "event-show",
+      event: this.props.event,
+    });
   }
 
   joinEvent() {

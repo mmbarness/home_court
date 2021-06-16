@@ -1,17 +1,23 @@
-import React from 'react';
-import EventMap from '../map/event_map'
+import React from "react";
+import EventMap from "../map/event_map";
+import EventsIndex from "../events/events_index.jsx";
+import "../../style/css/main_page.css";
 
 
 class MainPage extends React.Component {
-
   render() {
     console.log(eventMarkers)
     return (
-      <div>
-        <EventMap eventMarkers={eventMarkers}/>
-        <footer>
-          Copyright &copy; 2021 matty & the boyz
-        </footer>
+      <div className="main-page">
+        <section className="main-page-events">
+          <EventsIndex
+            events={this.props.events}
+            fetchEvents={() => this.props.fetchEvents()}
+          />
+        </section>
+        <section className="main-page-map">
+          <EventMap eventMarkers={eventMarkers}/>
+        </section>
       </div>
     );
   }

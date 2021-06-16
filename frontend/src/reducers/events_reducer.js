@@ -10,7 +10,9 @@ const eventsReducer = (state = { all: {}, user: {} }, action) => {
   const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_ALL_EVENTS:
-      nextState.all = action.events.data;
+      // const allEvents = {};
+      action.events.data.map((event) => (nextState.all[event._id] = event));
+      // return Object.assign(nextState.all, allEvents);
       return nextState;
     case RECEIVE_EVENT:
       return Object.assign(nextState.all, action.event.data);

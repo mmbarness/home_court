@@ -23,3 +23,7 @@ export const deleteEvent = (eventId) => {
 export const getUserEvents = (id) => {
   return axios.get(`/api/user/${id}`);
 };
+
+export const joinEvent = (eventId, data) => {
+  return axios.patch(`/api/events/${eventId}/add_attendee`, data);
+};

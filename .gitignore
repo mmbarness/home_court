@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 
 #config/keys
-build/
 
 backend/config/keys_dev.js
 
@@ -18,4 +17,3 @@ jspm_packages/
 .env
 .env.test
 .env.local
-

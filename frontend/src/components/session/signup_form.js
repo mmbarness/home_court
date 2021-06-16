@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import AddressFormField from './address_form_field';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -9,18 +10,29 @@ class SignupForm extends React.Component {
       username: '',
       password: '',
       password2: '',
+      address: {
+        addressObj: {
+          street_address: '',
+          city: '',
+          state: '',
+          zip_code: '',
+          googleMapLink: ''
+        },
+        addressString: "",
+        coordinates: "",
+      },
       errors: {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.updateAddress = this.updateAddress.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
       this.props.history.push('/login');
     }
-
     this.setState({errors: nextProps.errors})
   }
 
@@ -28,6 +40,10 @@ class SignupForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  updateAddress({addressString, coordinates, addressObj}){
+    return this.setState(() => ({address: {addressString, coordinates, addressObj}}))
   }
 
   handleSubmit(e) {
@@ -38,7 +54,6 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
     this.props.signup(user, this.props.history); 
   }
 
@@ -55,6 +70,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
@@ -84,6 +100,7 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
             <br/>
+            <AddressFormField updateAddress={this.updateAddress}/>
             <input type="submit" value="Submit" />
             {this.renderErrors()}
           </div>

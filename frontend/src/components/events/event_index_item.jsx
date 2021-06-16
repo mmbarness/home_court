@@ -13,6 +13,10 @@ class EventIndexItem extends React.Component {
     this.props.openModal("event-show");
   }
 
+  joinEvent() {
+    
+  }
+
   render() {
     const { event } = this.props;
 
@@ -32,6 +36,7 @@ class EventIndexItem extends React.Component {
           <h3>Description:</h3>
           <p>{event.description}</p>
         </div>
+        <button>Join this event</button>
       </div>
     );
   }

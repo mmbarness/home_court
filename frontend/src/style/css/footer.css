@@ -1,0 +1,30 @@
+.footer {
+  display: grid;
+  justify-content: space-between;
+  padding: 1vmin;
+  background-color: aquamarine;
+  font-size: 1vmax;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+ul {
+  display: flex;
+  flex-flow: row;
+  font-size: 12px;
+  justify-content: center;
+}
+
+ul > li {
+  /* display: flex;
+  /* justify-content: space-around; */
+  /* flex-flow: column; */
+}
+
+li {
+  margin: 10px 0;
+}

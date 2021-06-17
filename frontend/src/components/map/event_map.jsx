@@ -1,6 +1,5 @@
 import React from 'react'
 import ResetMapButton from './reset_map_button'
-import EventFormModal from './event_form_modal'
 import {
     GoogleMap,
     useLoadScript,
@@ -30,7 +29,6 @@ function EventMap(props) {
     const [selected, setSelected] = React.useState(null) // selected is a current event whose infow window is open     
     const [creatingEvent, setCreatingEvent] = React.useState(false) //true: waiting for pin to drop to create event
     const [eventLocation, setEventLocation] = React.useState(null) //evenLocation are the coordinates of a new game
-    const [eventFormModal, setEventFormModal] = React.useState(false) //true: will open even event form modal
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -43,7 +41,7 @@ function EventMap(props) {
     }, []);
 
         // const eventsArr = Object.values(props.events.all);
-   
+   console.log(props)
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
     
@@ -75,7 +73,6 @@ function EventMap(props) {
                             lat: e.latLng.lat(),
                             lng: e.latLng.lng(),
                         })
-                        console.log(eventLocation)
                     }
                 }}
             >
@@ -89,7 +86,13 @@ function EventMap(props) {
                             options={ {pixelOffset: new window.google.maps.Size(0,-46)}}
                         onCloseClick={() => null}
                     >
-                        <button>Create Game Here</button>
+                    <button onClick={() => 
+                        props.openModal({
+                            modal: 'event-form',
+                            data: eventLocation
+                        }) 
+                    }>Create Game Here</button>
+
                     </InfoWindow> 
                 </div> ) : null
             }
@@ -125,14 +128,7 @@ function EventMap(props) {
                 </InfoWindow>): null }
             </GoogleMap>
 
-            {eventFormModal ? 
-                <EventFormModal
-                    className="modal-background"
-                    eventLocation={eventLocation}
-                    onClick={() => setEventFormModal(false)}
-                    eventFormModal={eventFormModal}
-                    setEventFormModal={setEventFormModal}
-                /> : null }   
+              
 
         </div>
     )
@@ -141,10 +137,10 @@ function EventMap(props) {
 export default EventMap
 
 //Brooklyn
-const brooklyn = {
-    lat: 40.701000,
-    lng: -73.941011
-}
+// const brooklyn = {
+//     lat: 40.701000,
+//     lng: -73.941011
+// }
 
 function selectIcon(sport) {
     switch (sport) {
@@ -165,4 +161,11 @@ function selectIcon(sport) {
 //     return <button><img src='volleyball.svg' alt='center' /></button>
 // }
 
-
+// {eventFormModal ? 
+//                 <EventFormModal
+//                     className="modal-background"
+//                     onClick={() => setEventFormModal(false)}
+//                     setEventFormModal={setEventFormModal}
+//                     eventFormModal={() => eventFormModal}
+//                     eventLocation={() => eventLocation}
+//                 /> : null } 

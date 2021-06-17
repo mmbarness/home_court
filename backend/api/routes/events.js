@@ -94,17 +94,22 @@ router.post(
       const newEvent = new Event({
         title: req.body.title,
         sport: req.body.sport,
-        location: req.body.location,
+        address: req.body.address,
         lat: req.body.lat,
-        long: req.body.long,
-        attendees: [req.body.user],
+        lng: req.body.lng,
+        attendees: [req.user],
         description: req.body.description,
         postedBy: req.user.id,
         inviteLink: req.body.inviteLink,
         startDate: req.body.startDate,
         endDate: req.body.endDate
       });
-      // push event into user eventList
+    //   push event into user eventList
+    // User.findOneAndUpdate(
+    //   { "_id": req.body.user },
+    //   {$push: {'eventList': 
+    //   event.id}
+    // })
     
       newEvent.save().then(event => res.json(event));
     }

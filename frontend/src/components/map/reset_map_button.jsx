@@ -5,7 +5,7 @@ function ResetMapButton(props) {
         <button
             onClick={ () => (props.panTo(props.center)) }
         >
-            <img src="/volleyball.svg" alt="compass" />
+            Reset Location
         </button>
     );
 }

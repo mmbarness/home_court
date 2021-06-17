@@ -1,15 +1,15 @@
-.login-form-container{
-    align-self: center;
+.login-form-container {
+  align-self: center;
 }
 
 .login-form {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .login-form > input {
-    margin: .5vmin;
-    padding: 1vmin;
-    width: 35vmin;
+  margin: 0.5vmin;
+  padding: 1vmin;
+  width: 35vmin;
 }

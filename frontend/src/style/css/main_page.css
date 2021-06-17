@@ -2,3 +2,11 @@
   display: flex;
   justify-content: space-around;
 }
+
+.main-page-events {
+  flex-grow: 1;
+}
+
+.main-page-map {
+  flex-grow: 1;
+}

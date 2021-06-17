@@ -3,12 +3,10 @@ import React from "react";
 class EventIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      attending: false,
-    };
     this.openEventModal = this.openEventModal.bind(this);
     this.joinEventButton = this.joinEventButton.bind(this);
-    this.unjoinEvent = this.unjoinEvent.bind(this);
+    this.unjoinEventButton = this.unjoinEventButton.bind(this);
+    this.joinedOrNot = this.joinedOrNot.bind(this);
   }
 
   openEventModal() {
@@ -18,27 +16,37 @@ class EventIndexItem extends React.Component {
     });
   }
 
+  joinedOrNot() {
+    // this.props.event.attendees.some((attendee) => {
+    //   // attendees.username !== undefined ||
+    //   attendee.username === this.props.currentUser.username;
+    // });
+  }
+
   joinEventButton() {
     return (
       <button
+        className="join-event event-item-button"
         onClick={() =>
           this.props.joinEvent(this.props.event._id, this.props.currentUser)
         }
       >
-        Join game button
+        Join Game
       </button>
     );
   }
 
-  unjoinEvent() {
-    return <button>Attending</button>;
+  unjoinEventButton() {
+    return (
+      <button className="unjoin-event event-item-button">Attending</button>
+    );
   }
 
   render() {
     const { event } = this.props;
 
     return (
-      <div className="event-index-item">
+      <li className="event-index-item">
         <h1>
           <button
             className="event-index-item-title"
@@ -53,8 +61,12 @@ class EventIndexItem extends React.Component {
           <h3>Description:</h3>
           <p>{event.description}</p>
         </div>
-        {this.joinEventButton()}
-      </div>
+        <div className="event-item-footer">
+          {this.joinedOrNot()
+            ? this.unjoinEventButton()
+            : this.joinEventButton()}
+        </div>
+      </li>
     );
   }
 }

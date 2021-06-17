@@ -15,10 +15,15 @@ import "../style/css/modal.css";
 
 const App = () => (
   <div className="top">
-    <Modal />
     <div className="content">
+      <Modal />
       <NavBarHook />
       <Switch>
+        {/* <img
+          src={require("./images/splashbg-che-mild.jpg")}
+          className="splash-img"
+          alt="splash"
+        /> */}
         <ProtectedRoute exact path="/" component={MainPageContainer} />
 
         <AuthRoute exact path="/login" component={LoginFormContainer} />

@@ -58,8 +58,8 @@ export const fetchEvent = (eventId) => (dispatch) => {
 };
 
 export const fetchUserEvents = (id) => (dispatch) => {
-  return APIUtil.getUserEvents(id).then((event) =>
-    dispatch(receiveUserEvents(event))
+  return APIUtil.getUserEvents(id).then((events) =>
+    dispatch(receiveUserEvents(events))
   );
 };
 

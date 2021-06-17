@@ -42,8 +42,6 @@ function EventMap(props) {
    
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
-    console.log(eventsArr[0].lat);
-    console.log(parseFloat(eventsArr[0].lat));
 
     return (
         <div>

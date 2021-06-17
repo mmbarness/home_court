@@ -1,0 +1,18 @@
+.splash-page{
+    display: flex;
+    flex-flow: column;
+    background-color: chocolate;
+}
+
+#splash-image{
+    align-self: center;
+    position: relative;
+    top: -25vmax;
+    z-index: 1;
+    width: 100%
+}
+
+.splash-text{
+    position: relative;
+    top: -25vmax;
+}

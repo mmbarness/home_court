@@ -17,17 +17,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Mate+SC&display=swap");
 
+.root{
+  width: 100%
+}
+
 a:link {
   text-decoration: none;
 }
 
-a:link:hover {
-  cursor: hover;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #fffafa;
+body{
+    /* font-family: 'Inter', sans-serif; */
+    /* font-style: 'Regular 400'; */
+    background-color: #FFFAFA;
 }
 
 .top {
@@ -54,9 +55,6 @@ body {
 
 button:hover {
   cursor: pointer;
+  background-color: aliceblue;
 }
 
-.splash-img {
-  object-fit: contain;
-  z-index: -100;
-}

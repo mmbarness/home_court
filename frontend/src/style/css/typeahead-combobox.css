@@ -7,3 +7,7 @@
     padding: 1vmin;
     margin: .5vmin;
 }
+
+.address-type-ahead > li > span{ 
+    font-family: 'Inter', sans-serif;
+}

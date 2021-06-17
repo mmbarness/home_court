@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .login-form-container {
   align-self: center;
 }
@@ -13,3 +14,22 @@
   padding: 1vmin;
   width: 35vmin;
 }
+=======
+.session-form-container{
+    align-self: center;
+}
+
+.session-form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding-top: 1vmax;
+}
+
+.session-form > input {
+    margin: .5vmin;
+    padding: 1vmin;
+    width: 35vmin;
+    align-self: center;
+}
+>>>>>>> main

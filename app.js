@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
-const db = require('./backend/config/keys_dev').mongoURI;
+const db = require('./backend/config/keys').mongoURI;
 const users = require('./backend/api/routes/users');
 const events = require('./backend/api/routes/events');
 const bodyParser = require('body-parser');
-
+//help
 app.use(passport.initialize());
 require('./backend/config/passport')(passport);
 app.use(bodyParser.urlencoded({ extended: false }));

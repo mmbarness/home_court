@@ -1,0 +1,50 @@
+.nav-bar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 1vmin;
+  background-color: white;
+  border-bottom: gray;
+  margin-bottom: 1.5em;
+  height: 72px;
+}
+
+.Links1 {
+  width: auto;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-self: center;
+  align-items: center;
+}
+
+.Links2 {
+  width: 10vmin;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  padding: 1vmin;
+  padding-right: 2vmin;
+  font-family: "Mate SC", serif;
+}
+
+#logout-button {
+  height: 2vmax;
+  margin-right: 1vmin;
+}
+
+#header-home-court-text {
+  font-family: "Mate SC", serif;
+  align-self: center;
+}
+
+#profile-link {
+  align-self: center;
+  padding-right: 1vmax;
+}
+
+.logo {
+  object-fit: contain;
+  /* height: 65px; */
+  height: 72px;
+}

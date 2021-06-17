@@ -27,7 +27,8 @@ router.get("/user/:user_id", (req, res) => {
 });
 
 // add user to event attendee list & add event to user eventList
-router.patch('/:event_id/add_attendee', (req, res) => {
+router.patch('/:event_id/add_attendee', async (req, res) => {
+  let event = await Event.findById(req.params.event_id)
   let userId = req.body.user
   Event.findOneAndUpdate(
     {"_id": req.params.event_id},
@@ -38,10 +39,27 @@ router.patch('/:event_id/add_attendee', (req, res) => {
     {$push: {'eventList': 
     event.id}
   }))
-  .then(user => res.json(user))
+  .then(user => res.json(event))
   .catch(err =>
     res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
   })
+
+// router.patch('/:event_id/add_attendee', async (req, res)  => {
+//   let event = await Event.findById(req.params.event_id).catch(err =>
+//     res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
+//   let userId = req.body.user
+//   Event.findOneAndUpdate(
+//     {"_id": req.params.event_id},
+//     {$push: {'attendees': {userId}}})
+//   User.findOneAndUpdate(
+//     {"_id": userId},
+//     {$push: {'eventList': event._id.toString()}})
+//     .then(user => {debugger} )
+//     debugger
+//   event.then(res.json(event)
+//   )
+// })
+
 
 const eventListFinder = async (eventList) => {
     let events = await eventList.map(async (eventIdObj) => {
@@ -84,8 +102,8 @@ router.delete("/:id", (req, res) => {
 
 router.post(
   "/",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
+  passport.authenticate("jwt", { session: false }), 
+  async (req, res) => {
     const { errors, isValid } = validateEventInput(req.body);
 
     if (!isValid) {
@@ -95,7 +113,6 @@ router.post(
     const newEvent = new Event({
       title: req.body.title,
       sport: req.body.sport,
-      // address: req.body.address,
       lat: req.body.lat,
       lng: req.body.lng,
       attendees: [req.user],
@@ -104,17 +121,15 @@ router.post(
       startDate: req.body.startDate,
       endDate: req.body.endDate,
     });
-    //   push event into user eventList
-    // User.findOneAndUpdate(
-    //   { "_id": req.body.user },
-    //   {$push: {'eventList':
-    //   event.id}
-    // })
-    newEvent.save().then((event) => res.json(event)).then(event => User.findOneAndUpdate(
+    
+    let event = await newEvent.save()
+    User.findOneAndUpdate(
       { "_id": req.body.user },
       {$push: {'eventList':
-      event.id}
-    }));
+      event._id.toString()}
+    }).then((user) => res.json(event))
   }
 );
+    
 module.exports = router;
+

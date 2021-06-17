@@ -42,7 +42,7 @@ class MainPage extends React.Component {
         <section className="main-page-map">
           <EventMapContainer
           center={this.state.center}
-          events={this.props.events}/>
+          events={eventMarkers}/>
         </section>
       </div>
     );

@@ -22,7 +22,8 @@ a:link {
 }
 
 body{
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    /* font-style: 'Regular 400'; */
     background-color: #FFFAFA;
 }
 
@@ -41,4 +42,14 @@ body{
 .footer {
   flex: 0;
   align-self: center;
+}
+
+button{
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: aliceblue;
 }

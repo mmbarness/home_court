@@ -15,6 +15,16 @@
     align-items: center;
 }
 
+.Links1 > button {
+    height: 1.5vmax;
+    width: auto;
+    border-radius: 5px;
+    border-style: none;
+    background-color:white
+}
+
+
+
 .Links2 {
     width: 10vmin;
     display: flex;
@@ -26,7 +36,6 @@
 }
 
 #logout-button {
-    height: 2vmax;
     margin-right: 1vmin;
 }
 

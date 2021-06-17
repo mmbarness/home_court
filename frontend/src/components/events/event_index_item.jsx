@@ -7,7 +7,7 @@ class EventIndexItem extends React.Component {
       attending: false,
     };
     this.openEventModal = this.openEventModal.bind(this);
-    this.joinEvent = this.joinEvent.bind(this);
+    this.joinEventButton = this.joinEventButton.bind(this);
     this.unjoinEvent = this.unjoinEvent.bind(this);
   }
 
@@ -18,8 +18,16 @@ class EventIndexItem extends React.Component {
     });
   }
 
-  joinEvent() {
-    return <button>Join game</button>;
+  joinEventButton() {
+    return (
+      <button
+        onClick={() =>
+          this.props.joinEvent(this.props.event._id, this.props.currentUser)
+        }
+      >
+        Join game button
+      </button>
+    );
   }
 
   unjoinEvent() {
@@ -45,7 +53,7 @@ class EventIndexItem extends React.Component {
           <h3>Description:</h3>
           <p>{event.description}</p>
         </div>
-        {this.joinEvent()}
+        {this.joinEventButton()}
       </div>
     );
   }

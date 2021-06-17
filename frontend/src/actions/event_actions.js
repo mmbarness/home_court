@@ -81,6 +81,8 @@ export const deleteEvent = (eventId) => (dispatch) => {
   );
 };
 
-export const joinEvent = (eventId, data) => {
-  return APIUtil.joinEvent(eventId, data).then((event) => receiveEvent(event));
+export const joinEvent = (eventId, data) => (dispatch) => {
+  return APIUtil.joinEvent(eventId, data).then((event) =>
+    dispatch(receiveEvent(event))
+  );
 };

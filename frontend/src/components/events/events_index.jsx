@@ -7,6 +7,8 @@ class EventsIndex extends React.Component {
   }
 
   render() {
+    if (this.props.events.all === undefined) return null;
+    // debugger;
     const allEventsArr = Object.values(this.props.events.all);
 
     return (

@@ -24,6 +24,11 @@ export const getUserEvents = (id) => {
   return axios.get(`/api/user/${id}`);
 };
 
-export const joinEvent = (eventId, data) => {
-  return axios.patch(`/api/events/${eventId}/add_attendee`, data);
+export const joinEvent = (eventId, user) => {
+  // debugger;
+  return axios.patch(
+    // `http://localhost:5000/api/events/${eventId}/add_attendee`,
+    `api/events/${eventId}/add_attendee`,
+    user
+  );
 };

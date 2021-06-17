@@ -13,11 +13,7 @@ const eventsReducer = (state = { all: {}, user: {} }, action) => {
       action.events.data.map((event) => (nextState.all[event._id] = event));
       return nextState;
     case RECEIVE_EVENT:
-      debugger;
       return (nextState[action.event.data._id] = action.event.data);
-    case RECEIVE_USER_EVENTS:
-      nextState.user = action.events.data;
-      return nextState;
     case REMOVE_EVENT:
       delete nextState.all[action.eventId];
       return nextState;

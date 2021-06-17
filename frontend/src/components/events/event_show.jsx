@@ -14,7 +14,7 @@ class EventShow extends React.Component {
   openEventModal() {
     this.props.openModal({
       modal: "event-show",
-      event: this.props.event,
+      data: this.props.event,
     });
   }
 

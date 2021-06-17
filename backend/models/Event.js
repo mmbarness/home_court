@@ -32,10 +32,6 @@ const EventSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
   },
-  inviteLink: {
-    type: String,
-    required: true
-  },
   dateCreated: {
     type: Date,
     default: Date.now

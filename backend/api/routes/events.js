@@ -111,7 +111,11 @@ router.post(
     //   {$push: {'eventList':
     //   event.id}
     // })
-    newEvent.save().then((event) => res.json(event));
+    newEvent.save().then((event) => res.json(event)).then(event => User.findOneAndUpdate(
+      { "_id": req.body.user },
+      {$push: {'eventList':
+      event.id}
+    }));
   }
 );
 module.exports = router;

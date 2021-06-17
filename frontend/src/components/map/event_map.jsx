@@ -39,14 +39,6 @@ function EventMap(props) {
         mapRef.current.panTo({lat, lng});
         mapRef.current.setZoom(15);
     }, []);
-<<<<<<< HEAD
-
-        // const eventsArr = Object.values(props.events.all);
-   console.log(props)
-    if (loadError) return 'Error loading maps';
-    if (!isLoaded) return 'Loading the map';
-    
-=======
     console.log(props.events)
     const eventsArr = Object.values(props.events);
    
@@ -55,7 +47,6 @@ function EventMap(props) {
     console.log(eventsArr[0].lat);
     console.log(parseFloat(eventsArr[0].lat));
 
->>>>>>> c2f0a80bb05a722bcae3a07a11698213a8f0cebf
     return (
         <div>
             <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
@@ -87,7 +78,6 @@ function EventMap(props) {
                     }
                 }}
             >
-<<<<<<< HEAD
 
             {eventLocation ? (
                 <div>
@@ -110,9 +100,6 @@ function EventMap(props) {
             }
 
             {props.events.map((event, i) => (
-=======
-            {eventsArr.map((event, i) => (
->>>>>>> c2f0a80bb05a722bcae3a07a11698213a8f0cebf
                 <Marker key={i}
                     position={{ lat: parseFloat(event.lat), lng: parseFloat(event.lng)}}                        
                     icon={{

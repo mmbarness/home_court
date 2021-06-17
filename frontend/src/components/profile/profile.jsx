@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 export const Profile = () => {
 
+    
+
     return(
         <div>user profile</div>
     )

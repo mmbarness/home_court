@@ -12,9 +12,6 @@ const EventSchema = new Schema({
     type: String,
     enum: ['basketball', 'soccer', 'volleyball', 'spikeball'],
   },
-  address: {
-    type: String
-  },
   lat: {
     type: mongoose.Decimal128
   },

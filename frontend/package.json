@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.14.6",
     "@babel/runtime": "^7.14.6",
     "@reach/combobox": "^0.15.1",
     "@react-google-maps/api": "^2.2.0",
@@ -10,6 +11,7 @@
     "date-fns": "^2.22.1",
     "dotenv": "^10.0.0",
     "jwt-decode": "^2.2.0",
+    "normalize-url": "^6.0.1",
     "parse-address": "^1.1.2",
     "react": "^17.0.2",
     "react-cool-onclickoutside": "^1.6.2",
@@ -17,11 +19,13 @@
     "react-icons": "^4.2.0",
     "react-redux": "^7.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "redux": "^4.0.1",
+    "react-scripts": "^4.0.0",
+    "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.35.1",
+    "typescript": "^3.9.10",
     "use-places-autocomplete": "^1.9.3"
   },
   "scripts": {

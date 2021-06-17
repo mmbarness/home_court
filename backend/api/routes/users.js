@@ -8,6 +8,8 @@ const passport = require('passport');
 const { User } = require('../../models/User');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const upload = require("../../services/ImageUpload");
+const deleteImage = require("../../services/ImageDelete")
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.json({
@@ -94,6 +96,42 @@ router.post('/register', (req, res) => {
                 return res.status(400).json({password: 'Incorrect password'});
             }
         })
+      })
+  })
+
+  router.post("/profile/image", upload.single("image"), passport.authenticate('jwt', {session: false}), async (req, res) => {
+    const currentUser = await User.findById(req.user.id);
+    if (currentUser.profilePic){
+      let imageUrl = currentUser.profilePic;
+      let bucket = imageUrl.split("/")[2].split(".")[0];
+      let key = imageUrl.split("/")[3];
+      deleteImage(bucket, key);
+    }
+    currentUser.profilePic = req.file.location
+    currentUser.save()
+      .then((user) => {
+        res.json(user)
+      })
+      .catch((err) => {
+        res.status(400).json(err)
+      })
+  })
+  
+  router.delete("/profile/image", passport.authenticate('jwt', {session: false}), async (req, res) => {
+    const currentUser = await User.findById(req.user.id);
+    let imageUrl = currentUser.profilePic;
+    let bucket = imageUrl.split("/")[2].split(".")[0];
+    let key = imageUrl.split("/")[3];
+  
+    deleteImage(bucket, key);
+  
+    currentUser.profilePic = null;
+    currentUser.save()
+      .then((user) => {
+        res.json(user)
+      })
+      .catch((err) => {
+        res.status(400).json(err)
       })
   })
 

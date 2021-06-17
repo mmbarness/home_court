@@ -1,0 +1,92 @@
+.nav-bar {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 1vmin;
+    background-color: aquamarine;
+    font-size: 1vmax;
+    z-index: 2
+}
+
+.Links1 {
+    width: auto;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-self: center;
+    align-items: center;
+}
+
+.Links1 > button {
+    height: 1.5vmax;
+    width: auto;
+    border-radius: 5px;
+    border-style: none;
+    background-color:white;
+    white-space: nowrap;
+}
+
+.Links2 {
+    width: 10vmin;
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    padding: 1vmin;
+    padding-right: 2vmin;
+    font-family: 'Mate SC', serif;
+}
+
+.Links2 > * {
+    padding: .2vw;
+}
+
+#logout-button {
+    margin-right: 1vmin;
+}
+
+#header-home-court-text{
+    font-family: 'Mate SC', serif;
+    align-self: center;
+}
+
+#profile-link{
+    align-self: center;
+    padding-right: 1vmax;
+}
+
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+  
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+  
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+    
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+  
+  @if $fallback {
+    font-size: $fallback;
+  }
+  
+  font-size: $responsive;
+}
+
+
+.no-limits {
+  font-size: 3vw;
+}
+
+.limit-min {
+  @include responsive-font(3vw, 20px);
+}
+
+.limit-min-max {
+  @include responsive-font(1.5vmin, 17.5px, 40px);
+}

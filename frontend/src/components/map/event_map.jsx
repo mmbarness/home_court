@@ -10,8 +10,8 @@ import mapStyles from './map_styles';
 
 const libraries = ['places']
 const mapContainerStyle = {
-    width: "45vw",
-    height: "90vh",
+    width: "80vw",
+    height: "80vh",
 }
 const options = {
     styles: mapStyles,
@@ -26,9 +26,7 @@ function EventMap(props) {
         libraries: libraries
     })
 
-    const [selected, setSelected] = React.useState(null) // selected is a current event whose infow window is open     
-    const [creatingEvent, setCreatingEvent] = React.useState(false) //true: waiting for pin to drop to create event
-    const [eventLocation, setEventLocation] = React.useState(null) //evenLocation are the coordinates of a new game
+    const [selected, setSelected] = React.useState(null)    
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -37,7 +35,7 @@ function EventMap(props) {
 
     const panTo = React.useCallback(({lat, lng}) => {
         mapRef.current.panTo({lat, lng});
-        mapRef.current.setZoom(15);
+        mapRef.current.setZoom(14);
     }, []);
 
         // const eventsArr = Object.values(props.events.all);
@@ -48,32 +46,15 @@ function EventMap(props) {
     return (
         <div>
             <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
-
-            {creatingEvent ?
-                <button id="create game" onClick={() => {
-                    setCreatingEvent(false)
-                    setEventLocation(null)
-                }}>
-                    Cancel</button>
-                : 
-                <button id="create game" onClick={() => setCreatingEvent(true)}>Create Game</button> }
-
             <ResetMapButton panTo={panTo} center={props.center} />
-
             <GoogleMap
                 onLoad={onMapLoad}
                 mapContainerStyle={mapContainerStyle}
                 center={props.center}
-                zoom={15}
+                zoom={14}
                 options={options}
-                onClick={(e) => {
-                    if (selected) setSelected(null)                    
-                    if (creatingEvent) {
-                        setEventLocation({
-                            lat: e.latLng.lat(),
-                            lng: e.latLng.lng(),
-                        })
-                    }
+                onClick={() => {
+                    if (selected) setSelected(null)
                 }}
             >
 
@@ -123,13 +104,12 @@ function EventMap(props) {
                     <div>
                         <h1>{selected.title}</h1>
                             <p>Start: {selected.startDate.toLocaleTimeString()}</p>
-                            <p>End: {selected.endDate.toLocaleTimeString()}</p>                      
+                            <p>End: {selected.endDate.toLocaleTimeString()}</p>
+                        
+
                     </div>
                 </InfoWindow>): null }
             </GoogleMap>
-
-              
-
         </div>
     )
 }
@@ -137,10 +117,10 @@ function EventMap(props) {
 export default EventMap
 
 //Brooklyn
-// const brooklyn = {
-//     lat: 40.701000,
-//     lng: -73.941011
-// }
+const brooklyn = {
+    lat: 40.701000,
+    lng: -73.941011
+}
 
 function selectIcon(sport) {
     switch (sport) {
@@ -161,11 +141,4 @@ function selectIcon(sport) {
 //     return <button><img src='volleyball.svg' alt='center' /></button>
 // }
 
-// {eventFormModal ? 
-//                 <EventFormModal
-//                     className="modal-background"
-//                     onClick={() => setEventFormModal(false)}
-//                     setEventFormModal={setEventFormModal}
-//                     eventFormModal={() => eventFormModal}
-//                     eventLocation={() => eventLocation}
-//                 /> : null } 
+

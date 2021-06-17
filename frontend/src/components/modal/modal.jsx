@@ -2,7 +2,6 @@ import React from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import EventShowContainer from "../events/event_show_container";
-import EventFormContainer from '../map/event_form_container'
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -12,9 +11,6 @@ function Modal({ modal, closeModal }) {
   switch (modal.modal) {
     case "event-show":
       component = <EventShowContainer event={modal.event} />;
-      break;
-    case "event-form":
-      component = <EventFormContainer location={modal.location} />;
       break;
     default:
       return null;

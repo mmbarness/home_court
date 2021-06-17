@@ -66,3 +66,8 @@ p {
 .event-item-sport {
   font-size: 15px;
 }
+
+.event-index-ul {
+  display: flex;
+  flex-direction: column;
+}

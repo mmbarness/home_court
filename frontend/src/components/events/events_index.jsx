@@ -13,7 +13,7 @@ class EventsIndex extends React.Component {
     return (
       <div className="event-index">
         <h1>Find a Game Near You</h1>
-        <ul>
+        <ul className="event-index-ul">
           {allEventsArr.map((event, i) => (
             <EventIndexItemContainer key={i} event={event} />
           ))}

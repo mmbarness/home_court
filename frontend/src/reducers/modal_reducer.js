@@ -5,7 +5,7 @@ export default function modalReducer(state = null, action) {
     case OPEN_MODAL:
       const newModalState = {
         modal: action.modal,
-        data: action.data,
+        event: action.event,
       };
       return newModalState;
     case CLOSE_MODAL:

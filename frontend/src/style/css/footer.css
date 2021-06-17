@@ -11,7 +11,20 @@
   bottom: 0;
   position: fixed;
 }
+
 ul {
   display: flex;
-  justify-content: space-around;
+  flex-flow: row;
+  font-size: 12px;
+  justify-content: center;
+}
+
+ul > li {
+  /* display: flex;
+  /* justify-content: space-around; */
+  /* flex-flow: column; */
+}
+
+li {
+  margin: 10px 0;
 }

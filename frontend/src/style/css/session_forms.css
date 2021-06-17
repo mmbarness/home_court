@@ -1,15 +1,17 @@
-.login-form-container{
+.session-form-container{
     align-self: center;
 }
 
-.login-form {
+.session-form {
     display: flex;
     flex-flow: column;
     align-items: center;
+    padding-top: 1vmax;
 }
 
-.login-form > input {
+.session-form > input {
     margin: .5vmin;
     padding: 1vmin;
     width: 35vmin;
+    align-self: center;
 }

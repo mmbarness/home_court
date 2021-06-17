@@ -1,5 +1,5 @@
 import React from "react";
-import EventMapContainer from "../map/event_map_container";
+import EventMap from "../map/event_map";
 import EventsIndex from "../events/events_index.jsx";
 import "../../style/css/main_page.css";
 import "../../style/css/events.css";
@@ -40,7 +40,7 @@ class MainPage extends React.Component {
           />
         </section>
         <section className="main-page-map">
-          <EventMapContainer
+          <EventMap
           center={this.state.center}
           events={eventMarkers}/>
         </section>

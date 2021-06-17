@@ -39,14 +39,12 @@ function EventMap(props) {
         mapRef.current.panTo({lat, lng});
         mapRef.current.setZoom(15);
     }, []);
-    console.log(props.events)
-    const eventsArr = Object.values(props.events);
-   
+
+    // const eventsArr = Object.values(props.events.all);
+        
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
-    console.log(eventsArr[0].lat);
-    console.log(parseFloat(eventsArr[0].lat));
-
+    
     return (
         <div>
             <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
@@ -78,28 +76,7 @@ function EventMap(props) {
                     }
                 }}
             >
-
-            {eventLocation ? (
-                <div>
-                    <Marker position={eventLocation} />
-
-                    <InfoWindow 
-                        position={eventLocation}
-                            options={ {pixelOffset: new window.google.maps.Size(0,-46)}}
-                        onCloseClick={() => null}
-                    >
-                    <button onClick={() => 
-                        props.openModal({
-                            modal: 'event-form',
-                            data: eventLocation
-                        }) 
-                    }>Create Game Here</button>
-
-                    </InfoWindow> 
-                </div> ) : null
-            }
-
-            {props.events.map((event, i) => (
+            {eventsArr.map((event, i) => (
                 <Marker key={i}
                     position={{ lat: parseFloat(event.lat), lng: parseFloat(event.lng)}}                        
                     icon={{

@@ -40,7 +40,7 @@ function EventMap(props) {
         mapRef.current.setZoom(15);
     }, []);
 
-    // const eventsArr = Object.values(props.events.all);
+        // const eventsArr = Object.values(props.events.all);
         
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
@@ -76,7 +76,29 @@ function EventMap(props) {
                     }
                 }}
             >
-            {eventsArr.map((event, i) => (
+
+            {eventLocation ? (
+                <div>
+                    <Marker position={eventLocation} />
+
+                    <InfoWindow 
+                        position={eventLocation}
+                            options={ {pixelOffset: new window.google.maps.Size(0,-46)}}
+                        onCloseClick={() => null}
+                    >
+                    <button onClick={() => 
+                        props.openModal({
+                            modal: 'event-form',
+                            data: eventLocation
+                        }) 
+                    }>Create Game Here</button>
+
+                    </InfoWindow> 
+                </div> ) : null
+            }
+
+            {props.events.map((event, i) => (
+            // {eventsArr.map((event, i) => (
                 <Marker key={i}
                     position={{ lat: parseFloat(event.lat), lng: parseFloat(event.lng)}}                        
                     icon={{
@@ -147,4 +169,4 @@ function selectIcon(sport) {
 //                     setEventFormModal={setEventFormModal}
 //                     eventFormModal={() => eventFormModal}
 //                     eventLocation={() => eventLocation}
-//                 /> : null } 
+//                 /> : null }

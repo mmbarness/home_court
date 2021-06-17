@@ -14,7 +14,7 @@ export const Profile = () => {
 
     useEffect(() => {
         dispatch(fetchUserEvents(currentUser.id))
-    },[currentUser.events])
+    },[allEvents])
 
     const renderEvents = () => {
         let events = currentUser.events

@@ -16,3 +16,6 @@ export const login = (userData) => {
   return axios.post('/api/users/login', userData);
 };
 
+export const getUserEvents = (id) => {
+  return (axios.get(`/api/events/user/${id}/eventList`));
+};

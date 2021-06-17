@@ -1,6 +1,7 @@
 import { RECEIVE_CURRENT_USER, 
          RECEIVE_USER_LOGOUT, 
-         RECEIVE_USER_SIGN_IN } from '../actions/session_actions';
+         RECEIVE_USER_SIGN_IN, 
+         RECEIVE_USER_EVENTS} from '../actions/session_actions';
 
 const initialState = {
   isAuthenticated: false,
@@ -8,6 +9,7 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return {
@@ -24,7 +26,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isSignedIn: true
-      }
+      };
+    case RECEIVE_USER_EVENTS:
+      let curUserUsername = state.user.username
+      nextState.user.events = action.events
+      return nextState;
     default:
       return state;
   }

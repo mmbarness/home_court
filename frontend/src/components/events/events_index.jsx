@@ -20,7 +20,7 @@ class EventsIndex extends React.Component {
         </ul>
       </div>
     );
-  } 
+  }
 }
 
 export default EventsIndex;

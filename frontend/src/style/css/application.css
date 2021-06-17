@@ -1,4 +1,5 @@
-@import-normalize;
+/* @import-normalize; */
+@import "./reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Mate+SC&display=swap");
 
@@ -38,12 +39,11 @@ body {
   justify-content: space-around;
 }
 
+a:link:hover,
 button:hover {
   cursor: pointer;
-  background-color: aliceblue;
 }
 
-h3,
 p {
   font-family: "Inter", sans-serif;
 }

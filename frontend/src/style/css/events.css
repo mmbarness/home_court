@@ -4,6 +4,7 @@
 
 .event-index {
   margin: 0 1em;
+  height: 90vw;
 }
 
 .event-index-item {
@@ -21,6 +22,10 @@
   -webkit-transform: scale(1.01, 1.01); */
   box-shadow: 0.75px 1px 1px 0.75px #ccc;
   transition: all 0.4s ease 0s;
+}
+
+.event-item-content:hover {
+  cursor: pointer;
 }
 
 .event-item-footer {
@@ -44,16 +49,20 @@
   transition: all 0.4s ease 0s;
 }
 
-.event-index-item-title {
+.event-item-title {
   width: auto;
-  font-size: 18px;
+  font-size: 17px;
   font-family: "Inter", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   border: none;
   background-color: transparent;
-  padding: 0.5em 0;
+  padding: 0.25em 0 0 0;
 }
 
 p {
   font-family: "Inter", sans-serif;
+}
+
+.event-item-sport {
+  font-size: 15px;
 }

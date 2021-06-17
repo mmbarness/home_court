@@ -11,7 +11,7 @@ import Footer from "./footer";
 import Modal from "../components/modal/modal.jsx";
 import { NavBarHook } from "./nav/navbar_hook";
 import SplashPage from "./splash";
-import "../style/css/reset.css";
+// import "../style/css/reset.css";
 
 import "../style/css/application.css";
 import "../style/css/modal.css";

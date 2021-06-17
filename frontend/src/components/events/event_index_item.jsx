@@ -1,4 +1,5 @@
 import React from "react";
+import { formatDateTime } from "../../util/date_util_short";
 
 class EventIndexItem extends React.Component {
   constructor(props) {
@@ -47,19 +48,14 @@ class EventIndexItem extends React.Component {
 
     return (
       <li className="event-index-item">
-        <h1>
-          <button
-            className="event-index-item-title"
-            onClick={this.openEventModal}
-          >
-            {event.title}
-          </button>
-        </h1>
-        <h1>{event.sport}</h1>
-        <p>Number of attendees: {event.attendees.length}</p>
-        <div>
-          <h3>Description:</h3>
-          <p>{event.description}</p>
+        <div className="event-item-content" onClick={this.openEventModal}>
+          <h1>
+            <button className="event-item-title">{event.title}</button>
+          </h1>
+          <h1 className="event-item-sport">{event.sport}</h1>
+          <div>
+            <p>{formatDateTime(this.props.event.startDate)}</p>
+          </div>
         </div>
         <div className="event-item-footer">
           {this.joinedOrNot()

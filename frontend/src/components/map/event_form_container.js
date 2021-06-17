@@ -5,8 +5,9 @@ import { closeModal } from "../../actions/modal_actions";
 
 const mSTP = (state) => {
   return {
-    // errors: state.errors.events,
-    location: state.ui.modal.data
+    errors: state.errors.events,
+    location: state.ui.modal.data,
+    currentUser: state.session.user,
   };
 };
 

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
+const getAsync = require('@awaitjs/express')
 
 const Event = require("../../models/Event");
 const { User } = require("../../models/User");
@@ -28,35 +29,35 @@ router.get('/user/:user_id', (req, res) => {
 
 // add user to event attendee list & add event to user eventList
 router.patch('/:event_id/add_attendee', (req, res) => {
-  let user = req.body.user
+  let userId = req.body.user
   Event.findOneAndUpdate(
     {"_id": req.params.event_id},
     {$push: {'attendees': 
-    {user}}
+    {userId}}
   }).then(event => User.findOneAndUpdate(
-    {"_id": req.body.user.id},
+    {"_id": userId},
     {$push: {'eventList': 
     event.id}
   }))
-  .then(event => res.json(event))
+  .then(user => res.json(user))
   .catch(err =>
     res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
   })
 
+const eventListFinder = async (eventList) => {
+    let events = await eventList.map(async (eventIdObj) => {
+      let eventId = eventIdObj._id.toString();
+      return (await Event.findById(eventId).then(event => (event))
+    )})
+    return events;
+}
 
 // gets all events user is attending and endDate has not expired
-router.get('/eventList/user/:user_id/', (req, res) => {
-  User.find({ _id: req.params.user_id }).then(user => {
-    user.eventList.forEach(
-      eventId => 
-    Event.findById(eventId)
-      .sort({ date: -1 })
-      .then(events => res.json(events))
-      .catch(err =>
-          res.status(404).json({ noeventsfound: 'No attendance events found from that user' }
-      ))
-  )});
-});
+router.get('/user/:user_id/eventList', async (req, res) => {
+  let user = await User.find({ _id: req.params.user_id }).then((user) => (user))
+  let events = await eventListFinder(user[0].eventList).then(events => (events))
+  Promise.all(events).then(events => res.json(events))
+})
 
 // get a single event
 router.get('/:id', (req, res) => {

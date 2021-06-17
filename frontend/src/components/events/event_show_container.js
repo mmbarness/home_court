@@ -2,7 +2,9 @@ import { connect } from "react-redux";
 import EventShow from "./event_show";
 import { closeModal } from "../../actions/modal_actions";
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  event: state.ui.modal.event,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   closeModal: () => dispatch(closeModal()),

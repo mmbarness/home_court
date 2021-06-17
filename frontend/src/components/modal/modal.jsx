@@ -8,9 +8,9 @@ function Modal({ modal, closeModal }) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.modal) {
     case "event-show":
-      component = <EventShowContainer />;
+      component = <EventShowContainer event={modal.event} />;
       break;
     default:
       return null;

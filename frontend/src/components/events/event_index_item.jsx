@@ -7,15 +7,31 @@ class EventIndexItem extends React.Component {
       attending: false,
     };
     this.openEventModal = this.openEventModal.bind(this);
-    this.joinEvent = this.joinEvent.bind(this);
+    this.joinEventButton = this.joinEventButton.bind(this);
+    this.unjoinEvent = this.unjoinEvent.bind(this);
   }
 
   openEventModal() {
-    this.props.openModal("event-show");
+    this.props.openModal({
+      modal: "event-show",
+      event: this.props.event,
+    });
   }
 
-  joinEvent() {
-    this.props.updateEvent({ attendees: this.props.currentUser });
+  joinEventButton() {
+    return (
+      <button
+        onClick={() =>
+          this.props.joinEvent(this.props.event._id, this.props.currentUser)
+        }
+      >
+        Join game button
+      </button>
+    );
+  }
+
+  unjoinEvent() {
+    return <button>Attending</button>;
   }
 
   render() {
@@ -37,7 +53,7 @@ class EventIndexItem extends React.Component {
           <h3>Description:</h3>
           <p>{event.description}</p>
         </div>
-        <button onClick={this.joinEvent}>Join this event</button>
+        {this.joinEventButton()}
       </div>
     );
   }

@@ -15,11 +15,13 @@ const UserSchema = new Schema({
       required: true
     },
     address: { 
-      type: String,
+      type: String
     },
-    coordinates: {
-      lat: {type: mongoose.Decimal128,},
-      long: {type: mongoose.Decimal128}
+    lat: {
+      type: mongoose.Decimal128
+    },
+    lng: {
+      type: mongoose.Decimal128
     },
     eventList: [{
       type: Schema.ObjectId,

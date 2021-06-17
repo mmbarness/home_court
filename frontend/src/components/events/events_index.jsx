@@ -7,24 +7,9 @@ class EventsIndex extends React.Component {
   }
 
   render() {
+    if (this.props.events.all === undefined) return null;
+    // debugger;
     const allEventsArr = Object.values(this.props.events.all);
-
-    // const userEventsArr = [];
-
-    // for (let i = 0; i < allEventsArr.length; i++) {
-    //   allEventsArr[i].forEach((event) => {
-    //     if (event.attendees.includes(this.props.currentUser))
-    //       userEventsArr.push(allEventsArr[i]);
-    //   });
-    // }
-    // const myEvents = eventsArr.filter((event) => {
-    //   // console.log(event);
-    //   // console.log(this.props.currentUser);
-    //   return event.attendees.includes(
-    //     (event) => event.username === this.props.currentUser.username
-    //   );
-    //   // return Object.values(event.attendees).includes(this.props.currentUser);
-    // });
 
     return (
       <div>

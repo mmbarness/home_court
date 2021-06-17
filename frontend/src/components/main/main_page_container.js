@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { fetchEvents, fetchUserEvents } from "../../actions/event_actions";
 import MainPage from "./main_page";
-import { openModal, closeModal } from "../../actions/modal_actions";
+import { openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => ({
   events: state.events,

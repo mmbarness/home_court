@@ -12,9 +12,6 @@ const EventSchema = new Schema({
     type: String,
     enum: ['basketball', 'soccer', 'volleyball', 'spikeball'],
   },
-  address: {
-    type: String
-  },
   lat: {
     type: mongoose.Decimal128
   },
@@ -31,10 +28,6 @@ const EventSchema = new Schema({
   postedBy: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'users'
-  },
-  inviteLink: {
-    type: String,
-    required: true
   },
   dateCreated: {
     type: Date,

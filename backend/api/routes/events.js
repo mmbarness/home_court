@@ -95,13 +95,12 @@ router.post(
     const newEvent = new Event({
       title: req.body.title,
       sport: req.body.sport,
-      address: req.body.address,
+      // address: req.body.address,
       lat: req.body.lat,
       lng: req.body.lng,
       attendees: [req.user],
       description: req.body.description,
       postedBy: req.user.id,
-      inviteLink: req.body.inviteLink,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
     });

@@ -4,7 +4,8 @@ import React from 'react';
 class EventForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {      
+    this.state = {
+      postedBy: this.props.currentUser.id,
       title: '',
       sport: '',
       description: '',
@@ -12,7 +13,6 @@ class EventForm extends React.Component {
       endDate: '',
       lat: this.props.location.lat,
       lng: this.props.location.lng,
-      errors: {},
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,27 +22,34 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createEvent(this.state.event)
-    this.props.closeModal();
+    console.log(this.state)
+    const newEvent = Object.assign({}, this.state);
+    console.log(newEvent)
+    this.props.createEvent(newEvent).then( () => {
+      this.props.closeModal();
+    })
   }
 
   update(property) {
     return e => this.setState({ [property]: e.target.value });
   }
 
-  // renderErrors() {
-  //   return (
-  //     {this.props.errors.map(error => {
-  //       return (
-  //         <li className="error" key={error}>
-  //           {error}
-  //         </li>
-  //       );
-  //     })};
-  //   )
-  // }
+  renderErrors() {
+    const errs = Object.values(this.props.errors);
+    console.log(errs)
+    return (
+      errs.map((error, i) => {
+        return (
+          <li className="error" key={`err-${i}`}>
+            {error}
+          </li>
+        );
+      })
+    )
+  }
 
   render(){
+    // debugger
     return (
     <div className="modal-child" onClick={(e) => e.stopPropagation()}>
     <div className='event-modal-container'>
@@ -83,10 +90,10 @@ class EventForm extends React.Component {
           onChange={this.update("endDate")}
         />
 
-        <button>Create Event</button>
+        <button type="submit" value="submit">Create Event</button>
+        <ul>{this.renderErrors()}</ul>
       </form>
 
-      {/* <ul>{this.renderErrors()}</ul> */}
     </div>
     </div>
     );

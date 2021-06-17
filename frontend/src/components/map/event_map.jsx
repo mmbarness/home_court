@@ -41,7 +41,7 @@ function EventMap(props) {
     }, []);
 
         // const eventsArr = Object.values(props.events.all);
-   console.log(props)
+   
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
     

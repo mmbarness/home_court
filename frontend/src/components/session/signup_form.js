@@ -103,7 +103,7 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
             <AddressFormField updateAddress={this.updateAddress}/>
-            <input type="submit" value="Submit" />
+            <input className='demo-button' type="submit" value="Submit" />
             {this.renderErrors()}
           </div>
         </form>

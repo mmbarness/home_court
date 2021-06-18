@@ -19,6 +19,8 @@
 .splash-text{
     display: flex;
     font-family: "Inter", sans-serif;
+    font-size: 24px;
     color: white;
+    text-shadow: 2px 2px #000000;
     position: relative;
 }

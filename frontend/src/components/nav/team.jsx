@@ -1,56 +1,84 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import '../../style/css/navbar.css'
+import '../../style/css/team.scss'
 
 export const Team = () => {
   return (
     <div className="team-page">
-      <h1 className='footer-header'>About the Team</h1>
         <div className='team-members'>
           <ul className='team-members-list'>
             <li className='team-member'>
               <br />
-              <h3 className='team-role'>Team Lead:</h3>
-              <p>Matt Barnes</p>
-              <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/mmbarness"target="_blank">Github</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank">LinkedIn</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank">AngelList</a></li>
+              <h3 className='team-role'>Matt Barnes</h3>
+              <p className='member-name'>Team Lead</p>
               <br />
-              <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+              <div className='team-row'>
+                <div className='column-one'>
+                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/mmbarness"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <br />
+                </div>
+                <div className='column-two'>
+                  <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+                  </div>
+              </div>
             </li>
 
 
             <li className='team-member'>
               <br />
-              <h3 className='team-role'>Frontend Lead:</h3>
-              <p>Will Ku</p>
-              <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://www.linkedin.com/in/willku/"target="_blank">Github</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://github.com/will-ku"target="_blank">LinkedIn</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank">AngelList</a></li>
+              <h3 className='team-role'>Will Ku</h3>
+              <p className='member-name'>Frontend Lead</p>
               <br />
-              <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+              <div className='team-row'>
+                <div className='column-one'>
+                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://www.linkedin.com/in/willku/"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://github.com/will-ku"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <br />
+                </div>
+                <div className='column-two'>
+                  <li><img className='team-photo' src='https://i.imgur.com/5W5wvYc.jpg'/></li>
+                </div>
+              </div>
             </li>
 
             <li className='team-member'>
               <br />
-              <h3 className='team-role'>Backend Lead:</h3>
-              <p>Matt Yu</p>
-              <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/matt2yu"target="_blank">Github</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank">LinkedIn</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank">AngelList</a></li>
+              <h3 className='team-role'>Matt Yu</h3>
+              <p className='member-name'>Backend Lead</p>
               <br />
-              <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+              <div className='team-row'>
+                <div className='column-one'>
+                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/matt2yu"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <br />
+                </div>
+                <div className='column-two'>
+                  <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+                </div>
+              </div>
             </li>
 
             <li className='team-member'>
               <br />
-              <h3 className='team-role'>Flex: </h3>
-              <p>Moustafa Garcia</p>
-              <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/mogarcia626"target="_blank">Github</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/moustafagarcia/"target="_blank">LinkedIn</a></li>
-              <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank">AngelList</a></li>
+              <h3 className='team-role'>Moustafa Garcia</h3>
+              <p className='member-name'>Flex</p>
               <br />
-              <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+              <div className='team-row'>
+                <div className='column-one'>
+                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/mogarcia626"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/moustafagarcia/"target="_blank"></a></li>
+                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <br />
+                  </div>
+                <div className='column-two'>
+                  <li><img className='team-photo' src='https://i.imgur.com/idBLEsZ.jpg'/></li>
+                </div>
+              </div>
+              
             </li>
           
           </ul>

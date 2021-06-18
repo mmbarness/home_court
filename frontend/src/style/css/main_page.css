@@ -12,6 +12,7 @@
   box-shadow: 3px 3px 3px 0.75px rgba(204, 204, 204, 0.294);
   z-index: 1;
   border-right: 0.5px solid lightgoldenrodyellow;
+  margin-top: 1vmin;
 }
 
 .main-page-map {
@@ -28,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   width: inherit;
-  margin-left: 2em;
+  margin-left: 1em;
 }
 
 .terrible-css-practice {
@@ -37,19 +38,19 @@
 
 .event-map-menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   position: absolute;
   z-index: 1;
   padding-right: 5em;
   /* width: 65vw; */
-  margin: 2.5em 0 0 0.5em;
+  margin: 2.5em 0 0 4em;
   width: inherit;
   flex-wrap: wrap;
 }
 
 .event-map-menu > * {
-  margin: 0 0.25em;
+  margin: 0 0.5em;
   /* z-index: 0; */
 }
 

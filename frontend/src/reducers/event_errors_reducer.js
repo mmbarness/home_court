@@ -4,9 +4,10 @@ const _nullErrors = {};
 
 const eventErrorsReducer = (state = _nullErrors, action) => {
   Object.freeze(state);
+  const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_EVENT_ERRORS:
-      return action.errors;
+      return action.errors
     case RECEIVE_EVENT:
       return _nullErrors;
     default:

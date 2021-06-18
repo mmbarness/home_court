@@ -19,7 +19,7 @@ export const Profile = () => {
     const renderEvents = () => {
         let events = currentUser.events
         if (!_.isEmpty(events)) {
-            return (<div>
+            return (<div className="user-prof-events">
                 {events.data.map((event, i) => (
                     <EventIndexItemContainer key={i} event={event} />
                 ))}
@@ -28,7 +28,8 @@ export const Profile = () => {
     }      
 
     return(
-        <div>
+        <div className="user-prof-events-container">
+            <h1>Your upcoming games</h1>
             {renderEvents()}
         </div>
     )

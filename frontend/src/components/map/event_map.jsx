@@ -40,7 +40,8 @@ function EventMap(props) {
         mapRef.current.panTo({lat, lng});
         mapRef.current.setZoom(15);
     }, []);
-    console.log(props)
+
+    // debugger;
     const eventsArr = Object.values(props.events.all);
    
     if (loadError) return 'Error loading maps';

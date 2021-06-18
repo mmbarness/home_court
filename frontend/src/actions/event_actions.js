@@ -14,6 +14,7 @@ export const receiveEvents = (events) => {
 };
 
 export const receiveEvent = (event) => {
+  // debugger;
   return {
     type: RECEIVE_EVENT,
     event,

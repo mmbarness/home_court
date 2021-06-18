@@ -3,8 +3,8 @@ import EventMap from "./event_map";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 const mSTP = (state) => ({
-  currentUser: state.session.user,
   events: state.events,
+  currentUser: state.session.user,
 });
 
 const maDTP = (dispatch) => ({

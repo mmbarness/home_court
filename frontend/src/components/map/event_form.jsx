@@ -62,9 +62,9 @@ class EventForm extends React.Component {
     let errDiv = document.createElement("div")
     let errText = document.createTextNode(err);
     errDiv.appendChild(errText);
-    let eventFormContainer = document.getElementById('event-form-container')
-    let eventFormHeader = document.getElementById('event-form-header')
-    eventFormContainer.insertBefore(errDiv, eventFormHeader)
+    let eventFormBox = document.getElementById('event-form-box')
+    let eventFormHeader = document.getElementById('event-form-title-input')
+    eventFormBox.insertBefore(errDiv, eventFormHeader)
   }
 
   handleSportChange(e) {
@@ -75,12 +75,12 @@ class EventForm extends React.Component {
     return (
       <div className="modal-child" onClick={(e) => e.stopPropagation()}>
         <div className="event-modal-container" id="event-form-container">
-          <form className="event-form-box" onSubmit={this.handleSubmit}>
+          <form className="event-form-box" id="event-form-box" onSubmit={this.handleSubmit}>
             <h1 id="create-event-header">Event Details</h1>
             <div onClick={this.props.closeModal} className="close-x">
               <MdClose size={28} />
             </div>
-            <input
+            <input id="event-form-title-input"
               type="text"
               value={this.state.title}
               placeholder="Event Title"

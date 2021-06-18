@@ -9,6 +9,9 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
+  box-shadow: 3px 3px 3px 0.75px rgba(204, 204, 204, 0.294);
+  z-index: 1;
+  border-right: 0.5px solid lightgoldenrodyellow;
 }
 
 .main-page-map {
@@ -16,14 +19,16 @@
 }
 
 .event-map-container {
-  width: 100%;
-  margin-left: 1.5em;
+  width: 100vw;
+  /* margin-left: 1.5em; */
 }
 
 .event-map-flex-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: inherit;
+  margin-left: 2em;
 }
 
 .terrible-css-practice {
@@ -36,8 +41,11 @@
   align-items: center;
   position: absolute;
   z-index: 1;
+  padding-right: 5em;
   /* width: 65vw; */
   margin: 2.5em 0 0 0.5em;
+  width: inherit;
+  flex-wrap: wrap;
 }
 
 .event-map-menu > * {
@@ -52,7 +60,7 @@
   border: 1px solid rgba(246 241 224);
   padding: 0.1em 0.4em 0 0;
   background: rgba(254, 250, 250);
-  max-height: 40px;
+  /* max-height: 40px; */
   box-shadow: 0 1px 4px 0 rgb(163, 163, 163);
 }
 

@@ -58,9 +58,9 @@ class EventIndexItem extends React.Component {
     return (
       <li className="event-index-item">
         <div className="event-item-content" onClick={this.openEventModal}>
-          <h1 className="event-item-sport">{event.sport}</h1>
-          <h1>
-            <button className="event-item-title">{event.title}</button>
+          <h1 className="event-item-header">
+            <h1 className="event-item-title">{event.title}</h1>
+            <h2 className="event-item-sport">{event.sport}</h2>
           </h1>
           <p className="event-item-date">
             {formatDateTime(this.props.event.startDate)}

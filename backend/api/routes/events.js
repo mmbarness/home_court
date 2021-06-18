@@ -18,7 +18,6 @@ router.get("/", (req, res) => {
 
 // gets all events created by a specific user
 router.get("/user/:user_id", (req, res) => {
-  debugger;
   Event.find({ postedBy: req.params.user_id, endDate: { $gte: new Date() } })
     .sort({ date: -1 })
     .then((events) => res.json(events))
@@ -29,12 +28,15 @@ router.get("/user/:user_id", (req, res) => {
 
 // add user to event attendee list & add event to user eventList
 router.patch('/:event_id/add_attendee', async (req, res) => {
+  let userId = req.body.id
+  let username = req.body.username
   let event = await Event.findById(req.params.event_id)
-  let userId = req.body.user
+  let user = await User.findById(userId)
+  // debugger;
   Event.findOneAndUpdate(
     {"_id": req.params.event_id},
     {$push: {'attendees': 
-    {userId}}
+    user}
   }).then(event => User.findOneAndUpdate(
     {"_id": userId},
     {$push: {'eventList': 

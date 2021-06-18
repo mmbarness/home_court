@@ -7,14 +7,13 @@ import MainPageContainer from "../components/main/main_page_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
-import Profile from "./profile/profile";
+import Profile from './profile/profile'
 import Modal from "../components/modal/modal.jsx";
 import { NavBarHook } from "./nav/navbar_hook";
 // import "../style/css/reset.css";
 
 import "../style/css/application.css";
 import "../style/css/modal.css";
-import SplashPage from "./splash";
 import Team from "./nav/team";
 
 const App = () => (

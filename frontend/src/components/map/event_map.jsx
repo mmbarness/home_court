@@ -196,7 +196,16 @@ function EventMap(props) {
             }}
           >
             <div>
-              <h1 className='info-window-title'>{selected.title}</h1>
+              <h1 className='info-window-title'
+                onClick={() => props.openModal({
+                  modal: 'event-show',
+                  data: selected 
+                })}
+              >{selected.title}</h1>
+              <p>{new Date().getDay() === new Date(selected.startDate).getDay() ? 
+                ('Today')
+                  : 
+                (`${daysOfWeek[new Date(selected.startDate).getDay()]} ${new Date(selected.startDate).toLocaleDateString()}`)}</p>
               <p>Start: {new Date(selected.startDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
               <p>End: {new Date(selected.endDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
             </div>
@@ -226,6 +235,8 @@ const nyc = {
   lat: 40.748817,
   lng: -73.985428,
 };
+
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 function selectIcon(sport) {
   switch (sport) {

@@ -37,13 +37,14 @@ export const NavBarHook = () => {
   return (
     <div className="nav-bar">
       <h1 id="header-home-court-text">
-        <Link to={"/"}>
+        {/* <Link to={"/"}>
           <img
             src={require("../images/logowhitebg.png")}
             alt="logo"
             className="logo"
           />
-        </Link>
+        </Link> */}
+        Home Court
       </h1>
       {loggedIn ? loggedInLinks() : notLoggedInLinks()}
     </div>

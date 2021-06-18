@@ -1,6 +1,7 @@
 import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
 import * as _ from "underscore";
+import { displaySportWithEmoji } from "../../util/sport_emoji";
 
 class EventIndexItem extends React.Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class EventIndexItem extends React.Component {
     this.joinEventButton = this.joinEventButton.bind(this);
     this.unjoinEventButton = this.unjoinEventButton.bind(this);
     this.joinedOrNot = this.joinedOrNot.bind(this);
-    this.displaySportWithEmoji = this.displaySportWithEmoji.bind(this);
     this.unJoin = this.unJoin.bind(this);
     this.state = {
       clicked: this.joinedOrNot(),
@@ -49,34 +49,22 @@ class EventIndexItem extends React.Component {
     );
   }
 
-  unJoin(e){
+  unJoin(e) {
     e.preventDefault();
-    let obj = {user_id: this.props.currentUser.id, event_id: this.props.event._id}
+    let obj = {
+      user_id: this.props.currentUser.id,
+      event_id: this.props.event._id,
+    };
     this.setState({ clicked: !this.state.clicked });
-    this.props.unJoinEvent(obj)
+    this.props.unJoinEvent(obj);
   }
 
   unjoinEventButton() {
     return (
-      <button onClick={this.unJoin} className="unjoin-event event-item-button">✔ Attending</button>
+      <button onClick={this.unJoin} className="unjoin-event event-item-button">
+        ✔ Attending
+      </button>
     );
-  }
-
-  displaySportWithEmoji() {
-    switch (this.props.event.sport) {
-      case "Basketball":
-        return "Basketball 🏀";
-      case "Volleyball":
-        return "Volleyball 🏐";
-      case "Football":
-        return "Football 🏈";
-      case "Soccer":
-        return "Soccer ⚽️";
-      case "Spikeball":
-        return "Spikeball 🤾‍♂️";
-      default:
-        return null;
-    }
   }
 
   render() {
@@ -86,17 +74,22 @@ class EventIndexItem extends React.Component {
         <div className="event-item-content" onClick={this.openEventModal}>
           <h1 className="event-item-header">
             <h1 className="event-item-title">{event.title}</h1>
-            <h2 className="event-item-sport">{this.displaySportWithEmoji()}</h2>
+            <h2 className="event-item-sport">
+              {displaySportWithEmoji(event.sport)}
+            </h2>
           </h1>
           <p className="event-item-date">
             {formatDateTime(this.props.event.startDate)}
           </p>
           <div></div>
         </div>
-        <div className="event-item-footer">
-          {this.state.clicked
-            ? this.unjoinEventButton()
-            : this.joinEventButton()}
+        <div className="event-item-footer" onClick={this.openEventModal}>
+          <span>
+            {this.state.clicked
+              ? this.unjoinEventButton()
+              : this.joinEventButton()}
+          </span>
+          <span onClick={this.openEventModal}></span>
         </div>
       </li>
     );

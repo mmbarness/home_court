@@ -1,6 +1,5 @@
 .session-form-container{
     align-self: center;
-    width: 100%;
     padding: 20px;
 }
 
@@ -41,6 +40,7 @@
 input {
     font-family: sans-serif;
     font-weight: 200;
+    border-radius: 15px;
 }
 
 .demo-button {
@@ -48,4 +48,8 @@ input {
     width: 120px;
     border-radius: 25px;
     box-shadow: 2px 2px;
+}
+
+.login-input {
+    border-radius: 25px;
 }

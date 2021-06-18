@@ -8,7 +8,7 @@ const Event = require("../../models/Event");
 const { User } = require("../../models/User");
 const validateEventInput = require("../../validation/events");
 
-// gets all events whose endDate has not expired
+// gets all events whose endDate has not exceeded current time resulting in expiration
 router.get("/", (req, res) => {
   Event.find({ endDate: { $gte: new Date() } })
     .sort({ dateCreated: -1 })
@@ -55,7 +55,6 @@ router.patch('/:event_id/add_attendee', async (req, res) => {
     let user = await User.findById(userId)
     Event.findOneAndUpdate(
       {"_id": req.params.event_id},
-      // { $pull: { results: { score: 8 , item: "B" } } },
       {$pull: {'attendees': 
       {_id: user.id}}
     }).then(event => User.findOneAndUpdate(

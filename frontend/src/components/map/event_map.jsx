@@ -10,6 +10,7 @@ import {
 import mapStyles from "./map_styles";
 import { MdCancel, MdAddCircle } from "react-icons/md";
 import { GrLocation } from "react-icons/gr";
+import { formatDateTime } from "../../util/date_util_short";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -202,10 +203,10 @@ function EventMap(props) {
                   data: selected 
                 })}
               >{selected.title}</h1>
-              <p>{new Date().getDay() === new Date(selected.startDate).getDay() ? 
+              <p>{new Date().toDateString() === new Date(selected.startDate).toDateString() ? 
                 ('Today')
                   : 
-                (`${daysOfWeek[new Date(selected.startDate).getDay()]} ${new Date(selected.startDate).toLocaleDateString()}`)}</p>
+                (`${formatDateTime(selected.startDate)}`)}</p>
               <p>Start: {new Date(selected.startDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
               <p>End: {new Date(selected.endDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
             </div>

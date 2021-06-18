@@ -1,5 +1,6 @@
 import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
+import * as _ from 'underscore'
 
 class EventIndexItem extends React.Component {
   constructor(props) {
@@ -18,10 +19,13 @@ class EventIndexItem extends React.Component {
   }
 
   joinedOrNot() {
-    // this.props.event.attendees.some((attendee) => {
-    //   // attendees.username !== undefined ||
-    //   attendee.username === this.props.currentUser.username;
-    // });
+    let attendees = this.props.event.attendees
+    let curUser = this.props.currentUser
+    let bool 
+    if (!_.isEmpty(attendees)){
+      bool = (attendees.some(user => user.username === curUser.username)) ? true : false
+    }
+    return bool; 
   }
 
   joinEventButton() {
@@ -38,6 +42,7 @@ class EventIndexItem extends React.Component {
   }
 
   unjoinEventButton() {
+    // debugger;
     return (
       <button className="unjoin-event event-item-button">Attending</button>
     );

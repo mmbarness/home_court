@@ -21,17 +21,6 @@
     align-self: center;
     align-items: center;
 }
-
-.Links1 > button {
-  border-radius: 5px;
-  border-style: none;
-  background-color:white;
-  white-space: nowrap;
-  margin: 1vmin;
-  padding: .5vmin 1vmin;
-  font-size: inherit;
-}
-
 .Links2 {
     // width: 10vmin;
     display: flex;
@@ -87,7 +76,16 @@
   
   font-size: $responsive;
 }
-
+.Links1 > button {
+  border-radius: 5px;
+  border-style: none;
+  background-color:white;
+  white-space: nowrap;
+  margin: 1vmin;
+  padding: .5vmin 1vmin;
+  font-size: inherit;
+  @include responsive-font(2vmin, 13px, 15px);
+}
 
 .no-limits {
   font-size: 3vw;
@@ -98,7 +96,11 @@
 }
 
 .limit-min-max {
-  @include responsive-font(1.75vmin, 17.5px, 40px);
+  @include responsive-font(1.75vmin, 20px, 30px);
+}
+
+.limit-min-max > * {
+  @include responsive-font(1.8vmin, 20px, 25px);
 }
 
 .link-logo {

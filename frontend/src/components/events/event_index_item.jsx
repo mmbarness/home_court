@@ -49,7 +49,7 @@ class EventIndexItem extends React.Component {
 
   unjoinEventButton() {
     return (
-      <button className="unjoin-event event-item-button">Attending</button>
+      <button className="unjoin-event event-item-button">✔ Attending</button>
     );
   }
 

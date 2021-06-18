@@ -104,3 +104,15 @@ p {
 .event-item-date {
   font-size: 12px;
 }
+
+.unjoin-event {
+  background-color:rgb(224 245 210);
+  border: 1px solid rgb(102 102 102);
+  color: rgb(81 141 84)
+}
+/* 
+.unjoin-event {
+  background-color: lightgray;
+  border: 1px solid rgb(102 102 102);
+  color: rgb(102 102 102)
+} */

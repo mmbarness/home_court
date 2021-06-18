@@ -3,11 +3,12 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { Switch } from "react-router-dom";
 import { Route, Redirect, withRouter } from "react-router-dom";
 
+import SplashPage from "../components/splash.jsx";
 import MainPageContainer from "../components/main/main_page_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ProfileContainer from "./profile/profile_container";
-import Profile from './profile/profile'
+import Profile from "./profile/profile";
 import Modal from "../components/modal/modal.jsx";
 import { NavBarHook } from "./nav/navbar_hook";
 // import "../style/css/reset.css";

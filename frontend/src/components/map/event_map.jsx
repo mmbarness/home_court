@@ -32,6 +32,7 @@ function EventMap(props) {
   const [selected, setSelected] = React.useState(null); // selected is a current event whose infow window is open
   const [creatingEvent, setCreatingEvent] = React.useState(false); //true: waiting for pin to drop to create event
   const [eventLocation, setEventLocation] = React.useState(null); //evenLocation are the coordinates of a new game
+  const [currentUserVector, setCurrentUserVector] = React.useState(false); //info window for user location
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -118,6 +119,29 @@ function EventMap(props) {
           }
         }}
       >
+        
+         <Marker
+            position={props.center}
+            icon={{
+              url: "/icons/vector.svg",
+              scaledSize: new window.google.maps.Size(30, 30),
+              origin: new window.google.maps.Point(0, 0),
+              anchor: new window.google.maps.Point(15, 15),
+            }}
+            onMouseEnter={() => setCurrentUserVector(true)}
+            onMouseLeave={() => setCurrentUserVector(false)}
+          />
+          
+          { currentUserVector ? (
+            <InfoWindow
+              position={props.center}
+              options={{ pixelOffset: new window.google.maps.Size(0, -46) }}
+            >
+              <p>You are Here</p>
+            </InfoWindow>
+          ) : null }
+
+
         {eventLocation ? <Marker position={eventLocation} /> : null}
 
         {/* InfoWindow and Map Marker for New events being created   */}
@@ -187,14 +211,7 @@ function EventMap(props) {
               {/* <p>Start: {selected.startDate.toLocaleTimeString()}</p>
                             <p>End: {selected.endDate.toLocaleTimeString()}</p>                       */}
             </div>
-            {/* <button
-              onClick={() => {
-                this.props.openModal({
-                  modal: "event-show",
-                  data: this.props.event,
-                });
-              }}
-            ></button> */}
+           
           </InfoWindow>
         ) : null}
         {/* _______________________________________________________________________*/}
@@ -213,8 +230,8 @@ export default EventMap;
 
 // Orlando
 const orlando = {
-  lat: 28.5418255,
-  lng: -81.3810412,
+  lat: 28.46541,
+  lng: -81.2667033,
 };
 
 const houston = {
@@ -229,15 +246,26 @@ const nyc = {
 
 function selectIcon(sport) {
   switch (sport) {
-    // case 'spikeball':
-    //     return '/spikeball.svg'
     case "Soccer":
-      return "/soccer.svg";
+      return "/icons/soccer.svg";
     case "Basketball":
-      return "/basketball.svg";
+      return "/icons/basketball.svg";
     case "Volleyball":
-      return "/volleyball.svg";
+      return "/icons/volleyball.svg";
+    case "Badminton":
+      return "/icons/badminton.svg";
+    case "Baseball":
+      return "/icons/baseball.svg";
+    case "Football":
+      return "/icons/football.svg";
+    case "Ping Pong":
+      return "/icons/pingpong.svg";
+    case "Tennis":
+      return "/icons/tennis.svg";
+    case "Spikeball":
+      return "/icons/spikeball.svg";
     default:
       return "/basketball.svg";
   }
 }
+

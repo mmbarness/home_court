@@ -8,6 +8,8 @@ export const JoinOrNot = (props) => {
     const event = props.event
     const attendees = props.event.attendees 
     const currentUser = useSelector((state) => state.session.user);
+    let postedByName
+    (!_.isEmpty(event.attendees)) ? postedByName = event.attendees[0].username : postedByName = null; 
     const dispatch = useDispatch()
 
     const joinedOrNot = () => {
@@ -44,9 +46,11 @@ export const JoinOrNot = (props) => {
     }
 
     const unjoinEventButton = () => {
-        return (
-        <button onClick={unJoin} className="unjoin-event event-item-button">✔ Attending</button>
-        );
+        if (currentUser.username !== postedByName) {
+            return <button onClick={unJoin} className="unjoin-event event-item-button">✔ Attending</button>
+        } else {
+            return <h3>This is your event!</h3>
+        }
     }
 
 

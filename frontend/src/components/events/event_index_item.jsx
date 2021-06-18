@@ -9,6 +9,9 @@ class EventIndexItem extends React.Component {
     this.joinEventButton = this.joinEventButton.bind(this);
     this.unjoinEventButton = this.unjoinEventButton.bind(this);
     this.joinedOrNot = this.joinedOrNot.bind(this);
+    this.state = {
+      clicked: this.joinedOrNot()
+    }
   }
 
   openEventModal() {
@@ -32,9 +35,9 @@ class EventIndexItem extends React.Component {
     return (
       <button
         className="join-event event-item-button"
-        onClick={() =>
-          this.props.joinEvent(this.props.event._id, this.props.currentUser)
-        }
+        onClick={() =>{this.setState({clicked: !this.state.clicked})
+          this.props.joinEvent(this.props.event._id, this.props.currentUser);
+        }}
       >
         Join Game
       </button>
@@ -42,7 +45,6 @@ class EventIndexItem extends React.Component {
   }
 
   unjoinEventButton() {
-    // debugger;
     return (
       <button className="unjoin-event event-item-button">Attending</button>
     );
@@ -50,7 +52,6 @@ class EventIndexItem extends React.Component {
 
   render() {
     const { event } = this.props;
-
     return (
       <li className="event-index-item">
         <div className="event-item-content" onClick={this.openEventModal}>
@@ -63,7 +64,7 @@ class EventIndexItem extends React.Component {
           </div>
         </div>
         <div className="event-item-footer">
-          {this.joinedOrNot()
+         {(this.state.clicked) 
             ? this.unjoinEventButton()
             : this.joinEventButton()}
         </div>

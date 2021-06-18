@@ -41,6 +41,7 @@ function EventMap(props) {
         mapRef.current.setZoom(15);
     }, []);
 
+    // debugger;
     const eventsArr = Object.values(props.events.all);
    
     if (loadError) return 'Error loading maps';

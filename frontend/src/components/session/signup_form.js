@@ -80,7 +80,8 @@ class SignupForm extends React.Component {
 
     return (
       <div className="session-form-container">
-        <form onSubmit={this.handleSubmit}>
+        <img src="https://home-court.s3.amazonaws.com/images/nyt-pickup-bball-2.jpeg"/>
+        <form onSubmit={this.handleSubmit} id="session-form">
           <div className="session-form">
               <input type="text"
                 value={this.state.email}

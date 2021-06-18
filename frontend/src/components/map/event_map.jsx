@@ -12,8 +12,8 @@ import mapStyles from "./map_styles";
 const libraries = ["places"];
 const mapContainerStyle = {
   minWidth: "500px",
-  width: "70vw",
-  height: "90vh",
+  width: "65vw",
+  height: "89vh",
 };
 const options = {
   styles: mapStyles,

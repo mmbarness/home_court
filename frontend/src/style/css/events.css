@@ -5,6 +5,9 @@
 .event-index {
   margin: 0 1em;
   height: 90vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .event-index-item {
@@ -12,15 +15,16 @@
   flex-direction: column;
   background-color: bisque;
   /* border: 1px solid black; */
-  margin: 0.75em 0;
+  margin: 0.5em 0;
   border-radius: 5px;
-  padding: 0 0.75em;
+  padding: 0.25em 0.75em;
 }
 
 .event-index-item:hover {
-  /* transform: scale(1, 1);
-  -webkit-transform: scale(1.01, 1.01); */
-  box-shadow: 0.75px 1px 1px 0.75px #ccc;
+  background-color: lightcoral;
+  transform: scale(1, 1);
+  -webkit-transform: scale(1.01, 1.01);
+  box-shadow: 1px 1px 1px 0.75px #ccc;
   transition: all 0.4s ease 0s;
 }
 
@@ -70,4 +74,10 @@ p {
 .event-index-ul {
   display: flex;
   flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+.event-index > h1 {
+  font-weight: 600;
+  margin-top: 1vmin;
 }

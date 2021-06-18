@@ -1,18 +1,24 @@
 .splash-page{
     display: flex;
-    flex-flow: column;
-    background-color: chocolate;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 100vh;
+    background: url(https://i.imgur.com/ZkilH1q.jpg);
+    background-size: cover;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    position: absolute;
 }
 
-#splash-image{
-    align-self: center;
-    position: relative;
-    top: -25vmax;
-    z-index: 1;
-    width: 100%
+.splash-login {
+    display: flex;
 }
 
 .splash-text{
+    display: flex;
+    font-family: "Inter", sans-serif;
+    color: white;
     position: relative;
-    top: -25vmax;
 }

@@ -6,11 +6,12 @@ import { formatDateTime } from "../../util/date_util_short";
 import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
 import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
+import { displaySportWithEmoji } from "../../util/sport_emoji";
 import DeleteEvent from "./delete_event";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "550px",
+  width: "480px",
   height: "250px",
 };
 const options = {
@@ -53,40 +54,55 @@ function EventShow(props) {
           center={center}
           zoom={17}
           options={options}
-          className="event-show-map"
         >
           <Marker position={center} />
         </GoogleMap>
         <section className="event-show-info">
-          <h1 className="login-form-header">{event.title}</h1>
-          <h1>{event.sport}</h1>
-          <p>
-            <BsPeopleFill />
-            Attendees: {event.attendees.length}
-          </p>
-
-          <p>
-            <BsCalendarFill /> Start Time:
-            {formatDateTime(event.startDate)}
-          </p>
-          <p>
-            <FiClock /> End Time:
-            {formatDateTime(event.endDate)}
-          </p>
-          <p>
-            <FiMeh />
-            Created by {postedByName}
-          </p>
-          <p>
-            <IoLocationSharp />
-            <a href={googleMapsLink} target="_blank">
-              Get Directions
-            </a>
-          </p>
-          <div>
-            <h3>Description:</h3>
-            <p>{event.description}</p>
+          <div className="event-show-header">
+            <h1 className="login-form-header">{event.title}</h1>
+            <h1 className="event-show-sport-header">
+              {displaySportWithEmoji(event.sport)}
+            </h1>
           </div>
+          <section className="event-show-details">
+            <span className="event-show-span">
+              <div>
+                <BsPeopleFill />
+              </div>
+              Attendees: {event.attendees.length}
+            </span>
+
+            <span className="event-show-span">
+              <div>
+                <BsCalendarFill />{" "}
+              </div>
+              Start Time: {formatDateTime(event.startDate)}
+            </span>
+            <span className="event-show-span">
+              <div>
+                <FiClock />
+              </div>{" "}
+              End Time: {formatDateTime(event.endDate)}
+            </span>
+            <span className="event-show-span">
+              <div>
+                <FiMeh />
+              </div>
+              Hosted by {postedByName}
+            </span>
+            <span className="event-show-span">
+              <div>
+                <IoLocationSharp />
+              </div>
+              <a href={googleMapsLink} target="_blank">
+                Get Directions
+              </a>
+            </span>
+            <span id="event-show-description">
+              <h3>Description:</h3>
+              <p>{event.description}</p>
+            </span>
+          </section>
           <DeleteEvent event={event}/>
         </section>
       </div>

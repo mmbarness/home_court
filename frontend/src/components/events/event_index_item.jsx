@@ -60,23 +60,6 @@ class EventIndexItem extends React.Component {
   //   );
   // }
 
-  displaySportWithEmoji() {
-    switch (this.props.event.sport) {
-      case "Basketball":
-        return "Basketball 🏀";
-      case "Volleyball":
-        return "Volleyball 🏐";
-      case "Football":
-        return "Football 🏈";
-      case "Soccer":
-        return "Soccer ⚽️";
-      case "Spikeball":
-        return "Spikeball 🤾‍♂️";
-      default:
-        return null;
-    }
-  }
-
   render() {
     const { event } = this.props;
     return (
@@ -84,7 +67,9 @@ class EventIndexItem extends React.Component {
         <div className="event-item-content" onClick={this.openEventModal}>
           <h1 className="event-item-header">
             <h1 className="event-item-title">{event.title}</h1>
-            <h2 className="event-item-sport">{this.displaySportWithEmoji()}</h2>
+            <h2 className="event-item-sport">
+              {displaySportWithEmoji(event.sport)}
+            </h2>
           </h1>
           <p className="event-item-date">
             {formatDateTime(this.props.event.startDate)}

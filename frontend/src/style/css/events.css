@@ -99,7 +99,8 @@ p {
 }
 
 .event-index > h1 {
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 18px;
   margin-top: 1vmin;
 }
 
@@ -123,33 +124,71 @@ p {
 .event-show-modal {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 20px;
   background: #fffafa;
   position: relative;
   border-radius: 10px;
-  width: 550px;
-  height: 650px;
+  width: 490px;
+  height: 500px;
 }
 
 .event-show-info {
   display: flex;
   flex-flow: column;
+  /* background-color: rgb(246 241 225); */
+}
+
+.event-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0.3em;
+  font-size: 17px;
+}
+
+.event-show-sport-header {
+  font-weight: 300;
 }
 
 .event-show-info > h1 {
   align-self: center;
+  font-size: 18px;
 }
 
-.event-show-info > p {
+.event-show-details {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid aqua; */
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 15px;
+  width: 455px;
+  line-height: 1.5;
+  border-radius: 10px;
+  /* margin-top: 1px; */
+  background-color: rgb(243, 243, 243);
+}
+
+.event-show-span {
   padding: 0.1vmin;
+  display: flex;
+  width: 100%;
+}
+.event-show-span > div {
+  padding-right: 1em;
 }
 
-.event-show-map {
-  box-shadow: 0.5px 0.5px 0.5px 0.75px rgb(167, 167, 152) 234;
-  border-radius: 5px;
+#event-show-description {
+  margin-top: 0.5em;
 }
 
-.user-prof-events-container{
+#event-show-description > p {
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+.user-prof-events-container {
   display: flex;
   flex-flow: column;
   align-self: center;
@@ -157,7 +196,7 @@ p {
   margin-top: 5vmin;
 }
 
-.user-prof-events{
+.user-prof-events {
   display: flex;
   flex-flow: column;
 }

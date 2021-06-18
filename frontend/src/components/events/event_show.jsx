@@ -104,8 +104,8 @@ function EventShow(props) {
             </span>
           </section>
           <section className="event-show-footer">
-            <JoinOrNot event={event} />
             <DeleteEvent event={event} />
+            <JoinOrNot event={event} />
           </section>
         </section>
       </div>

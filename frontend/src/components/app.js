@@ -15,7 +15,6 @@ import SplashPage from "./splash";
 
 import "../style/css/application.css";
 import "../style/css/modal.css";
-
 import Team from "./nav/team";
 
 const App = () => (

@@ -32,7 +32,7 @@ router.patch('/:event_id/add_attendee', async (req, res) => {
   let username = req.body.username
   let event = await Event.findById(req.params.event_id)
   let user = await User.findById(userId)
-  // debugger;
+  debugger;
   Event.findOneAndUpdate(
     {"_id": req.params.event_id},
     {$push: {'attendees': 
@@ -128,11 +128,12 @@ router.post(
     });
     // debugger;
     let event = await newEvent.save()
+    let user = await User.findById(req.body.postedBy);
     User.findOneAndUpdate(
-      { "_id": req.body.user },
+      { "_id": req.body.postedBy },
       {$push: {'eventList':
-      event._id.toString()}
-    }).then((user) => res.json(event))
+      event.id}
+    }).then((user) => {res.json(event)})
   }
 );
     

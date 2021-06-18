@@ -2,12 +2,13 @@ import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
 import * as _ from "underscore";
 import JoinOrNot from "./joinOrNot";
+import { displaySportWithEmoji } from "../../util/sport_emoji";
+
 
 class EventIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.openEventModal = this.openEventModal.bind(this);
-    this.displaySportWithEmoji = this.displaySportWithEmoji.bind(this);
     // this.joinEventButton = this.joinEventButton.bind(this);
     // this.unjoinEventButton = this.unjoinEventButton.bind(this);
     // this.joinedOrNot = this.joinedOrNot.bind(this);

@@ -44,7 +44,6 @@ class EventForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger;
     e.preventDefault();
     const newEvent = Object.assign({}, this.state);
     // this.eventValidation(newEvent)

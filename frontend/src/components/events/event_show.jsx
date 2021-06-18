@@ -6,6 +6,7 @@ import { formatDateTime } from "../../util/date_util_short";
 import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
 import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
+import DeleteEvent from "./delete_event";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -86,8 +87,8 @@ function EventShow(props) {
             <h3>Description:</h3>
             <p>{event.description}</p>
           </div>
+          <DeleteEvent event={event}/>
         </section>
-        {/* <button onClick={this.joinEvent}>Join this event</button> */}
       </div>
     </div>
   );

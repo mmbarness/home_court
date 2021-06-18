@@ -27,7 +27,6 @@ class MainPage extends React.Component {
     }, () => (null));
   }
   render() {
-    console.log(this.props.events)
     return (
       <div className="main-page">
         <section className="main-page-events">
@@ -41,8 +40,7 @@ class MainPage extends React.Component {
         </section>
         <section className="main-page-map">
           <EventMapContainer
-          center={this.state.center}
-          events={this.props.events}/>
+          center={this.state.center}/>
         </section>
       </div>
     );

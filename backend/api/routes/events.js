@@ -110,7 +110,7 @@ router.post(
   passport.authenticate("jwt", { session: false }), 
   async (req, res) => {
     const { errors, isValid } = validateEventInput(req.body);
-
+    // debugger;
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -126,7 +126,7 @@ router.post(
       startDate: req.body.startDate,
       endDate: req.body.endDate,
     });
-    
+    // debugger;
     let event = await newEvent.save()
     User.findOneAndUpdate(
       { "_id": req.body.user },

@@ -14,7 +14,6 @@ export const receiveEvents = (events) => {
 };
 
 export const receiveEvent = (event) => {
-  // debugger;
   return {
     type: RECEIVE_EVENT,
     event,
@@ -28,17 +27,17 @@ export const removeEvent = (eventId) => {
   };
 };
 
-export const receieveEventErrors = (errors) => {
+export const receiveEventErrors = (errors) => {
   return {
     type: RECEIVE_EVENT_ERRORS,
     errors,
   };
 };
 
-export const receiveNewEvent = (event) => ({
+export const receiveNewEvent = (event) => {return({
   type: RECEIVE_NEW_EVENT,
   event,
-});
+})};
 
 export const fetchEvents = () => (dispatch) => {
   return APIUtil.getEvents().then((events) => dispatch(receiveEvents(events)));
@@ -53,13 +52,13 @@ export const fetchEvent = (eventId) => (dispatch) => {
 export const createEvent = (data) => (dispatch) => {
   return APIUtil.createEvent(data)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => dispatch(receieveEventErrors(err)));
+    .catch((err) => {return(dispatch(receiveEventErrors(err)))});
 };
 
 export const updateEvent = (data) => (dispatch) => {
   return APIUtil.updateEvent(data)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => dispatch(receieveEventErrors(err.response.data)));
+    .catch((err) => dispatch(receiveEventErrors(err.response.data)));
 };
 
 export const deleteEvent = (eventId) => (dispatch) => {

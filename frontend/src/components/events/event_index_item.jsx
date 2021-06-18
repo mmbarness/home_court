@@ -10,6 +10,7 @@ class EventIndexItem extends React.Component {
     this.unjoinEventButton = this.unjoinEventButton.bind(this);
     this.joinedOrNot = this.joinedOrNot.bind(this);
     this.displaySportWithEmoji = this.displaySportWithEmoji.bind(this);
+    this.unJoin = this.unJoin.bind(this);
     this.state = {
       clicked: this.joinedOrNot(),
     };
@@ -48,9 +49,16 @@ class EventIndexItem extends React.Component {
     );
   }
 
+  unJoin(e){
+    e.preventDefault();
+    let obj = {user_id: this.props.currentUser.id, event_id: this.props.event._id}
+    this.setState({ clicked: !this.state.clicked });
+    this.props.unJoinEvent(obj)
+  }
+
   unjoinEventButton() {
     return (
-      <button className="unjoin-event event-item-button">✔ Attending</button>
+      <button onClick={this.unJoin} className="unjoin-event event-item-button">✔ Attending</button>
     );
   }
 

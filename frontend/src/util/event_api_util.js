@@ -13,7 +13,7 @@ export const createEvent = (data) => {
 };
 
 export const unJoinEvent = (data) => {
-  return axios.patch("/api/events/remove_attendee", data);
+  return axios.patch(`/api/events/${data.event_id}/remove_attendee`, data);
 };
 
 export const deleteEvent = (eventId) => {

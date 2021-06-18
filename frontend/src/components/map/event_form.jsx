@@ -1,7 +1,7 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
 import "../../style/css/event-form.css";
-
+import * as _ from 'underscore'
 class EventForm extends React.Component {
   constructor(props) {
     super(props);
@@ -20,13 +20,37 @@ class EventForm extends React.Component {
     // this.clearedErrors = false;
     this.update = this.update.bind(this);
     this.handleSportchange = this.handleSportChange.bind(this);
+    this.eventValidation = this.eventValidation.bind(this)
+    this.errorChecker = this.errorChecker.bind(this);
+  }
+
+  eventValidation(newEvent) {
+    let errors = {description_error: "", title_error: ""}
+    if (newEvent.description.length < 5 || newEvent.description.length > 50){
+      errors.description_error = 'description needs to a bit more descriptive!'
+    } if (newEvent.title.length < 1) {
+      errors.title_error = 'title can\'t be empty' 
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const newEvent = Object.assign({}, this.state);
-    this.props.createEvent(newEvent).then(this.props.closeModal());
+    // this.eventValidation(newEvent)
+    this.props.createEvent(newEvent).then(
+      () => {
+        if (!this.errorChecker){
+          this.props.closeModal()
+        } else {
+          this.renderErrors()
+        }
+      });
     this.forceUpdate();
+  }
+
+  errorChecker() {
+    let errors = this.props.errors.events
+    (_.isEmpty(errors)) ? false : true 
   }
 
   update(property) {
@@ -34,14 +58,13 @@ class EventForm extends React.Component {
   }
 
   renderErrors() {
-    const errs = Object.values(this.props.errors);
-    return errs.map((error, i) => {
-      return (
-        <li className="error" key={`err-${i}`}>
-          {error}
-        </li>
-      );
-    });
+    const err = this.props.errors.request.response
+    let errDiv = document.createElement("div")
+    let errText = document.createTextNode(err);
+    errDiv.appendChild(errText);
+    let eventFormContainer = document.getElementById('event-form-container')
+    let eventFormHeader = document.getElementById('event-form-header')
+    eventFormContainer.insertBefore(errDiv, eventFormHeader)
   }
 
   handleSportChange(e) {
@@ -49,12 +72,11 @@ class EventForm extends React.Component {
   }
 
   render() {
-    // debugger
     return (
       <div className="modal-child" onClick={(e) => e.stopPropagation()}>
-        <div className="event-modal-container">
+        <div className="event-modal-container" id="event-form-container">
           <form className="event-form-box" onSubmit={this.handleSubmit}>
-            <h1>Event Details</h1>
+            <h1 id="create-event-header">Event Details</h1>
             <div onClick={this.props.closeModal} className="close-x">
               <MdClose size={28} />
             </div>
@@ -116,7 +138,6 @@ class EventForm extends React.Component {
             >
               Create Event
             </button>
-            <ul>{this.renderErrors()}</ul>
           </form>
         </div>
       </div>

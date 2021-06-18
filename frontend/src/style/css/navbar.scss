@@ -105,7 +105,7 @@
   font-size: 24px;
 }
 
-ul {
+.team-members-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -125,7 +125,7 @@ ul {
 }
 
 @media(max-width: 799px){
-  .ul-footer {
+  .team-members-list  {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }

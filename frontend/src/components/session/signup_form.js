@@ -7,8 +7,8 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
       username: '',
+      email: '',
       password: '',
       password2: '',
       address: {
@@ -59,6 +59,7 @@ class SignupForm extends React.Component {
   }
 
   renderErrors() {
+    console.log(this.state.address)
     return(
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (

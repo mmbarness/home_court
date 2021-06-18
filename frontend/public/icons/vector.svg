@@ -1,0 +1,35 @@
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="Infinity" y1="Infinity" x2="Infinity" x1="Infinity" id="SVGID_1_">
+   <stop stop-color="#FFFFFF" stop-opacity="0" offset="0"/>
+   <stop stop-color="#FFFFFF" stop-opacity="0.7268" offset="0.9085"/>
+   <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="1"/>
+  </linearGradient>
+  <radialGradient r="14.1079" id="SVGID_2_" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 1 -1 0 77.7891 -15.3965)" cy="45.625" cx="47.5928">
+   <stop stop-color="#000000" offset="0"/>
+   <stop stop-color="#020202" offset="0.4848"/>
+   <stop stop-color="#090909" offset="0.6594"/>
+   <stop stop-color="#141414" offset="0.7838"/>
+   <stop stop-color="#252525" offset="0.8844"/>
+   <stop stop-color="#3B3B3B" offset="0.9696"/>
+   <stop stop-color="#454545" offset="1"/>
+  </radialGradient>
+  <linearGradient y2="Infinity" y1="Infinity" x2="Infinity" x1="Infinity" id="SVGID_4_">
+   <stop stop-color="#FFFFFF" offset="0"/>
+   <stop stop-color="#B8B5B7" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" fill="url(#SVGID_1_)" d="m32.665,47.99c-8.38,0 -15.172,-6.79 -15.172,-15.168l0,0c0,-8.377 6.792,-15.17 15.172,-15.17l0,0c8.376,0 15.172,6.792 15.172,15.17l0,0c0,8.378 -6.796,15.168 -15.172,15.168l0,0z"/>
+  <path id="svg_2" fill="url(#SVGID_2_)" d="m32.165,46.303c-7.793,0 -14.11,-6.314 -14.11,-14.106l0,0c0,-7.79 6.317,-14.107 14.11,-14.107l0,0c7.791,0 14.11,6.317 14.11,14.107l0,0c-0.001,7.791 -6.32,14.106 -14.11,14.106l0,0z"/>
+  <path opacity="0.2" id="svg_5" d="m44.031,34.195c0,6.514 -5.279,11.794 -11.793,11.794l0,0c-6.513,0 -11.793,-5.28 -11.793,-11.794l0,0c0,-6.513 5.28,-11.793 11.793,-11.793l0,0c6.514,0 11.793,5.281 11.793,11.793l0,0z"/>
+  <path opacity="0.1" id="svg_7" fill="#231F20" d="m32.238,47.489c-7.33,0 -13.293,-5.964 -13.293,-13.294s5.963,-13.293 13.293,-13.293c7.33,0 13.293,5.963 13.293,13.293s-5.963,13.294 -13.293,13.294zm0,-23.587c-5.676,0 -10.293,4.618 -10.293,10.293s4.617,10.294 10.293,10.294s10.293,-4.618 10.293,-10.294s-4.617,-10.293 -10.293,-10.293z"/>
+  <path id="svg_9" fill="#009ef4" d="m43.118,32.195c0,6.009 -4.871,10.881 -10.88,10.881l0,0c-6.008,0 -10.88,-4.872 -10.88,-10.881l0,0c0,-6.009 4.872,-10.88 10.88,-10.88l0,0c6.009,0 10.88,4.872 10.88,10.88l0,0z"/>
+  <path id="svg_10" fill="url(#SVGID_4_)" d="m32.238,44.076c-6.551,0 -11.88,-5.33 -11.88,-11.881s5.329,-11.88 11.88,-11.88s11.88,5.329 11.88,11.88s-5.329,11.881 -11.88,11.881zm0,-21.761c-5.448,0 -9.88,4.432 -9.88,9.88c0,5.448 4.432,9.881 9.88,9.881c5.448,0 9.88,-4.433 9.88,-9.881c0,-5.447 -4.431,-9.88 -9.88,-9.88z"/>
+ </g>
+</svg>

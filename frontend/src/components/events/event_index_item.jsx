@@ -63,28 +63,29 @@ class EventIndexItem extends React.Component {
 
   render() {
     const { event } = this.props;
-    return (
-      <li className="event-index-item">
-        <div className="event-item-content" onClick={this.openEventModal}>
-          <h1 className="event-item-header">
-            <h2 className="event-item-title">{event.title}</h2>
-            <h2 className="event-item-sport">
-              {displaySportWithEmoji(event.sport)}
-            </h2>
-          </h1>
-          <p className="event-item-date">
-            {formatDateTime(this.props.event.startDate)}
-          </p>
-          <div></div>
-        </div>
-        <div className="event-item-footer">
-          {/* {this.state.clicked
-            ? this.unjoinEventButton()
-            : this.joinEventButton()} */}
-            <JoinOrNot event={event}/>
-        </div>
-      </li>
-    );
+    if (event !== null) {
+      return (
+        <li className="event-index-item">
+          <div className="event-item-content" onClick={this.openEventModal}>
+            <h1 className="event-item-header">
+              <h1 className="event-item-title">{event.title}</h1>
+              <h2 className="event-item-sport">
+                {displaySportWithEmoji(event.sport)}
+              </h2>
+            </h1>
+            <p className="event-item-date">
+              {formatDateTime(this.props.event.startDate)}
+            </p>
+            <div></div>
+          </div>
+          <div className="event-item-footer">
+              <JoinOrNot event={event}/>
+          </div>
+        </li>
+      );
+    }else {
+      return (<div></div>)
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent } from "../../actions/event_actions";
+import { closeModal } from "../../actions/modal_actions";
 
 export const DeleteEvent = (props) => {
   let loggedIn = useSelector((state) => state.session.isAuthenticated);
@@ -8,12 +9,19 @@ export const DeleteEvent = (props) => {
   let event = props.event;
   let postedByName = event.attendees[0].username;
 
+  const dispatch = useDispatch();
+
+  const localDeleteEvent = (e) => {
+      e.preventDefault();
+      dispatch(deleteEvent(event._id.toString())).then(dispatch(closeModal()))
+  }
+
   if (postedByName === currentUser.username) {
     return (
       <button
         className="event-item-button"
         id="delete-event-button"
-        onClick={deleteEvent(event._id.toString())}
+        onClick={localDeleteEvent}
       >
         Delete Event
       </button>

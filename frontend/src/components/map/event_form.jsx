@@ -39,13 +39,10 @@ class EventForm extends React.Component {
     e.preventDefault();
     const newEvent = Object.assign({}, this.state);
     // this.eventValidation(newEvent)
-    this.props.createEvent(newEvent).then(() => {
-      if (!this.errorChecker) {
-        this.props.closeModal();
-      } else {
-        this.renderErrors();
-      }
-    });
+    this.props.createEvent(newEvent).then(
+      () => 
+        (this.errorChecker) ? this.props.closeModal() : this.renderErrors()
+      );
     this.forceUpdate();
   }
 

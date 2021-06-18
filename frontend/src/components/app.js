@@ -1,7 +1,7 @@
 import React from "react";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { Switch } from "react-router-dom";
-import { Route, Redirect, withRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import SplashPage from "../components/splash.jsx";
 import MainPageContainer from "../components/main/main_page_container";

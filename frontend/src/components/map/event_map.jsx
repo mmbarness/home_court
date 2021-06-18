@@ -40,7 +40,7 @@ function EventMap(props) {
         mapRef.current.panTo({lat, lng});
         mapRef.current.setZoom(15);
     }, []);
-
+    console.log(props)
     const eventsArr = Object.values(props.events.all);
    
     if (loadError) return 'Error loading maps';
@@ -59,7 +59,8 @@ function EventMap(props) {
                 : 
                 <button id="create game" onClick={() => setCreatingEvent(true)}>Create Game</button> }
 
-            <ResetMapButton panTo={panTo} center={props.center} />
+            <ResetMapButton panTo={panTo} center={props.center} text='Back Home'/>
+            <ResetMapButton panTo={panTo} center={orlando} text='Margaritaville'/> 
 
             <GoogleMap
                 onLoad={onMapLoad}
@@ -147,15 +148,21 @@ export default EventMap;
 //     lng: -73.941011
 // }
 
+// Orlando
+const orlando = {
+    lat: 28.5418255,
+    lng: -81.3810412,
+}
+
 function selectIcon(sport) {
   switch (sport) {
     // case 'spikeball':
     //     return '/spikeball.svg'
-    case "soccer":
+    case "Soccer":
       return "/soccer.svg";
-    case "basketball":
+    case "Basketball":
       return "/basketball.svg";
-    case "volleyball":
+    case "Volleyball":
       return "/volleyball.svg";
     default:
       return "/basketball.svg";

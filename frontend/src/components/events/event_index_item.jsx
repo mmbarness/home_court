@@ -1,19 +1,18 @@
 import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
 import * as _ from "underscore";
+import JoinOrNot from "./joinOrNot";
 import { displaySportWithEmoji } from "../../util/sport_emoji";
+
 
 class EventIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.openEventModal = this.openEventModal.bind(this);
-    this.joinEventButton = this.joinEventButton.bind(this);
-    this.unjoinEventButton = this.unjoinEventButton.bind(this);
-    this.joinedOrNot = this.joinedOrNot.bind(this);
-    this.unJoin = this.unJoin.bind(this);
-    this.state = {
-      clicked: this.joinedOrNot(),
-    };
+    // this.joinEventButton = this.joinEventButton.bind(this);
+    // this.unjoinEventButton = this.unjoinEventButton.bind(this);
+    // this.joinedOrNot = this.joinedOrNot.bind(this);
+    // this.unJoin = this.unJoin.bind(this);
   }
 
   openEventModal() {
@@ -23,49 +22,44 @@ class EventIndexItem extends React.Component {
     });
   }
 
-  joinedOrNot() {
-    let attendees = this.props.event.attendees;
-    let curUser = this.props.currentUser;
-    let bool;
-    if (!_.isEmpty(attendees)) {
-      bool = attendees.some((user) => user.username === curUser.username)
-        ? true
-        : false;
-    }
-    return bool;
-  }
+  // joinedOrNot() {
+  //   let attendees = this.props.event.attendees;
+  //   let curUser = this.props.currentUser;
+  //   let bool;
+  //   if (!_.isEmpty(attendees)) {
+  //     bool = attendees.some((user) => user.username === curUser.username)
+  //       ? true
+  //       : false;
+  //   }
+  //   return bool;
+  // }
 
-  joinEventButton() {
-    return (
-      <button
-        className="join-event event-item-button"
-        onClick={() => {
-          this.setState({ clicked: !this.state.clicked });
-          this.props.joinEvent(this.props.event._id, this.props.currentUser);
-        }}
-      >
-        Join Game
-      </button>
-    );
-  }
+  // joinEventButton() {
+  //   return (
+  //     <button
+  //       className="join-event event-item-button"
+  //       onClick={() => {
+  //         this.setState({ clicked: !this.state.clicked });
+  //         this.props.joinEvent(this.props.event._id, this.props.currentUser);
+  //       }}
+  //     >
+  //       Join Game
+  //     </button>
+  //   );
+  // }
 
-  unJoin(e) {
-    e.preventDefault();
-    let obj = {
-      user_id: this.props.currentUser.id,
-      event_id: this.props.event._id,
-    };
-    this.setState({ clicked: !this.state.clicked });
-    this.props.unJoinEvent(obj);
-  }
+  // unJoin(e){
+  //   e.preventDefault();
+  //   let obj = {user_id: this.props.currentUser.id, event_id: this.props.event._id}
+  //   this.setState({ clicked: !this.state.clicked });
+  //   this.props.unJoinEvent(obj)
+  // }
 
-  unjoinEventButton() {
-    return (
-      <button onClick={this.unJoin} className="unjoin-event event-item-button">
-        ✔ Attending
-      </button>
-    );
-  }
+  // unjoinEventButton() {
+  //   return (
+  //     <button onClick={this.unJoin} className="unjoin-event event-item-button">✔ Attending</button>
+  //   );
+  // }
 
   render() {
     const { event } = this.props;
@@ -83,13 +77,11 @@ class EventIndexItem extends React.Component {
           </p>
           <div></div>
         </div>
-        <div className="event-item-footer" onClick={this.openEventModal}>
-          <span>
-            {this.state.clicked
-              ? this.unjoinEventButton()
-              : this.joinEventButton()}
-          </span>
-          <span onClick={this.openEventModal}></span>
+        <div className="event-item-footer">
+          {/* {this.state.clicked
+            ? this.unjoinEventButton()
+            : this.joinEventButton()} */}
+            <JoinOrNot event={event}/>
         </div>
       </li>
     );

@@ -18,16 +18,17 @@
 }
 
 .Links1 > button {
-    height: 1.5vmax;
-    width: auto;
-    border-radius: 5px;
-    border-style: none;
-    background-color:white;
-    white-space: nowrap;
+  border-radius: 5px;
+  border-style: none;
+  background-color:white;
+  white-space: nowrap;
+  margin: 1vmin;
+  padding: .5vmin 1vmin;
+  font-size: inherit;
 }
 
 .Links2 {
-    width: 10vmin;
+    // width: 10vmin;
     display: flex;
     justify-content: space-between;
     align-self: center;
@@ -36,8 +37,12 @@
     font-family: 'Mate SC', serif;
 }
 
+.Links1 > * {
+  margin: .2vmin;
+}
+
 .Links2 > * {
-    padding: .2vw;
+    padding: .3vw;
 }
 
 #logout-button {
@@ -88,5 +93,5 @@
 }
 
 .limit-min-max {
-  @include responsive-font(1.5vmin, 17.5px, 40px);
+  @include responsive-font(1.75vmin, 17.5px, 40px);
 }

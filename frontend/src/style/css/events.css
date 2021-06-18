@@ -5,6 +5,9 @@
 .event-index {
   margin: 0 1em;
   height: 90vw;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .event-index-item {
@@ -70,4 +73,10 @@ p {
 .event-index-ul {
   display: flex;
   flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+.event-index > h1 {
+  font-weight: 600;
+  margin-top: 1vmin;
 }

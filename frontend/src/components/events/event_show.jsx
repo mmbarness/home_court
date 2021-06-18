@@ -8,6 +8,7 @@ import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
 import { displaySportWithEmoji } from "../../util/sport_emoji";
 import DeleteEvent from "./delete_event";
+import JoinOrNot from "./joinOrNot";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -103,7 +104,10 @@ function EventShow(props) {
               <p>{event.description}</p>
             </span>
           </section>
-          <DeleteEvent event={event}/>
+          <section className="event-show-footer">
+            <JoinOrNot event={event} />
+            <DeleteEvent event={event} />
+          </section>
         </section>
       </div>
     </div>

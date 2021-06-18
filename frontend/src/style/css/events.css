@@ -188,6 +188,19 @@ p {
   font-weight: 300;
 }
 
+.event-show-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+  margin-top: 0.75em;
+}
+
+.event-show-footer > * {
+  height: 30px;
+  width: 100px;
+  border: none;
+}
+
 .user-prof-events-container {
   display: flex;
   flex-flow: column;
@@ -205,4 +218,10 @@ p {
   align-self: center;
   font-weight: 500;
   font-size: larger;
+}
+
+#delete-event-button {
+  margin-left: 25px;
+  background-color: rgba(216, 38, 38, 0.87);
+  /* border: 0.5px solid rgb(71, 0, 0); */
 }

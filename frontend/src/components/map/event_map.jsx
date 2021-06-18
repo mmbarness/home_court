@@ -1,23 +1,24 @@
-import React from 'react'
-import ResetMapButton from './reset_map_button'
+import React from "react";
+import ResetMapButton from "./reset_map_button";
 import {
-    GoogleMap,
-    useLoadScript,
-    Marker,
-    InfoWindow,
-} from '@react-google-maps/api';
-import mapStyles from './map_styles';
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
+import mapStyles from "./map_styles";
 
-const libraries = ['places']
+const libraries = ["places"];
 const mapContainerStyle = {
-    width: "45vw",
-    height: "90vh",
-}
+  minWidth: "500px",
+  width: "70vw",
+  height: "90vh",
+};
 const options = {
-    styles: mapStyles,
-    disableDefaultUI: true,
-    zoomControl: true
-}
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+};
 
 function EventMap(props) {
 
@@ -138,7 +139,7 @@ function EventMap(props) {
     )
 }
 
-export default EventMap
+export default EventMap;
 
 //Brooklyn
 // const brooklyn = {
@@ -147,16 +148,16 @@ export default EventMap
 // }
 
 function selectIcon(sport) {
-    switch (sport) {
-        // case 'spikeball':
-        //     return '/spikeball.svg'
-        case 'soccer':
-            return '/soccer.svg'
-        case 'basketball':
-            return '/basketball.svg'
-        case 'volleyball':
-            return '/volleyball.svg'
-        default:
-            return '/basketball.svg'
-    }
+  switch (sport) {
+    // case 'spikeball':
+    //     return '/spikeball.svg'
+    case "soccer":
+      return "/soccer.svg";
+    case "basketball":
+      return "/basketball.svg";
+    case "volleyball":
+      return "/volleyball.svg";
+    default:
+      return "/basketball.svg";
+  }
 }

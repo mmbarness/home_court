@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const getAsync = require('@awaitjs/express')
+const getAsync = require("@awaitjs/express");
 
 const Event = require("../../models/Event");
 const { User } = require("../../models/User");
@@ -28,12 +28,15 @@ router.get("/user/:user_id", (req, res) => {
 
 // add user to event attendee list & add event to user eventList
 router.patch('/:event_id/add_attendee', async (req, res) => {
+  let userId = req.body.id
+  let username = req.body.username
   let event = await Event.findById(req.params.event_id)
-  let userId = req.body.user
+  let user = await User.findById(userId)
+  // debugger;
   Event.findOneAndUpdate(
     {"_id": req.params.event_id},
     {$push: {'attendees': 
-    {userId}}
+    user}
   }).then(event => User.findOneAndUpdate(
     {"_id": userId},
     {$push: {'eventList': 
@@ -62,19 +65,21 @@ router.patch('/:event_id/add_attendee', async (req, res) => {
 
 
 const eventListFinder = async (eventList) => {
-    let events = await eventList.map(async (eventIdObj) => {
-      let eventId = eventIdObj._id.toString();
-      return (await Event.findById(eventId).then(event => (event))
-    )})
-    return events;
-}
+  let events = await eventList.map(async (eventIdObj) => {
+    let eventId = eventIdObj._id.toString();
+    return await Event.findById(eventId).then((event) => event);
+  });
+  return events;
+};
 
 // gets all events user is attending and endDate has not expired
-router.get('/user/:user_id/eventList', async (req, res) => {
-  let user = await User.find({ _id: req.params.user_id }).then((user) => (user))
-  let events = await eventListFinder(user[0].eventList).then(events => (events))
-  Promise.all(events).then(events => res.json(events))
-})
+router.get("/user/:user_id/eventList", async (req, res) => {
+  let user = await User.find({ _id: req.params.user_id }).then((user) => user);
+  let events = await eventListFinder(user[0].eventList).then(
+    (events) => events
+  );
+  Promise.all(events).then((events) => res.json(events));
+});
 
 // get a single event
 router.get("/:id", (req, res) => {

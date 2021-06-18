@@ -61,12 +61,10 @@ export const unJoinEvent = (data) => (dispatch) => {
     .catch((err) => dispatch(receiveEventErrors(err.response.data)));
 };
 
-export const deleteEvent = (eventId) => (dispatch) => {
-  return APIUtil.deleteEvent(eventId).then((event) =>{debugger;
-    return(dispatch(removeEvent(event)))}
-  );
+export const deleteEvent = (eventId) => async (dispatch) => {
+  let deletedEvent = await APIUtil.deleteEvent(eventId)
+  dispatch(removeEvent(deletedEvent))
 };
-
 
 export const joinEvent = (eventId, data) => (dispatch) => {
   return APIUtil.joinEvent(eventId, data).then((event) =>

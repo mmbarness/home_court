@@ -1,11 +1,29 @@
 .session-form-container{
     align-self: center;
     width: 100%;
-    background: url(https://i.imgur.com/ZkilH1q.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    padding: 20px;
 }
 
+.splash-login {
+    background: rgb(100, 98, 98);
+    opacity: 0.8;
+    /* background-color:  lightgray; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 25px;
+
+}
+/* display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 100vh;
+    background: url(https://i.imgur.com/ZkilH1q.jpg);
+    background-size: cover;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    position: absolute; */
 .session-form {
     display: flex;
     flex-flow: column;
@@ -18,4 +36,16 @@
     padding: 1vmin;
     width: 35vmin;
     align-self: center;
+}
+
+input {
+    font-family: sans-serif;
+    font-weight: 200;
+}
+
+.demo-button {
+    font-weight: 500;
+    width: 120px;
+    border-radius: 25px;
+    box-shadow: 2px 2px;
 }

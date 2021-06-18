@@ -67,7 +67,7 @@ const Search = (props) => {
 
 
     return (
-        <Combobox classname="address-form-field" onSelect={(address) => {handleSelect(address)}}> 
+        <Combobox className="address-form-field" onSelect={(address) => {handleSelect(address)}}> 
             <ComboboxInput id="address-input" 
                 value={value} 
                 onChange={(e) => {

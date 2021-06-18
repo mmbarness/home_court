@@ -7,7 +7,7 @@ export const SplashPage = () => {
   return (
     <div className="splash-page">
       <br />
-      <div className="splash-text">Insert a one line slogan here that will appear on the left of the login page</div>
+      <div className="splash-text">Connect with friends and people around your neighborhood</div>
       
       <div className='splash-login'><LoginContainer /></div>
     </div>

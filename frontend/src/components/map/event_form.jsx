@@ -19,7 +19,7 @@ class EventForm extends React.Component {
       title: "",
       sport: "",
       description: "",
-      startDate: "",
+      startDate: (new Date()).toISOString().slice(0,16),
       endDate: "",
       lat: this.props.location.lat,
       lng: this.props.location.lng,

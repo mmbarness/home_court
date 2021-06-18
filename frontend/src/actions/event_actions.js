@@ -55,8 +55,8 @@ export const createEvent = (data) => (dispatch) => {
     .catch((err) => {return(dispatch(receiveEventErrors(err)))});
 };
 
-export const updateEvent = (data) => (dispatch) => {
-  return APIUtil.updateEvent(data)
+export const unJoinEvent = (data) => (dispatch) => {
+  return APIUtil.unJoinEvent(data)
     .then((event) => dispatch(receiveEvent(event)))
     .catch((err) => dispatch(receiveEventErrors(err.response.data)));
 };

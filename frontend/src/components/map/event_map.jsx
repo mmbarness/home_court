@@ -1,5 +1,6 @@
 import React from "react";
 import ResetMapButton from "./reset_map_button";
+import AddressFormField from '../session/address_form_field'
 import {
   GoogleMap,
   useLoadScript,
@@ -37,6 +38,7 @@ function EventMap(props) {
     }, []);
 
     const panTo = React.useCallback(({lat, lng}) => {
+        setEventLocation({lat, lng})
         mapRef.current.panTo({lat, lng});
         mapRef.current.setZoom(15);
     }, []);
@@ -51,17 +53,29 @@ function EventMap(props) {
         <div>
             <h1>Where are the games happening? <span role='img' aria-label='ball'>🤾</span></h1>
 
+{/* Enables the user to set pin on map and open create events form.   */}
             {creatingEvent ?
                 <button id="create game" onClick={() => {
                     setCreatingEvent(false)
                     setEventLocation(null)
-                }}>
-                    Cancel</button>
+                }
+            }>
+                Cancel</button>
                 : 
-                <button id="create game" onClick={() => setCreatingEvent(true)}>Create Game</button> }
+                <button id="create game"onClick={() => {
+                    setEventLocation(null);
+                    setCreatingEvent(true)
+                }
+            }>Create Game</button> }
 
+{/* _______________________________________________________________________*/}
+
+            <AddressFormField panTo={panTo} center={props.center} />
+
+{/* Auto geolocate buttons   */}
             <ResetMapButton panTo={panTo} center={props.center} text='Back Home'/>
-            <ResetMapButton panTo={panTo} center={orlando} text='Margaritaville'/> 
+            <ResetMapButton panTo={panTo} center={orlando} text='Orlando'/> 
+{/* _______________________________________________________________________*/}
 
             <GoogleMap
                 onLoad={onMapLoad}
@@ -80,10 +94,11 @@ function EventMap(props) {
                 }}
             >
 
+            {eventLocation ? <Marker position={eventLocation} /> : null}
+
+{/* InfoWindow and Map Marker for New events being created   */}
             {(eventLocation && creatingEvent) ? (
                 <div>
-                    <Marker position={eventLocation} />
-
                     <InfoWindow 
                         position={eventLocation}
                             options={ {pixelOffset: new window.google.maps.Size(0,-46)}}
@@ -94,14 +109,17 @@ function EventMap(props) {
                             modal: 'event-form',
                             data: eventLocation
                         });
-                        setCreatingEvent(false)
+                        setCreatingEvent(false);
+                        setEventLocation(null)
                     }
                     }>Create Game Here</button>
 
                     </InfoWindow> 
                 </div> ) : null
             }
+{/* _______________________________________________________________________*/}
 
+{/* InfoWindows and Map Markers for all existing events*/}
             {eventsArr.map((event) => (
                 <Marker key={event._id}
                     position={{ lat: parseFloat(event.lat.$numberDecimal), lng: parseFloat(event.lng.$numberDecimal)}}                        
@@ -133,6 +151,7 @@ function EventMap(props) {
                             <p>End: {selected.endDate.toLocaleTimeString()}</p>                       */}
                     </div>
                 </InfoWindow>): null }
+{/* _______________________________________________________________________*/}
             </GoogleMap>
 
               

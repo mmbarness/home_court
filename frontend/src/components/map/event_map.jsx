@@ -7,6 +7,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import mapStyles from "./map_styles";
+import { MdCancel, MdAddCircle } from "react-icons/md";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -46,33 +47,45 @@ function EventMap(props) {
   if (!isLoaded) return "Loading the map";
 
   return (
-    <div>
-      <h1>
-        Where are the games happening?{" "}
-        <span role="img" aria-label="ball">
-          🤾
-        </span>
-      </h1>
+    <div className="event-map-flex-container">
+      <div className="event-map-menu">
+        {/* <h1>
+          Where are the games happening?{" "}
+          <span role="img" aria-label="ball">
+            🤾
+          </span>
+        </h1> */}
 
-      {creatingEvent ? (
-        <button
-          id="create game"
-          onClick={() => {
-            setCreatingEvent(false);
-            setEventLocation(null);
-          }}
-        >
-          Cancel
-        </button>
-      ) : (
-        <button id="create game" onClick={() => setCreatingEvent(true)}>
-          Create Game
-        </button>
-      )}
+        {creatingEvent ? (
+          <span
+            className="map-button-container"
+            onClick={() => {
+              setCreatingEvent(false);
+              setEventLocation(null);
+            }}
+          >
+            <button className="map-button cancel-game">
+              <MdCancel size={30} />
+              <div className="map-button-text">Cancel</div>
+            </button>
+          </span>
+        ) : (
+          <span
+            className="map-button-container"
+            onClick={() => setCreatingEvent(true)}
+          >
+            <button title="Host an event!" className="map-button create-game">
+              <MdAddCircle size={30} />
+            </button>
+            <div className="map-button-text">Host an event</div>
+          </span>
+        )}
 
-      <ResetMapButton panTo={panTo} center={props.center} />
-
+        <ResetMapButton panTo={panTo} center={props.center} />
+      </div>
+      <div className="terrible-css-practice" />
       <GoogleMap
+        className="google-map"
         onLoad={onMapLoad}
         mapContainerStyle={mapContainerStyle}
         center={props.center}

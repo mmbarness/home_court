@@ -1,6 +1,6 @@
 import { RECEIVE_EVENT_ERRORS, RECEIVE_EVENT } from "../actions/event_actions";
 
-const _nullErrors = [];
+const _nullErrors = {};
 
 const eventErrorsReducer = (state = _nullErrors, action) => {
   Object.freeze(state);

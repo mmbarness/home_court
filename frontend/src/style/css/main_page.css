@@ -2,3 +2,19 @@
   display: flex;
   justify-content: space-around;
 }
+
+.main-page-events {
+  flex-grow: 2;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.main-page-map {
+  flex-grow: 1;
+}
+
+.event-map-container {
+  width: 100%;
+}

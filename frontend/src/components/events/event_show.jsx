@@ -1,40 +1,59 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+  LoadScript,
+} from "@react-google-maps/api";
+import mapStyles from "../map/map_styles";
 
-class EventShow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      attending: false,
-    };
-    this.openEventModal = this.openEventModal.bind(this);
-    this.joinEvent = this.joinEvent.bind(this);
-  }
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: "550px",
+  height: "250px",
+};
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  // zoomControl: true,
+};
 
-  openEventModal() {
-    this.props.openModal({
-      modal: "event-show",
-      data: this.props.event,
-    });
-  }
+function EventShow(props) {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    libraries: libraries,
+  });
 
-  joinEvent() {
-    this.props.updateEvent({ attendees: this.props.currentUser });
-  }
+  const { event } = props;
+  const center = {
+    lat: parseFloat(event.lat.$numberDecimal),
+    lng: parseFloat(event.lng.$numberDecimal),
+  };
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map;
+  }, []);
 
-  render() {
-    const { event } = this.props;
-
-    return (
-      <div className="event-modal-container">
-        <div className="login-form-box">
-          <div>
-            <div onClick={this.props.closeModal} className="close-x">
-              <MdClose size={28} />
-            </div>
-
-          </div>
-
+  return (
+    <div className="event-modal-container">
+      <div>
+        <div onClick={props.closeModal} className="close-x">
+          <MdClose size={28} />
+        </div>
+      </div>
+      <div className="event-show-modal">
+        <GoogleMap
+          onLoad={onMapLoad}
+          mapContainerStyle={mapContainerStyle}
+          center={center}
+          zoom={17}
+          options={options}
+        >
+          <Marker position={center} />
+        </GoogleMap>
+        <section>
           <h1 className="login-form-header">{event.title}</h1>
           <h1>{event.sport}</h1>
           <p>Number of attendees: {event.attendees.length}</p>
@@ -42,11 +61,11 @@ class EventShow extends React.Component {
             <h3>Description:</h3>
             <p>{event.description}</p>
           </div>
-          <button onClick={this.joinEvent}>Join this event</button>
-        </div>
+        </section>
+        {/* <button onClick={this.joinEvent}>Join this event</button> */}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default EventShow;

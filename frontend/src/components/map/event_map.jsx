@@ -167,6 +167,7 @@ function EventMap(props) {
         {/* InfoWindows and Map Markers for all existing events*/}
         {eventsArr.map((event) => (
           <Marker
+            className='event-marker'
             key={event._id}
             position={{
               lat: parseFloat(event.lat.$numberDecimal),

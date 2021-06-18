@@ -10,9 +10,9 @@ function ResetMapButton(props) {
     >
       <button className="map-button reset-map">
         {props.text === "Orlando" ? (
-          <RiMickeyFill size={30} />
+          <RiMickeyFill size={25} />
         ) : (
-          <IoRefreshCircle size={30} />
+          <IoRefreshCircle size={25} />
         )}
       </button>
       <div className="map-button-text">{props.text}</div>

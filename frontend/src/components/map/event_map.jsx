@@ -69,9 +69,9 @@ function EventMap(props) {
             }}
           >
             <button className="map-button cancel-game">
-              <MdCancel size={30} />
-              <div className="map-button-text">Cancel</div>
+              <MdCancel size={25} />
             </button>
+            <div className="map-button-text">Cancel</div>
           </span>
         ) : (
           <span
@@ -82,7 +82,7 @@ function EventMap(props) {
             }}
           >
             <button className="map-button create-game">
-              <MdAddCircle size={30} />
+              <MdAddCircle size={25} />
             </button>
             <div className="map-button-text">Host an event</div>
           </span>

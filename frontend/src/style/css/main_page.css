@@ -23,6 +23,7 @@
 .event-map-flex-container {
   display: flex;
   flex-direction: column;
+  width: inherit;
 }
 
 .terrible-css-practice {
@@ -31,10 +32,12 @@
 
 .event-map-menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   position: absolute;
   z-index: 1;
-  margin: 2.5em 0 0 0em;
+  /* width: 65vw; */
+  margin: 2.5em 0 0 0.5em;
 }
 
 .event-map-menu > * {
@@ -45,10 +48,12 @@
 .map-button-container {
   display: flex;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 13px;
   border: 1px solid rgba(246 241 224);
-  padding: 0.1em 0.7em 0 0;
+  padding: 0.1em 0.4em 0 0;
   background: rgba(254, 250, 250);
+  max-height: 40px;
+  box-shadow: 0 1px 4px 0 rgb(163, 163, 163);
 }
 
 .map-button-container:hover {

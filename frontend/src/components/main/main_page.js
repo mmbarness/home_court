@@ -11,8 +11,8 @@ class MainPage extends React.Component {
     super(props)
     this.state = {
       center: {
-        lat: 40.7299653, //this.props.currentUser.lat.$numberDecimal
-        lng: -73.9157633, //this.props.currentUser.lng.$numberDecimal
+        lat: 40.7299653, 
+        lng: -73.9157633, 
       }
     }
   }

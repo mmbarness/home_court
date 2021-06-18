@@ -66,11 +66,6 @@
   box-shadow: 0px 0.5px 0px 0px rgb(218, 173, 91);
   transition: all 0.4s ease 0s;
 }
-/* 
-.join-event {
-  background-color
-}
- */
 
 .event-item-title {
   width: auto;
@@ -89,7 +84,6 @@ p {
 .event-item-sport {
   font-size: 15px;
   font-weight: 300;
-  /* font-style: oblique; */
 }
 
 .event-index-ul {
@@ -114,12 +108,6 @@ p {
   border: 1px solid rgb(102 102 102);
   color: rgb(81 141 84);
 }
-/* 
-.unjoin-event {
-  background-color: lightgray;
-  border: 1px solid rgb(102 102 102);
-  color: rgb(102 102 102)
-} */
 
 .event-show-modal {
   display: flex;
@@ -136,7 +124,6 @@ p {
 .event-show-info {
   display: flex;
   flex-flow: column;
-  /* background-color: rgb(246 241 225); */
 }
 
 .event-show-header {
@@ -159,14 +146,12 @@ p {
 .event-show-details {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid aqua; */
   font-size: 14px;
   font-weight: 500;
   padding: 12px 15px;
   width: 455px;
   line-height: 1.5;
   border-radius: 10px;
-  /* margin-top: 1px; */
   background-color: rgb(243, 243, 243);
 }
 
@@ -223,5 +208,4 @@ p {
 #delete-event-button {
   margin-left: 25px;
   background-color: rgba(216, 38, 38, 0.87);
-  /* border: 0.5px solid rgb(71, 0, 0); */
 }

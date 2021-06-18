@@ -50,9 +50,6 @@ export const login = (user) => (dispatch) =>
       dispatch(receiveCurrentUser(decoded));
     })
     .catch((err) => console.log(err));
-  // .catch(err => {
-  //     dispatch(receiveErrors(err.response.data));
-  // })
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem("jwtToken");

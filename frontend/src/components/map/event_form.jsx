@@ -1,14 +1,5 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
-// import BadmintonSVG from 'frontend/public/badminton.svg'
-// import BaseballSVG from 'frontend/public/baseball.svg'
-// import {ReactComponent as BasketballSVG} from '../../style/icons/basketball.svg'
-// import FootballSVG from 'frontend/public/football.svg'
-// import PingpongSVG from 'frontend/public/pingpong.svg'
-// import SoccerSVG from 'frontend/public/soccer.svg'
-// import SpikeballSVG from 'frontend/public/spikeball.svg'
-// import TennisSVG from 'frontend/public/tennis.svg'
-// import VolleyballSVG from 'frontend/public/volleyball.svg'
 import "../../style/css/event-form.css";
 import * as _ from "underscore";
 class EventForm extends React.Component {
@@ -26,7 +17,6 @@ class EventForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.clearedErrors = false;
     this.update = this.update.bind(this);
     this.handleSportchange = this.handleSportChange.bind(this);
     this.eventValidation = this.eventValidation.bind(this);
@@ -46,7 +36,6 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const newEvent = Object.assign({}, this.state);
-    // this.eventValidation(newEvent)
     this.props.createEvent(newEvent).then(
       () => 
         (this.errorChecker) ? this.props.closeModal() : this.renderErrors()
@@ -114,15 +103,6 @@ class EventForm extends React.Component {
               <option value="Ping Pong">Ping Pong</option>
               <option value="Tennis">Tennis</option>
             </select>
-
-            {/* <BasketballSVG height='10px' width='10px' className='sport-logo'/> */}
-            {/* 
-            <input
-              type="text"
-              value={this.state.sport}
-              placeholder="Sport"
-              onChange={this.update("sport")}
-            /> */}
 
             <textarea
               value={this.state.description}

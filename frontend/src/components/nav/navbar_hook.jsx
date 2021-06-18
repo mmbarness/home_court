@@ -37,11 +37,6 @@ export const NavBarHook = () => {
     <div className="nav-bar">
       <h1 id="header-home-court-text" className="limit-min-max">
         <Link to={"/"}>
-          {/* <img
-            src={require("../images/logowhitebg.png")}
-            alt="logo"
-            className="logo"
-          /> */}
           Home Court
         </Link>
       </h1>

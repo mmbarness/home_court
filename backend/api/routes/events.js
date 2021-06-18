@@ -32,7 +32,7 @@ router.patch("/:event_id/add_attendee", async (req, res) => {
   let username = req.body.username;
   let event = await Event.findById(req.params.event_id);
   let user = await User.findById(userId);
-  // debugger;
+
   Event.findOneAndUpdate(
     { _id: req.params.event_id },
     { $push: { attendees: user } }
@@ -53,8 +53,6 @@ router.patch("/:event_id/add_attendee", async (req, res) => {
 // remove user from event attendee list & remove event from user eventList
 router.patch("/:event_id/remove_attendee", async (req, res) => {
   let userId = req.body.user_id;
-  // let username = req.body.username
-  // debugger;
   let event = await Event.findById(req.params.event_id);
   let user = await User.findById(userId);
   Event.findOneAndUpdate(
@@ -73,22 +71,6 @@ router.patch("/:event_id/remove_attendee", async (req, res) => {
         })
     );
 });
-
-// router.patch('/:event_id/add_attendee', async (req, res)  => {
-//   let event = await Event.findById(req.params.event_id).catch(err =>
-//     res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
-//   let userId = req.body.user
-//   Event.findOneAndUpdate(
-//     {"_id": req.params.event_id},
-//     {$push: {'attendees': {userId}}})
-//   User.findOneAndUpdate(
-//     {"_id": userId},
-//     {$push: {'eventList': event._id.toString()}})
-//     .then(user => {debugger} )
-//     debugger
-//   event.then(res.json(event)
-//   )
-// })
 
 const eventListFinder = async (eventList) => {
   let events = await eventList.map(async (eventIdObj) => {
@@ -137,7 +119,6 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const { errors, isValid } = validateEventInput(req.body);
-    // debugger;
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -153,7 +134,6 @@ router.post(
       startDate: req.body.startDate,
       endDate: req.body.endDate,
     });
-    // debugger;
     let event = await newEvent.save();
     let user = await User.findById(req.body.postedBy);
     User.findOneAndUpdate(

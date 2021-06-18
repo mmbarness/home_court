@@ -6,7 +6,6 @@ const db = require('./backend/config/keys').mongoURI;
 const users = require('./backend/api/routes/users');
 const events = require('./backend/api/routes/events');
 const bodyParser = require('body-parser');
-//help
 app.use(passport.initialize());
 require('./backend/config/passport')(passport);
 app.use(bodyParser.urlencoded({ extended: false }));

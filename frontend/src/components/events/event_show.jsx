@@ -18,7 +18,6 @@ const mapContainerStyle = {
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  // zoomControl: true,
 };
 
 function EventShow(props) {

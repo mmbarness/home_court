@@ -13,7 +13,7 @@
 .event-index-item {
   display: flex;
   flex-direction: column;
-  background-color: bisque;
+  background-color: rgb(249 240 224);
   /* border: 1px solid black; */
   margin: 0.5em 0;
   border-radius: 5px;

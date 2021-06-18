@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Mate+SC&display=swap");
+
+.event-form-text-area {
+  border: 0.5px solid gray;
+  /* width: 250px; */
+  width: 401px;
+  height: 150px;
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  border: 1.5px solid lightgrey;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+.event-form-sport {
+  margin-left: 1px;
+  height: 32px;
+  border: 1.5px solid lightgrey;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 0;
+  padding-left: 3px;
+  width: 406px;
+}
+
+.event-form-box {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  background: white;
+  position: relative;
+  border-radius: 30px;
+  width: 400px;
+  height: 550px;
+}
+
+.event-form-box > h1 {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+/* input[type="text" i] {
+  padding: 0px;
+} */
+
+.event-form-input {
+  margin-left: 1px;
+  height: 32px;
+  /* margin-top: 3px; */
+  /* width: 273px; */
+  border: 1.5px solid lightgrey;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 0;
+  padding-left: 3px;
+  width: 400px;
+  /* font-family: "Inter", sans-serif;
+  font-size: 14px; */
+}
+
+.event-submit-button {
+  border-radius: 25px;
+  border: 2px solid #000000;
+  color: black;
+  text-decoration: none;
+  background: white;
+  margin-top: 12px;
+  padding: 9px 9px 22px 9px;
+  height: 36px;
+  width: 175px;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  text-align: center;
+}
+
+.event-submit-button:hover {
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  background-color: rgba(236, 236, 236, 0.753);
+  transition: all 0.4s ease 0s;
+  transform: scale(1.05, 1.05);
+  -webkit-transform: scale(1.05, 1.05);
+}
+
+.event-date {
+  margin-left: 1px;
+  height: 32px;
+  /* margin-top: 3px; */
+  /* width: 273px; */
+  border: 1.5px solid lightgrey;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 0;
+  padding-left: 3px;
+  width: 400px;
+  /* font-family: "Inter", sans-serif;
+  font-size: 14px; */
+}

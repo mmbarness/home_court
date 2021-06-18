@@ -1,4 +1,6 @@
 import React from "react";
+import { MdClose } from "react-icons/md";
+import "../../style/css/event-form.css";
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -51,14 +53,18 @@ class EventForm extends React.Component {
     return (
       <div className="modal-child" onClick={(e) => e.stopPropagation()}>
         <div className="event-modal-container">
-          <form onSubmit={this.handleSubmit}>
+          <form className="event-form-box" onSubmit={this.handleSubmit}>
+            <h1>Event Details</h1>
+            <div onClick={this.props.closeModal} className="close-x">
+              <MdClose size={28} />
+            </div>
             <input
               type="text"
               value={this.state.title}
               placeholder="Event Title"
               onChange={this.update("title")}
+              className="event-form-input"
             />
-
             <select
               className="event-form-sport"
               onChange={(e) => this.handleSportChange(e)}
@@ -84,9 +90,11 @@ class EventForm extends React.Component {
               value={this.state.description}
               placeholder="Event Description"
               onChange={this.update("description")}
+              className="event-form-text-area"
             ></textarea>
 
             <input
+              className="event-date"
               type="datetime-local"
               value={this.state.startDate}
               placeholder="Start Time"
@@ -94,13 +102,18 @@ class EventForm extends React.Component {
             />
 
             <input
+              className="event-date"
               type="datetime-local"
               value={this.state.endDate}
               placeholder="End Time"
               onChange={this.update("endDate")}
             />
 
-            <button type="submit" value="submit">
+            <button
+              type="submit"
+              value="submit"
+              className="event-submit-button"
+            >
               Create Event
             </button>
             <ul>{this.renderErrors()}</ul>

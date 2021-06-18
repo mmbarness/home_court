@@ -180,6 +180,14 @@ function EventMap(props) {
               {/* <p>Start: {selected.startDate.toLocaleTimeString()}</p>
                             <p>End: {selected.endDate.toLocaleTimeString()}</p>                       */}
             </div>
+            {/* <button
+              onClick={() => {
+                this.props.openModal({
+                  modal: "event-show",
+                  data: this.props.event,
+                });
+              }}
+            ></button> */}
           </InfoWindow>
         ) : null}
         {/* _______________________________________________________________________*/}

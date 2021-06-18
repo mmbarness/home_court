@@ -4,11 +4,9 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-  InfoWindow,
-  LoadScript,
 } from "@react-google-maps/api";
 import mapStyles from "../map/map_styles";
-import { formatDate, formatDateTime } from "../../util/date_util_short";
+import { formatDateTime } from "../../util/date_util_short";
 import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
 
 const libraries = ["places"];

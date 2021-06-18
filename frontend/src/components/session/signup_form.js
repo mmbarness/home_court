@@ -7,8 +7,8 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
       username: '',
+      email: '',
       password: '',
       password2: '',
       address: {
@@ -50,15 +50,20 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
-      email: this.state.email,
       username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      address: this.state.address.addressString,
+      lat: this.state.address.coordinates.lat.$numberDecimal,
+      lng: this.state.address.coordinates.long.$numberDecimal,
     };
     this.props.signup(user, this.props.history); 
   }
 
   renderErrors() {
+    
+    console.log(this.state.address.coordinates)
     return(
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -71,6 +76,8 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    console.log(this.state.address)
+
     return (
       <div className="session-form-container">
         <form onSubmit={this.handleSubmit}>
@@ -96,7 +103,7 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
             <AddressFormField updateAddress={this.updateAddress}/>
-            <input type="submit" value="Submit" />
+            <input className='demo-button' type="submit" value="Submit" />
             {this.renderErrors()}
           </div>
         </form>

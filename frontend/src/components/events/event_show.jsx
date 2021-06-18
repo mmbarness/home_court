@@ -1,13 +1,11 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import mapStyles from "../map/map_styles";
 import { formatDateTime } from "../../util/date_util_short";
 import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
+import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
+import { IoLocationSharp } from "react-icons/io5";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -54,6 +52,7 @@ function EventShow(props) {
           center={center}
           zoom={17}
           options={options}
+          className="event-show-map"
         >
           <Marker position={center} />
         </GoogleMap>
@@ -61,12 +60,12 @@ function EventShow(props) {
           <h1 className="login-form-header">{event.title}</h1>
           <h1>{event.sport}</h1>
           <p>
-            <FiUsers />
+            <BsPeopleFill />
             Attendees: {event.attendees.length}
           </p>
 
           <p>
-            <FiClock /> Start Time:
+            <BsCalendarFill /> Start Time:
             {formatDateTime(event.startDate)}
           </p>
           <p>
@@ -78,7 +77,7 @@ function EventShow(props) {
             Created by {postedByName}
           </p>
           <p>
-            <FiMapPin />
+            <IoLocationSharp />
             <a href={googleMapsLink} target="_blank">
               Get Directions
             </a>

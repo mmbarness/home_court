@@ -37,7 +37,7 @@
 
 .event-map-menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   position: absolute;
   z-index: 1;
@@ -49,7 +49,7 @@
 }
 
 .event-map-menu > * {
-  margin: 0 0.25em;
+  margin: 0 0.5em;
   /* z-index: 0; */
 }
 

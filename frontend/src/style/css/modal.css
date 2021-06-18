@@ -110,13 +110,3 @@
 
 /* THE ABOVE IS COPY AND PASTE FROM WILL'S FSP */
 
-.event-show-modal {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background: white;
-  position: relative;
-  border-radius: 10px;
-  width: 550px;
-  height: 650px;
-}

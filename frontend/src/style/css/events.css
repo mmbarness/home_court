@@ -120,6 +120,17 @@ p {
   color: rgb(102 102 102)
 } */
 
+.event-show-modal {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #fffafa;
+  position: relative;
+  border-radius: 10px;
+  width: 550px;
+  height: 650px;
+}
+
 .event-show-info {
   display: flex;
   flex-flow: column;
@@ -131,4 +142,9 @@ p {
 
 .event-show-info > p {
   padding: 0.1vmin;
+}
+
+.event-show-map {
+  box-shadow: 0.5px 0.5px 0.5px 0.75px rgb(167, 167, 152) 234;
+  border-radius: 5px;
 }

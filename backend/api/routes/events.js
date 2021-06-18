@@ -47,6 +47,27 @@ router.patch('/:event_id/add_attendee', async (req, res) => {
     res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
   })
 
+  // remove user from event attendee list & remove event from user eventList
+  router.patch('/:event_id/remove_attendee', async (req, res) => {
+    let userId = req.body.user_id
+    // let username = req.body.username
+    let event = await Event.findById(req.params.event_id)
+    let user = await User.findById(userId)
+    Event.findOneAndUpdate(
+      {"_id": req.params.event_id},
+      // { $pull: { results: { score: 8 , item: "B" } } },
+      {$pull: {'attendees': 
+      {_id: user.id}}
+    }).then(event => User.findOneAndUpdate(
+      {"_id": userId},
+      {$pull: {'eventList': 
+      event.id}
+    }))
+    .then(user => res.json(event))
+    .catch(err =>
+      res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))
+    })
+
 // router.patch('/:event_id/add_attendee', async (req, res)  => {
 //   let event = await Event.findById(req.params.event_id).catch(err =>
 //     res.status(404).json({ noeventfound: 'No event found with that ID - attendee not added' }))

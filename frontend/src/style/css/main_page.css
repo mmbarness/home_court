@@ -100,9 +100,15 @@
 }
 
 .info-window-title {
+  padding: 0 4px 0 3px;
   font-weight: bold;
   font-size: 14px;
   border-bottom: 0.5px solid #696969 ;
   margin-bottom: 5px;
+}
 
+.info-window-title:hover {  
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.2s ease 0s;
 }

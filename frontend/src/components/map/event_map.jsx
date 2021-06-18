@@ -9,6 +9,7 @@ import {
 } from "@react-google-maps/api";
 import mapStyles from "./map_styles";
 import { MdCancel, MdAddCircle } from "react-icons/md";
+import { GrLocation } from "react-icons/gr";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -95,6 +96,8 @@ function EventMap(props) {
         {/* Auto geolocate buttons   */}
         <ResetMapButton panTo={panTo} center={props.center} text="Back Home" />
         <ResetMapButton panTo={panTo} center={orlando} text="Orlando" />
+        <ResetMapButton panTo={panTo} center={houston} text="Houston" />
+        <ResetMapButton panTo={panTo} center={nyc} text="New York" />
       </div>
       <div className="terrible-css-practice" />
       {/* _______________________________________________________________________*/}
@@ -126,6 +129,7 @@ function EventMap(props) {
               onCloseClick={() => null}
             >
               <button
+                className="map-button-location"
                 onClick={() => {
                   props.openModal({
                     modal: "event-form",
@@ -135,7 +139,10 @@ function EventMap(props) {
                   setEventLocation(null);
                 }}
               >
-                Create Game Here
+                <GrLocation size={18} />
+                {""}
+                {""}
+                Set Location
               </button>
             </InfoWindow>
           </div>
@@ -208,6 +215,16 @@ export default EventMap;
 const orlando = {
   lat: 28.5418255,
   lng: -81.3810412,
+};
+
+const houston = {
+  lat: 29.7604,
+  lng: -95.3698,
+};
+
+const nyc = {
+  lat: 40.748817,
+  lng: -73.985428,
 };
 
 function selectIcon(sport) {

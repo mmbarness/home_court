@@ -5,7 +5,7 @@
 
 .main-page-events {
   flex-grow: 2;
-  max-height: 92vh;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -63,6 +63,24 @@
   transform: scale(1.2);
   -webkit-transform: scale(1.05);
   transition: all 0.4s ease 0s;
+}
+
+.map-button-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: transparent;
+  border: none;
+}
+
+.map-button-location:hover {
+  color: rgb(2, 143, 2);
+  font-weight: 800;
+  transition: all 0.4s ease 0s;
+}
+
+.map-button.cancel-game {
+  color: rgb(175, 3, 3);
 }
 
 .map-button-text {

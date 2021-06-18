@@ -4,7 +4,7 @@
 
 .event-index {
   margin: 0 1em;
-  height: 90vw;
+  height: 91vw;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -26,6 +26,7 @@
   -webkit-transform: scale(1.01, 1.01);
   box-shadow: 1px 1px 1px 0.75px #ccc;
   transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 
 .event-item-content:hover {
@@ -44,6 +45,7 @@
   width: auto;
   background-color: black;
   color: white;
+  z-index: 2;
 }
 
 .event-item-button:hover {
@@ -80,4 +82,8 @@ p {
 .event-index > h1 {
   font-weight: 600;
   margin-top: 1vmin;
+}
+
+.event-item-date {
+  font-size: 12px;
 }

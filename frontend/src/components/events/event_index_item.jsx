@@ -1,7 +1,7 @@
 import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
 import * as _ from "underscore";
-import { displaySportWithEmoji } from "../../util/sport_emoji";
+// import { displaySportWithEmoji } from "../../util/sport_emoji";
 
 class EventIndexItem extends React.Component {
   constructor(props) {

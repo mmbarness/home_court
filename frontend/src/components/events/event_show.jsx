@@ -6,7 +6,11 @@ import { formatDateTime } from "../../util/date_util_short";
 import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
 import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
+<<<<<<< HEAD
 import { displaySportWithEmoji } from "../../util/sport_emoji";
+=======
+import DeleteEvent from "./delete_event";
+>>>>>>> 13e3d7fccbe097f1a8e78a6c0a50e5844c72de55
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -102,8 +106,8 @@ function EventShow(props) {
               <p>{event.description}</p>
             </span>
           </section>
+          <DeleteEvent event={event}/>
         </section>
-        {/* <button onClick={this.joinEvent}>Join this event</button> */}
       </div>
     </div>
   );

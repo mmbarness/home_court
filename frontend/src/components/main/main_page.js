@@ -11,8 +11,8 @@ class MainPage extends React.Component {
     super(props)
     this.state = {
       center: {
-        lat: 40.7299653, //this.props.currentUser.addres.lng
-        lng: -73.9157633,
+        lat: 40.7299653, //this.props.currentUser.lat.$numberDecimal
+        lng: -73.9157633, //this.props.currentUser.lng.$numberDecimal
       }
     }
   }
@@ -42,7 +42,7 @@ class MainPage extends React.Component {
         <section className="main-page-map">
           <EventMapContainer
           center={this.state.center}
-          events={eventMarkers}/>
+          events={this.props.events}/>
         </section>
       </div>
     );

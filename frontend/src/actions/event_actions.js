@@ -52,7 +52,7 @@ export const fetchEvent = (eventId) => (dispatch) => {
 export const createEvent = (data) => (dispatch) => {
   return APIUtil.createEvent(data)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => dispatch(receieveEventErrors(err.response.data)));
+    .catch((err) => dispatch(receieveEventErrors(err)));
 };
 
 export const updateEvent = (data) => (dispatch) => {

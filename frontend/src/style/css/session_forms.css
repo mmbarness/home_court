@@ -48,6 +48,16 @@ input {
     box-shadow: 2px 2px;
 }
 
+.demo-button:hover {
+    font-weight: 700;
+    background-color: rgba(245, 184, 42, 0.897);
+    transform: scale(1, 1);
+    -webkit-transform: scale(1.01, 1.01);
+    box-shadow: 1px 1px 1px 0.75px #ccc;
+    transition: all 0.1s ease 0s;
+    cursor: pointer;
+}
+
 .login-input {
     border-radius: 25px;
 }

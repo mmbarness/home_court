@@ -105,8 +105,9 @@
 }
 
 .link-logo {
-  width: 20px;
-  height: 20px;
+  display: flex;
+  width: 45px;
+  height: 45px;
 }
 
 .footer-header {
@@ -115,7 +116,8 @@
 }
 
 .team-role {
-  font-size: 24px;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .team-members-list {
@@ -128,13 +130,19 @@
 .team-members {
   display: flex;
   justify-content: center;
-  max-width: 1000px;
+  max-width: auto;
   margin: 8px auto;
 }
 
 .team-photo {
-  width: 120px;
-  height: 100px;
+  width: auto;
+  height: 300px;
+  border-radius: 15px;
+}
+
+.member-name {
+  font-size: 18px;
+  font-style: italic;
 }
 
 @media(max-width: 799px){
@@ -142,4 +150,10 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }
+}
+
+.team-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
 }

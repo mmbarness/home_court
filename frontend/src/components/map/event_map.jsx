@@ -10,6 +10,7 @@ import {
 import mapStyles from "./map_styles";
 import { MdCancel, MdAddCircle } from "react-icons/md";
 import { GrLocation } from "react-icons/gr";
+import { formatDateTime } from "../../util/date_util_short";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -199,11 +200,10 @@ function EventMap(props) {
                   data: selected 
                 })}
               >{selected.title}</h1>
-              <p>{new Date().getDay() === new Date(selected.startDate).getDay() ? 
-                ('Today')
+              <p>{new Date().toLocaleDateString() === new Date(selected.startDate).toLocaleDateString() ? 
+                (`Today at ${formatDateTime(selected.startDate).slice(15)}`)
                   : 
-                (`${daysOfWeek[new Date(selected.startDate).getDay()]} ${new Date(selected.startDate).toLocaleDateString()}`)}</p>
-              <p>Start: {new Date(selected.startDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                (`${formatDateTime(selected.startDate)}`)}</p>
               <p>End: {new Date(selected.endDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
             </div>
           </InfoWindow>
@@ -231,7 +231,6 @@ const nyc = {
   lng: -73.985428,
 };
 
-const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 function selectIcon(sport) {
   switch (sport) {

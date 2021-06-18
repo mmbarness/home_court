@@ -7,67 +7,32 @@ import "../../style/css/navbar.scss";
 export const NavBarHook = () => {
   let loggedIn = useSelector((state) => state.session.isAuthenticated);
   let currentUser = useSelector((state) => state.session.user);
-
-<<<<<<< HEAD
-    let loggedIn = useSelector(state => state.session.isAuthenticated)
-    let currentUser = useSelector(state => state.session.user)
-    
-    const dispatch = useDispatch();
-    const logoutUser = (e) => {
-      e.preventDefault();
-      (dispatch(logout()))
-    }
-
-    const loggedInLinks = () => {
-        return (
-            <div className="Links1 limit-min-max">
-                <Link id="profile-link" to={'/profile'}>{currentUser.username}</Link>
-                <Link to={'/team'}>About the Team</Link>
-                <button id="logout-button" onClick={logoutUser}>Logout</button>
-                <button id="create game" onClick={null}>Create Game</button>
-            </div>
-        );
-    }
-    const notLoggedInLinks = () => {
-        return (
-            <div className="Links2 limit-min-max">
-                <Link to={'/team'}>About the Team</Link>
-                <Link to={'/signup'}>Signup</Link>
-                <Link to={'/login'}>Login</Link>
-            </div>
-        );
-    }
-=======
+  
   const dispatch = useDispatch();
   const logoutUser = (e) => {
     e.preventDefault();
-    dispatch(logout());
-  };
->>>>>>> 80a21c487643e91486816fe269e47fed4df27936
+    (dispatch(logout()))
+  }
 
   const loggedInLinks = () => {
-    return (
-      <div className="Links1 limit-min-max">
-        <Link id="profile-link" to={"/profile"}>
-          {currentUser.username}
-        </Link>
-        <button id="logout-button" onClick={logoutUser}>
-          Logout
-        </button>
-        <button id="create game" onClick={null}>
-          Create Game
-        </button>
-      </div>
-    );
-  };
+      return (
+          <div className="Links1 limit-min-max">
+              <Link id="profile-link" to={'/profile'}>{currentUser.username}</Link>
+              <Link to={'/team'}>About the Team</Link>
+              <button id="logout-button" onClick={logoutUser}>Logout</button>
+              <button id="create game" onClick={null}>Create Game</button>
+          </div>
+      );
+  }
   const notLoggedInLinks = () => {
-    return (
-      <div className="Links2 limit-min-max">
-        <Link to={"/signup"}>Signup</Link>
-        <Link to={"/login"}>Login</Link>
-      </div>
-    );
-  };
+      return (
+          <div className="Links2 limit-min-max">
+              <Link to={'/team'}>About the Team</Link>
+              <Link to={'/signup'}>Signup</Link>
+              <Link to={'/login'}>Login</Link>
+          </div>
+      );
+  }
 
   return (
     <div className="nav-bar">

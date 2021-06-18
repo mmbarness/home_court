@@ -20,10 +20,10 @@ export const receiveEvent = (event) => {
   };
 };
 
-export const removeEvent = (eventId) => {
+export const removeEvent = (event) => {
   return {
     type: REMOVE_EVENT,
-    eventId,
+    event,
   };
 };
 
@@ -62,10 +62,11 @@ export const unJoinEvent = (data) => (dispatch) => {
 };
 
 export const deleteEvent = (eventId) => (dispatch) => {
-  return APIUtil.deleteEvent(eventId).then((event) =>
-    dispatch(removeEvent(event))
+  return APIUtil.deleteEvent(eventId).then((event) =>{debugger;
+    return(dispatch(removeEvent(event)))}
   );
 };
+
 
 export const joinEvent = (eventId, data) => (dispatch) => {
   return APIUtil.joinEvent(eventId, data).then((event) =>

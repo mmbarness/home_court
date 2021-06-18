@@ -112,14 +112,16 @@ router.get("/:id", (req, res) => {
 });
 
 // delete a single event
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
+  let event = await Event.findById(req.params.id);
+  debugger;
   Event.findByIdAndRemove(req.params.id)
     .exec()
     .then((doc) => {
       if (!doc) {
         return res.status(404).end();
       }
-      return res.status(204).end();
+      return res.json(event);
     })
     .catch((err) =>
       res.status(404).json({ noeventfound: "No event found with that ID" })

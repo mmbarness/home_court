@@ -43,7 +43,8 @@
   padding-right: 1vmax;
 }
 
-.logo {
-  object-fit: contain;
+#logo {
+  position: absolute;
+  object-fit: cover;
   height: 72px;
 }

@@ -53,7 +53,6 @@ function EventMap(props) {
   return (
     <div className="event-map-flex-container">
       <div className="event-map-menu">
-
         {creatingEvent ? (
           <span
             className="map-button-container"
@@ -110,28 +109,26 @@ function EventMap(props) {
           }
         }}
       >
-        
-         <Marker
-            position={props.center}
-            icon={{
-              url: "/icons/vector.svg",
-              scaledSize: new window.google.maps.Size(30, 30),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-            }}
-            onMouseEnter={() => setCurrentUserVector(true)}
-            onMouseLeave={() => setCurrentUserVector(false)}
-          />
-          
-          { currentUserVector ? (
-            <InfoWindow
-              position={props.center}
-              options={{ pixelOffset: new window.google.maps.Size(0, -46) }}
-            >
-              <p>You are Here</p>
-            </InfoWindow>
-          ) : null }
+        <Marker
+          position={props.center}
+          icon={{
+            url: "/icons/vector.svg",
+            scaledSize: new window.google.maps.Size(30, 30),
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 15),
+          }}
+          onMouseEnter={() => setCurrentUserVector(true)}
+          onMouseLeave={() => setCurrentUserVector(false)}
+        />
 
+        {currentUserVector ? (
+          <InfoWindow
+            position={props.center}
+            options={{ pixelOffset: new window.google.maps.Size(0, -46) }}
+          >
+            <p>You are Here</p>
+          </InfoWindow>
+        ) : null}
 
         {eventLocation ? <Marker position={eventLocation} /> : null}
 
@@ -209,7 +206,6 @@ function EventMap(props) {
               <p>Start: {new Date(selected.startDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
               <p>End: {new Date(selected.endDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
             </div>
-           
           </InfoWindow>
         ) : null}
         {/* _______________________________________________________________________*/}
@@ -219,7 +215,6 @@ function EventMap(props) {
 }
 
 export default EventMap;
-
 
 const orlando = {
   lat: 28.46541,
@@ -262,4 +257,3 @@ function selectIcon(sport) {
       return "/basketball.svg";
   }
 }
-

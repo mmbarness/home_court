@@ -45,7 +45,6 @@ function EventMap(props) {
     mapRef.current.setZoom(15);
   }, []);
 
-  // debugger;
   const eventsArr = Object.values(props.events.all);
 
   if (loadError) return "Error loading maps";
@@ -54,14 +53,7 @@ function EventMap(props) {
   return (
     <div className="event-map-flex-container">
       <div className="event-map-menu">
-        {/* <h1>
-          Where are the games happening?{" "}
-          <span role="img" aria-label="ball">
-            🤾
-          </span>
-        </h1> */}
 
-        {/* Enables the user to set pin on map and open create events form.   */}
         {creatingEvent ? (
           <span
             className="map-button-container"
@@ -101,7 +93,6 @@ function EventMap(props) {
         <ResetMapButton panTo={panTo} center={nyc} text="New York" />
       </div>
       <div className="terrible-css-practice" />
-      {/* _______________________________________________________________________*/}
 
       <GoogleMap
         onLoad={onMapLoad}
@@ -208,8 +199,6 @@ function EventMap(props) {
               <h1 className='info-window-title'>{selected.title}</h1>
               <p>Start: {new Date(selected.startDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
               <p>End: {new Date(selected.endDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
-              {/* <p>Start: {selected.startDate.toLocaleTimeString()}</p>
-                            <p>End: {selected.endDate.toLocaleTimeString()}</p>                       */}
             </div>
            
           </InfoWindow>
@@ -222,13 +211,7 @@ function EventMap(props) {
 
 export default EventMap;
 
-//Brooklyn
-// const brooklyn = {
-//     lat: 40.701000,
-//     lng: -73.941011
-// }
 
-// Orlando
 const orlando = {
   lat: 28.46541,
   lng: -81.2667033,

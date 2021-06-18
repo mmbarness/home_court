@@ -3,10 +3,8 @@
 
 .event-form-text-area {
   border: 0.5px solid gray;
-  /* width: 250px; */
   width: 401px;
   height: 150px;
-  /* font-family: "Inter", sans-serif; */
   font-family: "Inter", sans-serif;
   font-size: 14px;
   border: 1.5px solid lightgrey;
@@ -45,23 +43,15 @@
   margin-bottom: 10px;
 }
 
-/* input[type="text" i] {
-  padding: 0px;
-} */
-
 .event-form-input {
   margin-left: 1px;
   height: 32px;
-  /* margin-top: 3px; */
-  /* width: 273px; */
   border: 1.5px solid lightgrey;
   border-radius: 5px;
   font-size: 16px;
   padding: 0;
   padding-left: 3px;
   width: 400px;
-  /* font-family: "Inter", sans-serif;
-  font-size: 14px; */
 }
 
 .event-submit-button {
@@ -90,16 +80,14 @@
 .event-date {
   margin-left: 1px;
   height: 32px;
-  /* margin-top: 3px; */
-  /* width: 273px; */
+
   border: 1.5px solid lightgrey;
   border-radius: 5px;
   font-size: 16px;
   padding: 0;
   padding-left: 3px;
   width: 400px;
-  /* font-family: "Inter", sans-serif;
-  font-size: 14px; */
+
 }
 
 .sport-logo {

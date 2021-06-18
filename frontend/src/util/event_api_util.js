@@ -22,7 +22,6 @@ export const deleteEvent = (eventId) => {
 
 export const joinEvent = (eventId, user) => {
   return axios.patch(
-    // `http://localhost:5000/api/events/${eventId}/add_attendee`,
     `api/events/${eventId}/add_attendee`,
     user
   );

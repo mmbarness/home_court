@@ -12,6 +12,7 @@
   box-shadow: 3px 3px 3px 0.75px rgba(204, 204, 204, 0.294);
   z-index: 1;
   border-right: 0.5px solid lightgoldenrodyellow;
+  margin-top: 1vmin;
 }
 
 .main-page-map {

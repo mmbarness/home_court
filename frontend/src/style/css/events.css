@@ -148,3 +148,22 @@ p {
   box-shadow: 0.5px 0.5px 0.5px 0.75px rgb(167, 167, 152) 234;
   border-radius: 5px;
 }
+
+.user-prof-events-container{
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+  width: 50%;
+  margin-top: 5vmin;
+}
+
+.user-prof-events{
+  display: flex;
+  flex-flow: column;
+}
+
+.user-prof-events-container > h1 {
+  align-self: center;
+  font-weight: 500;
+  font-size: larger;
+}

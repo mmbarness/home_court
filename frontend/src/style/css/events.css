@@ -14,11 +14,11 @@
   display: flex;
   flex-direction: column;
   background-color: rgb(249 240 224);
-  border: 0.5px solid rgb(200, 200, 181)234);
+  border: 0.5px solid rgb(200, 200, 181)234;
   margin: 0.5em 0;
   border-radius: 5px;
   padding: 0.25em 0.75em;
-  box-shadow: .5px .5px .5px 0.75px rgb(200, 200, 181)234);
+  box-shadow: .5px .5px .5px 0.75px rgb(200, 200, 181)234;
 }
 
 .event-index-item:hover {
@@ -118,3 +118,17 @@ p {
   border: 1px solid rgb(102 102 102);
   color: rgb(102 102 102)
 } */
+
+.event-show-info{
+  display: flex;
+  flex-flow: column;
+}
+
+.event-show-info > h1{
+  align-self: center;
+}
+
+.event-show-info > p {
+  padding: .1vmin;
+}
+

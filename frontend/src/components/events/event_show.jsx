@@ -57,7 +57,7 @@ function EventShow(props) {
         >
           <Marker position={center} />
         </GoogleMap>
-        <section>
+        <section className="event-show-info">
           <h1 className="login-form-header">{event.title}</h1>
           <h1>{event.sport}</h1>
           <p>

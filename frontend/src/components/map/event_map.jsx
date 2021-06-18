@@ -205,9 +205,9 @@ function EventMap(props) {
             }}
           >
             <div>
-              <h1>{selected.title}</h1>
-              <p>Start: {new Date(selected.startDate).toLocaleTimeString()}</p>
-              <p>End: {new Date(selected.endDate).toLocaleTimeString()}</p>
+              <h1 className='info-window-title'>{selected.title}</h1>
+              <p>Start: {new Date(selected.startDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+              <p>End: {new Date(selected.endDate).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
               {/* <p>Start: {selected.startDate.toLocaleTimeString()}</p>
                             <p>End: {selected.endDate.toLocaleTimeString()}</p>                       */}
             </div>

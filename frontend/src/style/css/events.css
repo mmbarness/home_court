@@ -12,9 +12,9 @@
   flex-direction: column;
   background-color: bisque;
   /* border: 1px solid black; */
-  margin: 0.75em 0;
+  margin: 0.5em 0;
   border-radius: 5px;
-  padding: 0 0.75em;
+  padding: 0.25em 0.75em;
 }
 
 .event-index-item:hover {

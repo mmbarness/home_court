@@ -22,9 +22,7 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
     const newEvent = Object.assign({}, this.state);
-    console.log(newEvent)
     this.props.createEvent(newEvent).then( () => {
       this.props.closeModal();
     })
@@ -36,7 +34,6 @@ class EventForm extends React.Component {
 
   renderErrors() {
     const errs = Object.values(this.props.errors);
-    console.log(errs)
     return (
       errs.map((error, i) => {
         return (

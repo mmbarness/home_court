@@ -27,7 +27,6 @@ class MainPage extends React.Component {
     }, () => (null));
   }
   render() {
-    console.log(this.props.events)
     return (
       <div className="main-page">
         <section className="main-page-events">

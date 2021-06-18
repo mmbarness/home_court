@@ -11,7 +11,7 @@ import mapStyles from "./map_styles";
 const libraries = ["places"];
 const mapContainerStyle = {
   minWidth: "500px",
-  width: "70vw",
+  width: "65vw",
   height: "90vh",
 };
 const options = {
@@ -41,7 +41,6 @@ function EventMap(props) {
   }, []);
 
   // const eventsArr = Object.values(props.events.all);
-  console.log(props);
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading the map";
 

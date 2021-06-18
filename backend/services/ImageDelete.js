@@ -18,7 +18,6 @@ const deleteImage = (bucket, key) => {
   }
   s3.deleteObject(params, (err, data) => {
     if(err){
-      console.log(err)
     }
   });
 

@@ -99,7 +99,8 @@ p {
 }
 
 .event-index > h1 {
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 18px;
   margin-top: 1vmin;
 }
 
@@ -187,7 +188,7 @@ p {
   font-weight: 300;
 }
 
-.user-prof-events-container{
+.user-prof-events-container {
   display: flex;
   flex-flow: column;
   align-self: center;
@@ -195,7 +196,7 @@ p {
   margin-top: 5vmin;
 }
 
-.user-prof-events{
+.user-prof-events {
   display: flex;
   flex-flow: column;
 }

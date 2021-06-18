@@ -1,7 +1,6 @@
 import React from "react";
 import { IoRefreshCircle } from "react-icons/io5";
 
-
 function ResetMapButton(props) {
   return (
     <span className="map-button-container">

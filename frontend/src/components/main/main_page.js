@@ -8,23 +8,26 @@ let center;
 
 class MainPage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       center: {
-        lat: 40.7299653, //this.props.currentUser.lat.$numberDecimal
-        lng: -73.9157633, //this.props.currentUser.lng.$numberDecimal
-      }
-    }
+        lat: 40.748817, //this.props.currentUser.lat.$numberDecimal
+        lng: -73.985428, //this.props.currentUser.lng.$numberDecimal
+      },
+    };
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition( position => {
-      center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      this.setState({center: center})
-    }, () => (null));
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        this.setState({ center: center });
+      },
+      () => null
+    );
   }
   render() {
     return (
@@ -39,8 +42,7 @@ class MainPage extends React.Component {
           />
         </section>
         <section className="main-page-map">
-          <EventMapContainer
-          center={this.state.center}/>
+          <EventMapContainer center={this.state.center} />
         </section>
       </div>
     );
@@ -48,4 +50,3 @@ class MainPage extends React.Component {
 }
 
 export default MainPage;
-

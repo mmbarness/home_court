@@ -1,5 +1,9 @@
 .session-form-container{
     align-self: center;
+    width: 100%;
+    background: url(https://i.imgur.com/ZkilH1q.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .session-form {

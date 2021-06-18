@@ -107,6 +107,8 @@ function EventMap(props) {
               lat: e.latLng.lat(),
               lng: e.latLng.lng(),
             });
+          } else {
+            setEventLocation(null)
           }
         }}
       >

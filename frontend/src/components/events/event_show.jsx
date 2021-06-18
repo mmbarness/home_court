@@ -8,6 +8,8 @@ import {
   LoadScript,
 } from "@react-google-maps/api";
 import mapStyles from "../map/map_styles";
+import { formatDate, formatDateTime } from "../../util/date_util_short";
+import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -36,6 +38,10 @@ function EventShow(props) {
     mapRef.current = map;
   }, []);
 
+  const postedByName = event.attendees[0].username;
+
+  const googleMapsLink = `http://www.google.com/maps/place/${center.lat},${center.lng}`;
+
   return (
     <div className="event-modal-container">
       <div>
@@ -56,7 +62,29 @@ function EventShow(props) {
         <section>
           <h1 className="login-form-header">{event.title}</h1>
           <h1>{event.sport}</h1>
-          <p>Number of attendees: {event.attendees.length}</p>
+          <p>
+            <FiUsers />
+            Attendees: {event.attendees.length}
+          </p>
+
+          <p>
+            <FiClock /> Start Time:
+            {formatDateTime(event.startDate)}
+          </p>
+          <p>
+            <FiClock /> End Time:
+            {formatDateTime(event.endDate)}
+          </p>
+          <p>
+            <FiMeh />
+            Created by {postedByName}
+          </p>
+          <p>
+            <FiMapPin />
+            <a href={googleMapsLink} target="_blank">
+              Get Directions
+            </a>
+          </p>
           <div>
             <h3>Description:</h3>
             <p>{event.description}</p>

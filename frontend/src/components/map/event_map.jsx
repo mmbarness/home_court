@@ -29,7 +29,7 @@ function EventMap(props) {
     const [selected, setSelected] = React.useState(null) // selected is a current event whose infow window is open     
     const [creatingEvent, setCreatingEvent] = React.useState(false) //true: waiting for pin to drop to create event
     const [eventLocation, setEventLocation] = React.useState(null) //evenLocation are the coordinates of a new game
-
+    
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
@@ -40,7 +40,7 @@ function EventMap(props) {
         mapRef.current.setZoom(15);
     }, []);
 
-        // const eventsArr = Object.values(props.events.all);
+    const eventsArr = Object.values(props.events.all);
    
     if (loadError) return 'Error loading maps';
     if (!isLoaded) return 'Loading the map';
@@ -77,7 +77,7 @@ function EventMap(props) {
                 }}
             >
 
-            {eventLocation ? (
+            {(eventLocation && creatingEvent) ? (
                 <div>
                     <Marker position={eventLocation} />
 
@@ -86,20 +86,22 @@ function EventMap(props) {
                             options={ {pixelOffset: new window.google.maps.Size(0,-46)}}
                         onCloseClick={() => null}
                     >
-                    <button onClick={() => 
+                    <button onClick={() => {
                         props.openModal({
                             modal: 'event-form',
                             data: eventLocation
-                        }) 
+                        });
+                        setCreatingEvent(false)
+                    }
                     }>Create Game Here</button>
 
                     </InfoWindow> 
                 </div> ) : null
             }
 
-            {props.events.map((event, i) => (
-                <Marker key={i}
-                    position={{ lat: parseFloat(event.lat), lng: parseFloat(event.lng)}}                        
+            {eventsArr.map((event) => (
+                <Marker key={event._id}
+                    position={{ lat: parseFloat(event.lat.$numberDecimal), lng: parseFloat(event.lng.$numberDecimal)}}                        
                     icon={{
                         url: selectIcon(event.sport),
                         scaledSize: new window.google.maps.Size(30,30),
@@ -114,7 +116,7 @@ function EventMap(props) {
                 
                 {selected ? (
                 <InfoWindow 
-                    position={{lat: selected.lat, lng: selected.lng}}
+                    position={{lat: parseFloat(selected.lat.$numberDecimal), lng: parseFloat(selected.lng.$numberDecimal)}}
                         options={ {pixelOffset: new window.google.maps.Size(0,-12)}}
                     onCloseClick={() => {
                         setSelected(null);
@@ -122,8 +124,10 @@ function EventMap(props) {
                 >
                     <div>
                         <h1>{selected.title}</h1>
-                            <p>Start: {selected.startDate.toLocaleTimeString()}</p>
-                            <p>End: {selected.endDate.toLocaleTimeString()}</p>                      
+                            <p>Start: {(new Date(selected.startDate)).toLocaleTimeString()}</p>
+                            <p>End: {(new Date(selected.endDate)).toLocaleTimeString()}</p>  
+                            {/* <p>Start: {selected.startDate.toLocaleTimeString()}</p>
+                            <p>End: {selected.endDate.toLocaleTimeString()}</p>                       */}
                     </div>
                 </InfoWindow>): null }
             </GoogleMap>
@@ -156,16 +160,3 @@ function selectIcon(sport) {
             return '/basketball.svg'
     }
 }
-
-// function Locate({panTo}) {
-//     return <button><img src='volleyball.svg' alt='center' /></button>
-// }
-
-// {eventFormModal ? 
-//                 <EventFormModal
-//                     className="modal-background"
-//                     onClick={() => setEventFormModal(false)}
-//                     setEventFormModal={setEventFormModal}
-//                     eventFormModal={() => eventFormModal}
-//                     eventLocation={() => eventLocation}
-//                 /> : null } 

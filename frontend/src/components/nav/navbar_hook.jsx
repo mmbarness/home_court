@@ -19,6 +19,7 @@ export const NavBarHook = () => {
         return (
             <div className="Links1 limit-min-max">
                 <Link id="profile-link" to={'/profile'}>{currentUser.username}</Link>
+                <Link to={'/team'}>About the Team</Link>
                 <button id="logout-button" onClick={logoutUser}>Logout</button>
                 <button id="create game" onClick={null}>Create Game</button>
             </div>
@@ -27,6 +28,7 @@ export const NavBarHook = () => {
     const notLoggedInLinks = () => {
         return (
             <div className="Links2 limit-min-max">
+                <Link to={'/team'}>About the Team</Link>
                 <Link to={'/signup'}>Signup</Link>
                 <Link to={'/login'}>Login</Link>
             </div>

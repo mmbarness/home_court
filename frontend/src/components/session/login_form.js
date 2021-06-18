@@ -13,6 +13,8 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.demoUser = this.demoUser.bind(this);
+    this.insertDemoUser = this.insertDemoUser.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,6 +53,29 @@ class LoginForm extends React.Component {
     );
   }
 
+
+  demoUser(e) {
+    e.preventDefault();
+      const demoAccount = ({
+      email: 'demo@email.com',
+      username: 'demo',
+      password: 'password'
+    });
+    this.props.login(demoAccount).then(() => this.props.history.push('/'))
+  }
+
+  
+
+      insertDemoUser () {
+          return (
+            <div className='demo-login'>
+              <h2 className='title-text'>Log in as demo</h2>
+              <button className='demo-button' onClick={this.demoUser}></button>
+            </div>
+          )
+        }
+
+
   render() {
     return (
       <div className="session-form-container">
@@ -70,6 +95,7 @@ class LoginForm extends React.Component {
               />
             <br/>
             <input type="submit" value="Submit" />
+            <button className='demo-button' onClick={this.demoUser}>Demo Login</button>
             {this.renderErrors()}
           </div>
         </form>

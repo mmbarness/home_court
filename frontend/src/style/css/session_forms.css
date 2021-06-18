@@ -9,7 +9,8 @@
     z-index: -1;
     width: 110%;
     align-self: center;
-    margin-top: -20vmin;
+    position: absolute;
+    top: -27.5vmin;
 }
 
 .session-form-container > #session-form {

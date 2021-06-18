@@ -26,6 +26,7 @@
     "redux-thunk": "^2.3.0",
     "sass": "^1.35.1",
     "typescript": "^3.9.10",
+    "underscore": "^1.13.1",
     "use-places-autocomplete": "^1.9.3"
   },
   "scripts": {

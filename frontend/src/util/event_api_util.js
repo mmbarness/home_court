@@ -20,10 +20,10 @@ export const deleteEvent = (eventId) => {
   return axios.delete(`api/events/${eventId}`);
 };
 
-export const getUserEvents = (user_id) => {
-  return axios.get(`/api/user/${user_id}/eventList`);
-};
-
 export const joinEvent = (eventId, user) => {
-  return axios.patch(`api/events/${eventId}/add_attendee`, user);
+  return axios.patch(
+    // `http://localhost:5000/api/events/${eventId}/add_attendee`,
+    `api/events/${eventId}/add_attendee`,
+    user
+  );
 };

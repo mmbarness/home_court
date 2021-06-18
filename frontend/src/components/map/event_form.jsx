@@ -22,10 +22,9 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const newEvent = Object.assign({}, this.state);
-    this.props.createEvent(newEvent).then( () => {
-      this.props.closeModal();
-    })
+    const newEvent = Object.assign({}, this.state);    
+    this.props.createEvent(newEvent).then(this.props.closeModal())
+    this.forceUpdate()
   }
 
   update(property) {

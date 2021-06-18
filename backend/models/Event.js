@@ -9,7 +9,7 @@ const EventSchema = new Schema({
   },
   sport: {
     type: String,
-    enum: ["Basketball", "Soccer", "Volleyball", "Spikeball", "Football"],
+    enum: ['Basketball', 'Soccer', 'Volleyball', 'Spikeball', 'Football']
   },
   lat: {
     type: mongoose.Decimal128,

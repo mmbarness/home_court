@@ -9,7 +9,7 @@
     padding-top: 1vmax;
 }
 
-.session-form > input {
+.session-form > * {
     margin: .5vmin;
     padding: 1vmin;
     width: 35vmin;

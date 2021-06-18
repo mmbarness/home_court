@@ -1,5 +1,14 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
+// import BadmintonSVG from 'frontend/public/badminton.svg'
+// import BaseballSVG from 'frontend/public/baseball.svg'
+// import {ReactComponent as BasketballSVG} from '../../style/icons/basketball.svg'
+// import FootballSVG from 'frontend/public/football.svg'
+// import PingpongSVG from 'frontend/public/pingpong.svg'
+// import SoccerSVG from 'frontend/public/soccer.svg'
+// import SpikeballSVG from 'frontend/public/spikeball.svg'
+// import TennisSVG from 'frontend/public/tennis.svg'
+// import VolleyballSVG from 'frontend/public/volleyball.svg'
 import "../../style/css/event-form.css";
 import * as _ from "underscore";
 class EventForm extends React.Component {
@@ -101,7 +110,13 @@ class EventForm extends React.Component {
               <option value="Volleyball">Volleyball</option>
               <option value="Spikeball">Spikeball</option>
               <option value="Football">Football</option>
+              <option value="Badminton">Badminton</option>
+              <option value="Baseball">Baseball</option>
+              <option value="Ping Pong">Ping Pong</option>
+              <option value="Tennis">Tennis</option>
             </select>
+
+            {/* <BasketballSVG height='10px' width='10px' className='sport-logo'/> */}
             {/* 
             <input
               type="text"

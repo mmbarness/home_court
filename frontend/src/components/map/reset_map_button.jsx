@@ -5,7 +5,7 @@ function ResetMapButton(props) {
         <button
             onClick={ () => (props.panTo(props.center)) }
         >
-            Reset Location
+            {props.text}
         </button>
     );
 }

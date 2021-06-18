@@ -14,9 +14,9 @@ export const Team = () => {
               <br />
               <div className='team-row'>
                 <div className='column-one'>
-                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/mmbarness"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <li><a href="https://github.com/mmbarness"target="_blank"><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/></a></li>
+                  <li><a href="https://github.com/mmbarness/"target="_blank"><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/></a></li>
+                  <li><a href="https://github.com/mmbarness/"target="_blank"><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/></a></li>
                   <br />
                 </div>
                 <div className='column-two'>
@@ -33,9 +33,9 @@ export const Team = () => {
               <br />
               <div className='team-row'>
                 <div className='column-one'>
-                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://www.linkedin.com/in/willku/"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://github.com/will-ku"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <li><a href="https://github.com/will-ku"target="_blank"><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/></a></li>
+                  <li><a href="https://www.linkedin.com/in/willku/"target="_blank"><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/></a></li>
+                  <li><a href="https://www.linkedin.com/in/willku/"target="_blank"><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/></a></li>
                   <br />
                 </div>
                 <div className='column-two'>
@@ -51,9 +51,9 @@ export const Team = () => {
               <br />
               <div className='team-row'>
                 <div className='column-one'>
-                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/matt2yu"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <li><a href="https://github.com/matt2y"target="_blank"><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/></a></li>
+                  <li><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/></a></li>
+                  <li><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/></a></li>
                   <br />
                 </div>
                 <div className='column-two'>
@@ -69,9 +69,9 @@ export const Team = () => {
               <br />
               <div className='team-row'>
                 <div className='column-one'>
-                  <li><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/><a href="https://github.com/mogarcia626"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/><a href="https://www.linkedin.com/in/moustafagarcia/"target="_blank"></a></li>
-                  <li><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/><a href="https://www.linkedin.com/in/matthewyu1/"target="_blank"></a></li>
+                  <li><a href="https://github.com/mogarcia626"target="_blank"><img className='link-logo' src='https://i.imgur.com/42DWuG0.png'/></a></li>
+                  <li><a href="https://www.linkedin.com/in/moustafagarcia/"target="_blank"><img className='link-logo' src='https://i.imgur.com/mrrIhjE.png'/></a></li>
+                  <li><a href="https://www.linkedin.com/in/moustafagarcia/"target="_blank"><img className='link-logo' src='https://i.imgur.com/t1i7qVL.png'/></a></li>
                   <br />
                   </div>
                 <div className='column-two'>

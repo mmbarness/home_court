@@ -121,6 +121,5 @@
     cursor: pointer;
 }
 
-.you-are-here-window.gm-ui-hover-effect {
-  visibility: hidden;
-}
+.gm-ui-hover-effect {visibility: hidden;}
+

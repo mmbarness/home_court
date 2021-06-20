@@ -1,49 +1,29 @@
 import React from "react";
-import ResetMapButton from "./reset_map_button";
-import AddressFormField from "../session/address_form_field";
+import EventMapMenu from './event_map_menu'
+import * as mapUtil from '../../util/map_util'
+import CurrentUserMarker from './current_user_marker'
+import { GrLocation } from "react-icons/gr";
+import { formatDateTime } from "../../util/date_util_short";
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import mapStyles from "./map_styles";
-import { MdCancel, MdAddCircle } from "react-icons/md";
-import { GrLocation } from "react-icons/gr";
-import { formatDateTime } from "../../util/date_util_short";
-
-const libraries = ["places"];
-const mapContainerStyle = {
-  minWidth: "500px",
-  width: "65vw",
-  height: "89vh",
-};
-const options = {
-  styles: mapStyles,
-  disableDefaultUI: true,
-  zoomControl: true,
-};
 
 function EventMap(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: libraries,
+    libraries: mapUtil.libraries,
   });
 
   const [selected, setSelected] = React.useState(null); // selected is a current event whose infow window is open
   const [creatingEvent, setCreatingEvent] = React.useState(false); //true: waiting for pin to drop to create event
   const [eventLocation, setEventLocation] = React.useState(null); //evenLocation are the coordinates of a new game
-  const [currentUserVector, setCurrentUserVector] = React.useState(false); //info window for user location
-
+  
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
-  }, []);
-
-  const panTo = React.useCallback(({ lat, lng }) => {
-    setEventLocation({ lat, lng });
-    mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(15);
   }, []);
 
   const eventsArr = Object.values(props.events.all);
@@ -53,53 +33,23 @@ function EventMap(props) {
 
   return (
     <div className="event-map-flex-container">
-      <div className="event-map-menu">
-        {creatingEvent ? (
-          <span
-            className="map-button-container"
-            onClick={() => {
-              setCreatingEvent(false);
-              setEventLocation(null);
-            }}
-          >
-            <button className="map-button cancel-game">
-              <MdCancel size={25} />
-            </button>
-            <div className="map-button-text">Cancel</div>
-          </span>
-        ) : (
-          <span
-            className="map-button-container"
-            onClick={() => {
-              setEventLocation(null);
-              setCreatingEvent(true);
-            }}
-          >
-            <button className="map-button create-game">
-              <MdAddCircle size={25} />
-            </button>
-            <div className="map-button-text">Host an event</div>
-          </span>
-        )}
 
-        {/* _______________________________________________________________________*/}
-
-        <AddressFormField panTo={panTo} center={props.center} />
-
-        {/* Auto geolocate buttons   */}
-        <ResetMapButton panTo={panTo} center={props.center} text="Back Home" />
-        <ResetMapButton panTo={panTo} center={orlando} text="Orlando" />
-        <ResetMapButton panTo={panTo} center={houston} text="Houston" />
-        <ResetMapButton panTo={panTo} center={nyc} text="New York" />
-      </div>
+      <EventMapMenu 
+        creatingEvent={creatingEvent}
+        setCreatingEvent={setCreatingEvent}
+        eventLocation={eventLocation}
+        setEventLocation={setEventLocation}
+        mapRef={mapRef}
+        center={props.center} />
+        
       <div className="terrible-css-practice" />
 
       <GoogleMap
         onLoad={onMapLoad}
-        mapContainerStyle={mapContainerStyle}
+        mapContainerStyle={mapUtil.mapContainerStyle}
         center={props.center}
         zoom={15}
-        options={options}
+        options={mapUtil.options}
         onClick={(e) => {
           if (selected) setSelected(null);
           if (creatingEvent) {
@@ -112,27 +62,7 @@ function EventMap(props) {
           }
         }}
       >
-        <Marker
-          position={props.center}
-          icon={{
-            url: "/icons/vector.svg",
-            scaledSize: new window.google.maps.Size(30, 30),
-            origin: new window.google.maps.Point(0, 0),
-            anchor: new window.google.maps.Point(15, 15),
-          }}
-          onMouseEnter={() => setCurrentUserVector(true)}
-          onMouseLeave={() => setCurrentUserVector(false)}
-        />
-
-        {currentUserVector ? (
-          <InfoWindow
-            position={props.center}
-            options={{ pixelOffset: new window.google.maps.Size(0, -46) }}
-          >
-            <p>You are Here</p>
-          </InfoWindow>
-        ) : null}
-
+        <CurrentUserMarker center={props.center}/>
         {eventLocation ? <Marker position={eventLocation} /> : null}
 
         {/* InfoWindow and Map Marker for New events being created   */}
@@ -174,7 +104,7 @@ function EventMap(props) {
               lng: parseFloat(event.lng.$numberDecimal),
             }}
             icon={{
-              url: selectIcon(event.sport),
+              url: mapUtil.selectIcon(event.sport),
               scaledSize: new window.google.maps.Size(30, 30),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
@@ -219,43 +149,3 @@ function EventMap(props) {
 
 export default EventMap;
 
-const orlando = {
-  lat: 28.46541,
-  lng: -81.2667033,
-};
-
-const houston = {
-  lat: 29.7604,
-  lng: -95.3698,
-};
-
-const nyc = {
-  lat: 40.748817,
-  lng: -73.985428,
-};
-
-
-function selectIcon(sport) {
-  switch (sport) {
-    case "Soccer":
-      return "/icons/soccer.svg";
-    case "Basketball":
-      return "/icons/basketball.svg";
-    case "Volleyball":
-      return "/icons/volleyball.svg";
-    case "Badminton":
-      return "/icons/badminton.svg";
-    case "Baseball":
-      return "/icons/baseball.svg";
-    case "Football":
-      return "/icons/football.svg";
-    case "Ping Pong":
-      return "/icons/pingpong.svg";
-    case "Tennis":
-      return "/icons/tennis.svg";
-    case "Spikeball":
-      return "/icons/spikeball.svg";
-    default:
-      return "/basketball.svg";
-  }
-}

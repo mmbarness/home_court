@@ -1,7 +1,7 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import mapStyles from "../map/map_styles";
+import mapStyles from "../../util/map_styles";
 import { formatDateTime } from "../../util/date_util_short";
 import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
 import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";

@@ -1,14 +1,10 @@
 import React from "react";
+import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
+import * as mapUtil from '../../util/map_util'
 import EventMapMenu from './event_map_menu'
 import CreateEventInfoWindow from './create_event_info_window'
 import CurrentUserMarker from './current_user_marker'
 import EventsMarkers from './events_markers'
-import * as mapUtil from '../../util/map_util'
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-} from "@react-google-maps/api";
 
 function EventMap(props) {
   const { isLoaded, loadError } = useLoadScript({
@@ -61,6 +57,7 @@ function EventMap(props) {
       >
         <CurrentUserMarker center={props.center}/>
 
+        {/* marker on map that appears when there is a panTo event */}
         {eventLocation ? <Marker position={eventLocation} /> : null}
 
         <CreateEventInfoWindow 

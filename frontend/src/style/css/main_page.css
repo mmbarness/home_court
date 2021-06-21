@@ -120,3 +120,6 @@
     transition: all 0.1s ease 0s;
     cursor: pointer;
 }
+
+.gm-ui-hover-effect {visibility: hidden;}
+

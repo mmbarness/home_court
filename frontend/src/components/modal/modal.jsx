@@ -2,7 +2,7 @@ import React from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import EventShowContainer from "../events/event_show_container";
-import EventFormContainer from '../map/event_form_container'
+import EventFormContainer from '../events/event_form_container'
 
 function Modal({ modal, closeModal }) {
   if (!modal) {

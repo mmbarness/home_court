@@ -23,7 +23,7 @@ function CurrentUserMarker(props) {
         <InfoWindow
           className='you-are-here-window'
           position={props.center}
-          options={{ pixelOffset: new window.google.maps.Size(0, 7) }}
+          options={{ pixelOffset: new window.google.maps.Size(0, 15) }}
         >
           <p>You Are Here</p>
         </InfoWindow>

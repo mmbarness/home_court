@@ -20,7 +20,7 @@ export const Team = () => {
                   <br />
                 </div>
                 <div className='column-two'>
-                  <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+                  <li><img className='team-photo' src='https://i.imgur.com/k2lVxGv.gif'/></li>
                   </div>
               </div>
             </li>
@@ -39,7 +39,7 @@ export const Team = () => {
                   <br />
                 </div>
                 <div className='column-two'>
-                  <li><img className='team-photo' src='https://i.imgur.com/5W5wvYc.jpg'/></li>
+                  <li><img className='team-photo' src='https://i.imgur.com/t7v5RZ7.jpg'/></li>
                 </div>
               </div>
             </li>
@@ -57,7 +57,7 @@ export const Team = () => {
                   <br />
                 </div>
                 <div className='column-two'>
-                  <li><img className='team-photo' src='https://i.imgur.com/FkQVmdu.png'/></li>
+                  <li><img className='team-photo' src='https://i.imgur.com/k2lVxGv.gif'/></li>
                 </div>
               </div>
             </li>
@@ -75,7 +75,7 @@ export const Team = () => {
                   <br />
                   </div>
                 <div className='column-two'>
-                  <li><img className='team-photo' src='https://i.imgur.com/idBLEsZ.jpg'/></li>
+                  <li><img className='team-photo' src='https://i.imgur.com/Gkfhth1.jpg'/></li>
                 </div>
               </div>
               

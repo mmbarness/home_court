@@ -22,10 +22,10 @@ const App = () => (
       <NavBarHook />
       <Switch>
         <ProtectedRoute exact path="/" component={MainPageContainer} />
+        <AuthRoute exact path="/splash" component={SplashPage} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <ProtectedRoute exact path="/profile" component={Profile} />
-        <AuthRoute exact path="/splash" component={SplashPage} />
         <Route exact path="/team" component={Team} />
       </Switch>
     </div>

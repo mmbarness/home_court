@@ -50,13 +50,11 @@ function EventShow(props) {
   };
 
   const showJoinOrNot = () => {
-    // debugger;
     if (props.currentUser.id !== props.event.postedBy)
       return <JoinOrNot event={props.event} />;
   };
 
   const googleMapsLink = `http://www.google.com/maps/place/${center.lat},${center.lng}`;
-  // debugger;
   return (
     <div className="event-modal-container">
       <div>

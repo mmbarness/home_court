@@ -209,3 +209,10 @@ p {
   margin-left: 25px;
   background-color: rgba(216, 38, 38, 0.87);
 }
+
+.your-event {
+  font-style: italic;
+  color: rgb(83, 83, 83);
+  font-size: 15px;
+  font-weight: 500;
+}

@@ -9,7 +9,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { displaySportWithEmoji } from "../../util/sport_emoji";
 import DeleteEvent from "./delete_event";
 import JoinOrNot from "./joinOrNot";
-import * as _ from 'underscore';
+import * as _ from "underscore";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -38,21 +38,25 @@ function EventShow(props) {
   }, []);
 
   const renderPostedBy = () => {
-      let postedByName
-      (!_.isEmpty(event.attendees)) ? postedByName = event.attendees[0].username : postedByName = null; 
-      if (!_.isNull(postedByName)){
-        return(
-          <p>{`Hosted by:  ${postedByName}`}</p>
-        )
-      }else {
-        return(
-          <p>Hosted by: No host currently :(</p>
-        )
-      }
-  }
+    let postedByName;
+    !_.isEmpty(event.attendees)
+      ? (postedByName = event.attendees[0].username)
+      : (postedByName = null);
+    if (!_.isNull(postedByName)) {
+      return <p>{`Hosted by:  ${postedByName}`}</p>;
+    } else {
+      return <p>Hosted by: No host currently :(</p>;
+    }
+  };
+
+  const showJoinOrNot = () => {
+    // debugger;
+    if (props.currentUser.id !== props.event.postedBy)
+      return <JoinOrNot event={props.event} />;
+  };
 
   const googleMapsLink = `http://www.google.com/maps/place/${center.lat},${center.lng}`;
-
+  // debugger;
   return (
     <div className="event-modal-container">
       <div>
@@ -118,7 +122,7 @@ function EventShow(props) {
           </section>
           <section className="event-show-footer">
             <DeleteEvent event={event} />
-            <JoinOrNot event={event} />
+            {showJoinOrNot()}
           </section>
         </section>
       </div>

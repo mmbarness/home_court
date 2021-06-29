@@ -20,7 +20,7 @@ export const Team = () => {
                   <br />
                 </div>
                 <div className='column-two'>
-                  <li><img className='team-photo' src='https://i.imgur.com/k2lVxGv.gif'/></li>
+                  <li><img className='team-photo' src='https://i.imgur.com/SjHhUhn.png'/></li>
                   </div>
               </div>
             </li>
@@ -57,7 +57,7 @@ export const Team = () => {
                   <br />
                 </div>
                 <div className='column-two'>
-                  <li><img className='team-photo' src='https://i.imgur.com/k2lVxGv.gif'/></li>
+                  <li><img className='team-photo' src='https://i.imgur.com/SjHhUhn.png'/></li>
                 </div>
               </div>
             </li>

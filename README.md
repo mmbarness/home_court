@@ -1,2 +1,3 @@
 # home_court
-a sick app
+
+Application for finding nearby pickup games with mild social functionality.

@@ -1,7 +1,7 @@
 {
   "name": "home_court",
   "version": "1.0.0",
-  "description": "a sick app",
+  "description": "Social application for finding nearby pickup games",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",

@@ -1,5 +1,5 @@
 import React from "react";
-import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
+import {GoogleMap, useLoadScript, Marker, onBoundsChanged} from "@react-google-maps/api";
 import * as mapUtil from '../../util/map_util'
 import EventMapMenu from './event_map_menu'
 import CreateEventInfoWindow from './create_event_info_window'
@@ -14,12 +14,22 @@ function EventMap(props) {
 
   const [selected, setSelected] = React.useState(null); // selected is a current event whose infow window is open
   const [creatingEvent, setCreatingEvent] = React.useState(false); //true: waiting for pin to drop to create event
-  const [eventLocation, setEventLocation] = React.useState(null); //evenLocation are the coordinates of a new game
+  const [eventLocation, setEventLocation] = React.useState(null); //eventLocation are the coordinates of a new game
   
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
   }, []);
+  
+  const onBoundsChanged = () => {
+    const mapBounds = {}
+    const mapData = mapRef.current.getBounds()
+    mapBounds.lng = {min: mapData.Eb.g, max: mapData.Eb.i}
+    mapBounds.lat = {min: mapData.mc.g, max: mapData.mc.i}
+    props.receiveMapBounds(mapBounds)
+  }
+
+   
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading the map";
@@ -43,6 +53,7 @@ function EventMap(props) {
         center={props.center}
         zoom={15}
         options={mapUtil.options}
+        onBoundsChanged={onBoundsChanged}
         onClick={(e) => {
           if (selected) setSelected(null);
           if (creatingEvent) {

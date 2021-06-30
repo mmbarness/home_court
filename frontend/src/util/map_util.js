@@ -52,3 +52,27 @@ export function selectIcon(sport) {
       return "/basketball.svg";
   }
 }
+
+//Functions takes in an object of events and an object of map bounds and return an array of events happening within the map bounds
+export function findEventsInMapBounds(events, mapBounds) {
+  if (events === undefined) return []
+
+  const allEventsArr = Object.values(events);
+
+  let eventLat;
+  let eventLng;
+
+  const eventsArr = [];  
+  allEventsArr.forEach( event => {
+      eventLat = parseFloat(event.lat.$numberDecimal);
+      eventLng = parseFloat(event.lng.$numberDecimal);
+
+      if (eventLat > mapBounds.lat.min && eventLat < mapBounds.lat.max &&
+        eventLng > mapBounds.lng.min && eventLng < mapBounds.lng.max ) {
+        eventsArr.push(event);
+      }
+
+    });
+    
+    return eventsArr
+}

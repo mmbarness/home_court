@@ -30,6 +30,7 @@ class MainPage extends React.Component {
     );
   }
   render() {
+    
     return (
       <div className="main-page">
         <section className="main-page-events">
@@ -39,6 +40,7 @@ class MainPage extends React.Component {
             openModal={this.props.openModal}
             currentUser={this.props.currentUser}
             fetchUserEvents={this.props.fetchUserEvents}
+            mapBounds={this.props.mapBounds}
           />
         </section>
         <section className="main-page-map">

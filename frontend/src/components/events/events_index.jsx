@@ -10,13 +10,10 @@ class EventsIndex extends React.Component {
   render() {
     
     if (Object.keys(this.props.events.all).length === 0 || Object.keys(this.props.mapBounds).length === 0) {
-      console.log(this.props.events.all)
-      console.log(this.props.mapBounds)
       return null;
     } else {      
-      console.log(this.props.mapBounds)
       const eventsArr = findEventsInMapBounds(this.props.events.all, this.props.mapBounds)
-      
+
       return (
         <div className="event-index">
           <h1>Find a Game Near You</h1>

@@ -55,15 +55,14 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2,
       address: this.state.address.addressString,
-      lat: this.state.address.coordinates.lat.$numberDecimal,
-      lng: this.state.address.coordinates.long.$numberDecimal,
-    };
+      lat: this.state.address.coordinates.lat,
+      lng: this.state.address.coordinates.long,
+    }
     this.props.signup(user, this.props.history); 
   }
 
   renderErrors() {
-    
-    console.log(this.state.address.coordinates)
+    debugger
     return(
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -76,7 +75,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.address)
+    
 
     return (
       <div className="session-form-container">

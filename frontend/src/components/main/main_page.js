@@ -18,6 +18,9 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    // console.log(this.props.user.id)
+    this.props.fetchUserLocation(this.props.user.id)
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         center = {

@@ -19,3 +19,9 @@ export const login = (userData) => {
 export const getUserEvents = (id) => {
   return (axios.get(`/api/events/user/${id}/eventList`));
 };
+
+export const getUserLocation = (id) => {
+  let response = axios.get(`/api/users/${id}/coordinates`);
+  console.log(response)
+  return response
+};

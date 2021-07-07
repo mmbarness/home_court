@@ -121,6 +121,7 @@ a:visited {
 .limit-min-max {
   @include responsive-font(1.75vmin, 20px, 30px);
   color: black;
+  margin-right: 2em;
 }
 
 .limit-min-max > * {

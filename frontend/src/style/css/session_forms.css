@@ -1,72 +1,76 @@
-.session-form-container{
-    align-self: center;
-    padding: 20px;
-    display: flex;
-    flex-flow: column
+.session-form-container {
+  align-self: center;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
 }
 
 .session-form-container > img {
-    z-index: -1;
-    width: 110%;
-    align-self: center;
-    position: absolute;
-    top: -27.5vmin;
+  z-index: -1;
+  width: 110%;
+  align-self: center;
+  position: absolute;
+  top: -27.5vmin;
 }
 
 .session-form-container > #session-form {
-    z-index: 2;
-    position: absolute;
-    margin-top: 10vmin;
-    align-self: center;
+  z-index: 2;
+  position: absolute;
+  margin-top: 10vmin;
+  align-self: center;
 }
 
 .session-form {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    padding-top: 1vmax;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-top: 1vmax;
 }
 
 .session-form > * {
-    margin: .5vmin;
-    padding: 1vmin;
-    width: 35vmin;
-    align-self: center;
+  margin: 0.5vmin;
+  padding: 1vmin;
+  width: 35vmin;
+  align-self: center;
 }
 
-
 input {
-    font-family: sans-serif;
-    font-weight: 200;
-    border-radius: 13px;
-    border: 1px solid rgba(246 241 224);
+  font-family: sans-serif;
+  font-weight: 200;
+  border-radius: 13px;
+  border: 1px solid rgba(246 241 224);
 }
 
 .demo-button {
-    font-weight: 500;
-    width: 120px;
-    border-radius: 25px;
-    box-shadow: 2px 2px;
+  font-weight: 500;
+  width: 120px;
+  border-radius: 25px;
+  box-shadow: 2px 2px;
 }
 
 .demo-button:hover {
-    font-weight: 700;
-    background-color: rgba(245, 184, 42, 0.897);
-    transform: scale(1, 1);
-    -webkit-transform: scale(1.01, 1.01);
-    box-shadow: 1px 1px 1px 0.75px #ccc;
-    transition: all 0.1s ease 0s;
-    cursor: pointer;
+  font-weight: 700;
+  background-color: rgba(245, 184, 42, 0.897);
+  transform: scale(1, 1);
+  border: 2px black solid;
+  -webkit-transform: scale(1.01, 1.01);
+  box-shadow: 1px 1px 1px 0.75px rgb(39, 39, 39);
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
 }
 
 .login-input {
-    border-radius: 25px;
+  border-radius: 25px;
 }
-.splash-login {
-    background: rgb(100, 98, 98);
-    opacity: 0.8;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 25px;
 
+.login-input:hover {
+  transform: scale(0, 0);
+}
+
+.splash-login {
+  background: rgb(100, 98, 98);
+  opacity: 0.8;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 25px;
 }

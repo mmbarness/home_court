@@ -1,14 +1,14 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import '../../style/css/session_forms.css'
+import React from "react";
+import { withRouter } from "react-router-dom";
+import "../../style/css/session_forms.css";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
-      errors: {}
+      email: "",
+      password: "",
+      errors: {},
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,15 +19,16 @@ class LoginForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
-    this.setState({errors: nextProps.errors})
+    this.setState({ errors: nextProps.errors });
   }
 
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return (e) =>
+      this.setState({
+        [field]: e.currentTarget.value,
+      });
   }
 
   handleSubmit(e) {
@@ -35,24 +36,21 @@ class LoginForm extends React.Component {
 
     let user = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
-    this.props.login(user); 
+    this.props.login(user);
   }
 
   renderErrors() {
-    return(
+    return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
   }
-
 
   demoUser(e) {
     e.preventDefault();
@@ -64,17 +62,14 @@ class LoginForm extends React.Component {
     this.props.login(demoAccount)
   }
 
-  
-
-      insertDemoUser () {
-          return (
-            <div className='demo-login'>
-              <h2 className='title-text'>Log in as demo</h2>
-              <button className='demo-button' onClick={this.demoUser}></button>
-            </div>
-          )
-        }
-
+  insertDemoUser() {
+    return (
+      <div className="demo-login">
+        <h2 className="title-text">Log in as demo</h2>
+        <button className="demo-button" onClick={this.demoUser}></button>
+      </div>
+    );
+  }
 
   render() {
     return (

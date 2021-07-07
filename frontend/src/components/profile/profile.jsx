@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { fetchUserEvents } from "../../actions/session_actions";
 import EventIndexItemContainer from "../events/event_index_item_container";
 import * as _ from "underscore";
@@ -8,7 +7,6 @@ import * as _ from "underscore";
 export const Profile = () => {
   const currentUser = useSelector((state) => state.session.user);
   const allEvents = useSelector((state) => state.events);
-  // const userEvents = useSelector((state) => state.session.user.events);
   const dispatch = useDispatch();
 
   useEffect(() => {

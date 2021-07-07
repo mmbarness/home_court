@@ -10,7 +10,7 @@ const initialState = {
   user: {},
 };
 
-export default function (state = initialState, action) {
+export default function seesionReducer (state = initialState, action) {
   const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -30,7 +30,6 @@ export default function (state = initialState, action) {
         isSignedIn: true,
       };
     case RECEIVE_USER_EVENTS:
-      let curUserUsername = state.user.username;
       nextState.user.events = action.events;
       return nextState;
     default:

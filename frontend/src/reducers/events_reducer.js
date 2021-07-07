@@ -2,7 +2,6 @@ import {
   RECEIVE_EVENT,
   RECEIVE_ALL_EVENTS,
   REMOVE_EVENT,
-  RECEIVE_USER_EVENTS,
 } from "../actions/event_actions";
 
 const eventsReducer = (state = { all: {}, user: {} }, action) => {

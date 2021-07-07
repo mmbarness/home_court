@@ -23,7 +23,7 @@ export const NavBarHook = () => {
         <Link to={"/team"} id="profile-link">
           About the Team
         </Link>
-        <a href="#" id="profile-link" onClick={logoutUser}>
+        <a href="#" id="profile-link" alt="log out" onClick={logoutUser}>
           Logout
         </a>
       </div>

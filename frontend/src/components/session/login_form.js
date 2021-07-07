@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
       username: 'demo',
       password: 'password'
     });
-    this.props.login(demoAccount).then(() => this.props.history.push('/'))
+    this.props.login(demoAccount)
   }
 
   
@@ -86,12 +86,14 @@ class LoginForm extends React.Component {
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
+                autoComplete="email"
               />
             <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
+                autoComplete="current-password"
               />
             <br/>
             <input className='demo-button' type="submit" value="Submit" />

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Autocomplete, useGoogleMap, GoogleMap,useLoadScript,Marker, InfoWindow } from '@react-google-maps/api'
-import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocomplete';
-import {formatRelative} from 'date-fns'
-import {Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption} from '@reach/combobox'
+import { useLoadScript } from '@react-google-maps/api'
+import usePlacesAutocomplete, {getGeocode} from 'use-places-autocomplete';
+import {Combobox, ComboboxInput, ComboboxPopover, ComboboxOption} from '@reach/combobox'
 import "@reach/combobox/styles.css"
 import '../../style/css/typeahead-combobox.css'
 import { useState } from 'react';
@@ -36,7 +35,7 @@ const Search = (props) => {
     const [locationData, setLocationData] = useState({});
     const [center, setCenter] = useState(start);
 
-    const {ready, value, suggestions: {status, data}, setValue, clearSuggestions,
+    const {ready, value, suggestions: {status, data}, setValue,
         } = usePlacesAutocomplete({requestOptions: {
             location: {lat: () => center.lat, lng: () => center.lng },
             radius: 12000 //p sure its in meters?

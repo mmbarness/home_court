@@ -12,10 +12,10 @@ const EventSchema = new Schema({
     enum: ['Basketball', 'Soccer', 'Volleyball', 'Spikeball', 'Football', 'Ping Pong', 'Badminton', 'Baseball', 'Tennis' ]
   },
   lat: {
-    type: mongoose.Decimal128,
+    type: String
   },
   lng: {
-    type: mongoose.Decimal128,
+    type: String
   },
   attendees: {
     type: [UserSchema],

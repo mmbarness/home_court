@@ -6,15 +6,17 @@ import * as _ from "underscore";
 
 export const Profile = () => {
   const currentUser = useSelector((state) => state.session.user);
+  const sessionState = useSelector((state) => state.session);
   const allEvents = useSelector((state) => state.events);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUserEvents(currentUser.id));
-  }, [allEvents]);
+  }, []);
 
   const renderEvents = () => {
     let events = currentUser.events;
+    // debugger;
     if (!_.isEmpty(events)) {
       return (
         <div className="user-prof-events">

@@ -4,7 +4,7 @@ import {
   REMOVE_EVENT,
 } from "../actions/event_actions";
 
-const eventsReducer = (state = { all: {}, user: {} }, action) => {
+const eventsReducer = (state = { all: {}}, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
   switch (action.type) {

@@ -10,6 +10,7 @@
   border: 1.5px solid lightgrey;
   border-radius: 5px;
   padding: 0px;
+  text-indent: .5em;
 }
 
 .event-form-sport {
@@ -52,6 +53,7 @@
   padding: 0;
   padding-left: 3px;
   width: 400px;
+  text-indent: .5em;
 }
 
 .event-submit-button {
@@ -80,7 +82,7 @@
 .event-date {
   margin-left: 1px;
   height: 32px;
-
+  text-indent: .1em;
   border: 1.5px solid lightgrey;
   border-radius: 5px;
   font-size: 16px;
@@ -93,4 +95,14 @@
 .sport-logo {
   height: 30px;
   width: 30px;
+}
+
+.event-form-box > input::placeholder {
+  font-size: 1.1em;
+  font-weight: 300;
+} 
+
+.event-form-box > textarea::placeholder {
+  font-size: 1.2em;
+  font-weight: 300;
 }

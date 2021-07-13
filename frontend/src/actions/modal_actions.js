@@ -9,6 +9,6 @@ export const openModal = (modal) => ({
 });
 
 export const closeModal = () => (
-  {type: CLOSE_MODAL},
-  {type: REMOVE_EVENT_ERRORS}
+  {type: CLOSE_MODAL}
+  // {type: REMOVE_EVENT_ERRORS}
 );

@@ -63,16 +63,20 @@ export function findEventsInMapBounds(events, mapBounds) {
   let eventLng;
 
   const eventsArr = [];  
+  const hiddenEvents = []
   allEventsArr.forEach( event => {
       eventLat = parseFloat(event.lat.$numberDecimal);
       eventLng = parseFloat(event.lng.$numberDecimal);
 
       if (eventLat > mapBounds.lat.min && eventLat < mapBounds.lat.max &&
         eventLng > mapBounds.lng.min && eventLng < mapBounds.lng.max ) {
+        event.visible = true;
         eventsArr.push(event);
-      }
-
+      } else {
+        event.visible = false;
+        hiddenEvents.push(event)
+      }  
     });
-    
-    return eventsArr
+    // debugger;
+    return {eventsArr, hiddenEvents}
 }

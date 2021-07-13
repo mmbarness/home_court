@@ -15,13 +15,14 @@ export const Profile = () => {
 
   const renderEvents = () => {
     let events = currentUser.events;
-
     if (!_.isEmpty(events)) {
+      let eventsArr = events.data.filter(event => event !== null)
+      eventsArr.forEach(event => event.visible = true);
       return (
         <div className="user-prof-events">
-          {events.data.map((event, i) => (
-            <EventIndexItemContainer key={i} event={event} />
-          ))}
+          {eventsArr.map((event, i) => {
+            return(<EventIndexItemContainer key={i} event={event} />)
+            })}
         </div>
       );
     }

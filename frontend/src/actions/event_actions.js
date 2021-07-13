@@ -5,6 +5,7 @@ export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
 export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 export const RECEIVE_NEW_EVENT = "RECEIVE_NEW_EVENT";
+export const REMOVE_EVENT_FROM_USER_SESSION = "REMOVE_EVENT_FROM_USER_SESSION"
 
 export const receiveEvents = (events) => {
   return {
@@ -26,6 +27,13 @@ export const removeEvent = (event) => {
     event,
   };
 };
+
+export const removeEventFromUserSession = (event) => (
+  {
+    type: REMOVE_EVENT_FROM_USER_SESSION,
+    event
+  }
+)
 
 export const receiveEventErrors = (errors) => {
   return {
@@ -57,7 +65,10 @@ export const createEvent = (data) => (dispatch) => {
 
 export const unJoinEvent = (data) => (dispatch) => {
   return APIUtil.unJoinEvent(data)
-    .then((event) => dispatch(receiveEvent(event)))
+    .then((event) => {
+      dispatch(receiveEvent(event))
+      dispatch(removeEventFromUserSession(data))
+    })
     .catch((err) => dispatch(receiveEventErrors(err.response.data)));
 };
 
@@ -67,7 +78,7 @@ export const deleteEvent = (eventId) => async (dispatch) => {
 };
 
 export const joinEvent = (eventId, data) => (dispatch) => {
-  return APIUtil.joinEvent(eventId, data).then((event) =>
-    dispatch(receiveEvent(event))
+  return APIUtil.joinEvent(eventId, data).then((event) =>{
+    return(dispatch(receiveEvent(event)))}
   );
 };

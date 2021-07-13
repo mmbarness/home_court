@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+mongoose.set('useFindAndModify', false);
 const passport = require("passport");
 const getAsync = require("@awaitjs/express");
 
@@ -29,8 +30,6 @@ router.get("/user/:user_id", (req, res) => {
 // add user to event attendee list & add event to user eventList
 router.patch("/:event_id/add_attendee", async (req, res) => {
   let userId = req.body.id;
-  let username = req.body.username;
-  let event = await Event.findById(req.params.event_id);
   let user = await User.findById(userId);
 
   Event.findOneAndUpdate(
@@ -38,9 +37,14 @@ router.patch("/:event_id/add_attendee", async (req, res) => {
     { $push: { attendees: user } }
   )
     .then((event) =>
-      User.findOneAndUpdate({ _id: userId }, { $push: { eventList: event.id } })
+      {
+        User.findOneAndUpdate({ _id: userId }, { $push: { eventList: event.id } })
+      }
     )
-    .then((user) => res.json(event))
+    .then(async (user) => {
+      let fixedEvent = await Event.findById(req.params.event_id);
+      return(res.json(fixedEvent))
+    })
     .catch((err) =>
       res
         .status(404)
@@ -53,16 +57,19 @@ router.patch("/:event_id/add_attendee", async (req, res) => {
 // remove user from event attendee list & remove event from user eventList
 router.patch("/:event_id/remove_attendee", async (req, res) => {
   let userId = req.body.user_id;
-  let event = await Event.findById(req.params.event_id);
   let user = await User.findById(userId);
   Event.findOneAndUpdate(
     { _id: req.params.event_id },
     { $pull: { attendees: { _id: user.id } } }
   )
-    .then((event) =>
+    .then((event) =>{
       User.findOneAndUpdate({ _id: userId }, { $pull: { eventList: event.id } })
+    }
     )
-    .then((user) => res.json(event))
+    .then(async (user) => {
+      let fixedEvent = await Event.findById(req.params.event_id);
+      return(res.json(fixedEvent))
+    })
     .catch((err) =>
       res
         .status(404)

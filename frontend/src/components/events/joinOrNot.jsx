@@ -29,7 +29,7 @@ export const JoinOrNot = (props) => {
     return (
       <button
         className="join-event event-item-button"
-        onClick={() => {
+        onClick={(e) => {
           setjoined(!joined);
           dispatch(joinEvent(event._id, currentUser));
         }}
@@ -43,13 +43,13 @@ export const JoinOrNot = (props) => {
     e.preventDefault();
     let obj = { user_id: currentUser.id, event_id: event._id };
     setjoined(!joined);
-    unJoinEvent(obj);
+    dispatch(unJoinEvent(obj));
   };
 
   const unjoinEventButton = () => {
     if (currentUser.username !== postedByName) {
       return (
-        <button onClick={unJoin} className="unjoin-event event-item-button">
+        <button onClick={(e) => unJoin(e)} className="unjoin-event event-item-button">
           ✔ Attending
         </button>
       );
@@ -57,7 +57,6 @@ export const JoinOrNot = (props) => {
       return <h3 className="your-event">This is your event!</h3>;
     }
   };
-
   return joined ? unjoinEventButton() : joinEventButton();
 };
 

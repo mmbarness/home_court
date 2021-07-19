@@ -22,6 +22,5 @@ export const getUserEvents = (id) => {
 
 export const getUserLocation = (id) => {
   let response = axios.get(`/api/users/${id}/coordinates`);
-  console.log(response)
   return response
 };

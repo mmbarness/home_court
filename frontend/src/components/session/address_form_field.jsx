@@ -23,23 +23,24 @@ function AddressFormField(props) {
     return(
         <div>
             <Search 
-            updateAddress={props.updateAddress ? props.updateAddress : null}
-            panTo={props.panTo ? props.panTo : null}/>
+                updateAddress={props.updateAddress ? props.updateAddress : null}
+                panTo={props.panTo ? props.panTo : null}
+            />
         </div>
     )
 };
 
 const Search = (props) => {
 
-    const start = props.center || {lat: 40.783058, lng: -73.971252};
+    const start = props.center || {lat: 39.828239, lng: -98.579373};
+    const radius = props.center ? 12000 : 3218688;
     const [address, setAddress] = useState({});
     const [locationData, setLocationData] = useState({});
     const [center, setCenter] = useState(start);
-
     const {ready, value, suggestions: {status, data}, setValue, clearSuggestions,
         } = usePlacesAutocomplete({requestOptions: {
             location: {lat: () => center.lat, lng: () => center.lng },
-            radius: 12000 //p sure its in meters?
+            radius: radius //in meters
         }
     });
 
@@ -56,9 +57,11 @@ const Search = (props) => {
             addressObj: parser.parseLocation(location.formatted_address),
             coordinates: {lat: location.geometry.location.lat(), long: location.geometry.location.lng()}
         }
+
         const coord = {lat: locationJSON.coordinates.lat, lng: locationJSON.coordinates.long}
         setCenter(coord);
         updateAddress(locationJSON);
+
         if (props.panTo) {
             props.panTo(coord)
         }

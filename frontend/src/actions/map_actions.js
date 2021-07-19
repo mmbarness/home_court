@@ -12,6 +12,7 @@ export const receiveMapBounds = (mapBounds) => {
 };
 
 export const receiveUserLocation = (location) => {
+  
   return {
     type: RECEIVE_USER_LOCATION,
     location,

@@ -26,8 +26,8 @@ function EventShow(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries: libraries,
   });
-
-  const { event } = props;
+  
+  const { start, event } = props.event;
   const center = {
     lat: parseFloat(event.lat.$numberDecimal),
     lng: parseFloat(event.lng.$numberDecimal),
@@ -53,8 +53,9 @@ function EventShow(props) {
     if (props.currentUser.id !== props.event.postedBy)
       return <JoinOrNot event={props.event} />;
   };
-
-  const googleMapsLink = `http://www.google.com/maps/place/${center.lat},${center.lng}`;
+  
+  const googleMapsLink = `http://www.google.com/maps/dir/${start.lat},${start.lng}/${center.lat},${center.lng}`;
+                                              //maps/dir/37.7963504,-122.4183516/37.791201,-122.4377098/@37.7938468,-122.437134,15z
   return (
     <div className="event-modal-container">
       <div>

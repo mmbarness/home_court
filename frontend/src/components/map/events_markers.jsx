@@ -44,7 +44,7 @@ function EventsMarkers(props) {
                 <h1 className='info-window-title'
                     onClick={() => props.openModal({
                     modal: 'event-show',
-                    data: selectedEvent 
+                    data: {start: props.center, event: selectedEvent} 
                     })}
                 >{selectedEvent.title}</h1>
                 <p>{new Date().toLocaleDateString() === new Date(selectedEvent.startDate).toLocaleDateString() ? 

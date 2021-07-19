@@ -48,7 +48,7 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault();   
     let user = {
       username: this.state.username,
       email: this.state.email,
@@ -62,7 +62,6 @@ class SignupForm extends React.Component {
   }
 
   renderErrors() {
-    debugger
     return(
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -75,7 +74,8 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    
+      if (this.state.address.coordinates) {
+      }
 
     return (
       <div className="session-form-container">

@@ -1,8 +1,17 @@
-
 .link-logo {
   display: flex;
   width: 45px;
   height: 45px;
+}
+
+.team-page {
+  flex: 1;
+  background-color: rgb(255, 251, 244);
+}
+
+.team-members > h1 {
+  font-size: 35px;
+  padding: 35px 0;
 }
 
 .footer-header {
@@ -24,14 +33,21 @@
 
 .team-members {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   max-width: auto;
   margin: 8px auto;
 }
 
+.team-member {
+  display: flex;
+  flex-direction: column;
+}
+
 .team-photo {
   width: auto;
-  height: 300px;
+  height: 250px;
   border-radius: 15px;
 }
 
@@ -40,8 +56,8 @@
   font-style: italic;
 }
 
-@media(max-width: 1500px){
-  .team-members-list  {
+@media (max-width: 1500px) {
+  .team-members-list {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }
@@ -52,4 +68,9 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   column-gap: 5px;
+  max-width: 350px;
+}
+
+.column-right {
+  max-width: 50px;
 }

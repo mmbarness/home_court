@@ -2,10 +2,9 @@ import {
   RECEIVE_EVENT,
   RECEIVE_ALL_EVENTS,
   REMOVE_EVENT,
-  RECEIVE_USER_EVENTS,
 } from "../actions/event_actions";
 
-const eventsReducer = (state = { all: {}, user: {} }, action) => {
+const eventsReducer = (state = { all: {}}, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
   switch (action.type) {

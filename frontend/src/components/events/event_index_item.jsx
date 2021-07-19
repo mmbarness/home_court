@@ -1,6 +1,5 @@
 import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
-import * as _ from "underscore";
 import JoinOrNot from "./joinOrNot";
 import { displaySportWithEmoji } from "../../util/sport_emoji";
 

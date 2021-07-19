@@ -89,7 +89,7 @@ p {
 .event-index-ul {
   display: flex;
   flex-direction: column;
-  width: -webkit-fill-available;
+  width: 95%;
 }
 
 .event-index > h1 {

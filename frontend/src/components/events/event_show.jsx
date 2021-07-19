@@ -1,15 +1,16 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import mapStyles from "../../util/map_styles";
+
 import { formatDateTime } from "../../util/date_util_short";
-import { FiMapPin, FiUsers, FiClock, FiMeh } from "react-icons/fi";
+import { FiClock, FiMeh } from "react-icons/fi";
 import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
 import { IoLocationSharp } from "react-icons/io5";
 import { displaySportWithEmoji } from "../../util/sport_emoji";
 import DeleteEvent from "./delete_event";
 import JoinOrNot from "./joinOrNot";
 import * as _ from "underscore";
+import mapStyles from "../../util/map_styles";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -110,7 +111,7 @@ function EventShow(props) {
               <div>
                 <IoLocationSharp />
               </div>
-              <a href={googleMapsLink} target="_blank">
+              <a href={googleMapsLink} target="_blank" rel="noreferrer">
                 Get Directions
               </a>
             </span>

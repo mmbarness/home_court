@@ -1,5 +1,5 @@
 import React from "react";
-import {GoogleMap, useLoadScript, Marker, onBoundsChanged} from "@react-google-maps/api";
+import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
 import * as mapUtil from '../../util/map_util'
 import EventMapMenu from './event_map_menu'
 import CreateEventInfoWindow from './create_event_info_window'

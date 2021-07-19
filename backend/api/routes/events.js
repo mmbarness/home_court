@@ -119,10 +119,10 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const { errors, isValid } = validateEventInput(req.body);
+    // debugger;
     if (!isValid) {
       return res.status(400).json(errors);
     }
-
     const newEvent = new Event({
       title: req.body.title,
       sport: req.body.sport,

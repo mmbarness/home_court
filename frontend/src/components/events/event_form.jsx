@@ -39,13 +39,14 @@ class EventForm extends React.Component {
     const newEvent = Object.assign({}, this.state);
     this.props.createEvent(newEvent).then(
       () => 
-        (this.errorChecker) ? this.props.closeModal() : this.renderErrors()
+        (this.errorChecker()) ? this.props.closeModal() : null 
       );
     this.forceUpdate();
   }
 
   errorChecker() {
-    let errors = this.props.errors.events(_.isEmpty(errors)) ? false : true;
+    // debugger;
+    return(_.isEmpty(this.props.errors))
   }
 
   update(property) {
@@ -53,13 +54,20 @@ class EventForm extends React.Component {
   }
 
   renderErrors() {
-    const err = this.props.errors.request.response;
-    let errDiv = document.createElement("div");
-    let errText = document.createTextNode(err);
-    errDiv.appendChild(errText);
+    const err = this.props.errors
+    let errDiv1 = document.createElement("div");
+    let errText = document.createTextNode(`${err.response.data.title}!`);
+    errDiv1.appendChild(errText);
     let eventFormBox = document.getElementById("event-form-box");
     let eventFormHeader = document.getElementById("event-form-title-input");
-    eventFormBox.insertBefore(errDiv, eventFormHeader);
+    eventFormBox.insertBefore(
+      errDiv1, 
+      eventFormHeader
+    );
+  }
+
+  returnErrors = () => {
+    return(<div id="create-event-form-error">{this.props.errors.response.data.title}!</div>)
   }
 
   handleSportChange(e) {
@@ -75,6 +83,8 @@ class EventForm extends React.Component {
             id="event-form-box"
             onSubmit={this.handleSubmit}
           >
+            {/* {this.returnErrors()} */}
+            {this.errorChecker() ? null : this.returnErrors()}
             <h1 id="create-event-header">Event Details</h1>
             <div onClick={this.props.closeModal} className="close-x">
               <MdClose size={28} />

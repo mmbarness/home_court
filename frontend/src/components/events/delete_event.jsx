@@ -4,7 +4,6 @@ import { deleteEvent } from "../../actions/event_actions";
 import { closeModal } from "../../actions/modal_actions";
 
 export const DeleteEvent = (props) => {
-  let loggedIn = useSelector((state) => state.session.isAuthenticated);
   let currentUser = useSelector((state) => state.session.user);
   let event = props.event;
   let postedByName = event.attendees[0].username;

@@ -27,7 +27,7 @@ function EventShow(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries: libraries,
   });
-  console.log(props)
+  
   const { startLocation, event } = props;
   const center = {
     lat: parseFloat(event.lat.$numberDecimal),

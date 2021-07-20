@@ -67,8 +67,8 @@ class EventIndexItem extends React.Component {
     const { event } = this.props;
     if (event !== null) {
       return (
-        <li className="event-index-item">
-          <div className="event-item-content" onClick={this.openEventModal}>
+        <li className="event-index-item" onClick={this.openEventModal}>
+          <div className="event-item-content">
             <div className="event-item-header">
               <h1 className="event-item-title">{event.title}</h1>
               <h2 className="event-item-sport">

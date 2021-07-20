@@ -7,8 +7,7 @@ class EventsIndex extends React.Component {
     this.props.fetchEvents();
   }
 
-  render() {
-    
+  render() {    
     if (Object.keys(this.props.events.all).length === 0 || Object.keys(this.props.mapBounds).length === 0) {
       return null;
     } else {      
@@ -19,7 +18,11 @@ class EventsIndex extends React.Component {
           <h1>Find a Game Near You</h1>
           <ul className="event-index-ul">
             {eventsArr.map((event, i) => (
-              <EventIndexItemContainer key={i} event={event} />
+              <EventIndexItemContainer
+                key={i} 
+                center={this.props.center}
+                event={event}
+              />
             ))}
           </ul>
         </div>

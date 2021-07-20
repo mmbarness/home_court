@@ -37,6 +37,7 @@ class MainPage extends React.Component {
       <div className="main-page">
         <section className="main-page-events">
           <EventsIndex
+            center={this.state.center}
             events={this.props.events}
             fetchEvents={this.props.fetchEvents}
             openModal={this.props.openModal}

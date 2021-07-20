@@ -17,7 +17,10 @@ class EventIndexItem extends React.Component {
   openEventModal() {
     this.props.openModal({
       modal: "event-show",
-      data: this.props.event,
+      data: {
+        startLocation: this.props.center,
+        event: this.props.event,
+      }
     });
   }
 

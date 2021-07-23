@@ -23,9 +23,10 @@ function EventMap(props) {
   
   const onBoundsChanged = () => {
     const mapBounds = {}
-    const mapData = mapRef.current.getBounds()
-    mapBounds.lng = {min: mapData.Eb.g, max: mapData.Eb.i}
-    mapBounds.lat = {min: mapData.lc.g, max: mapData.lc.i}
+    const ne = mapRef.current.getBounds().getNorthEast();
+    const sw = mapRef.current.getBounds().getSouthWest();
+    mapBounds.lng = {min: sw.lng(), max: ne.lng()}
+    mapBounds.lat =  {min: sw.lat(), max: ne.lat()}
     props.receiveMapBounds(mapBounds)
   } 
 

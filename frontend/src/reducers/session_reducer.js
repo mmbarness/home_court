@@ -1,3 +1,4 @@
+import { REMOVE_EVENT_FROM_USER_SESSION } from "../actions/event_actions";
 import {
   RECEIVE_CURRENT_USER,
   RECEIVE_USER_LOGOUT,
@@ -32,6 +33,13 @@ export default function seesionReducer (state = initialState, action) {
     case RECEIVE_USER_EVENTS:
       nextState.user.events = action.events;
       return nextState;
+    case REMOVE_EVENT_FROM_USER_SESSION: 
+      let users_events = nextState.user.events.data.filter(event => event !== null)
+      const event_id = action.event.event_id
+      let event = users_events.filter( event => event._id === event_id)
+      let filteredNextStateEvents = users_events.filter( event => event._id !== event_id)
+      nextState.user.events.data = filteredNextStateEvents
+      return nextState
     default:
       return state;
   }

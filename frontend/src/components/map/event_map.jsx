@@ -23,13 +23,12 @@ function EventMap(props) {
   
   const onBoundsChanged = () => {
     const mapBounds = {}
-    const mapData = mapRef.current.getBounds()
-    mapBounds.lng = {min: mapData.Eb.g, max: mapData.Eb.i}
-    mapBounds.lat = {min: mapData.mc.g, max: mapData.mc.i}
+    const ne = mapRef.current.getBounds().getNorthEast();
+    const sw = mapRef.current.getBounds().getSouthWest();
+    mapBounds.lng = {min: sw.lng(), max: ne.lng()}
+    mapBounds.lat =  {min: sw.lat(), max: ne.lat()}
     props.receiveMapBounds(mapBounds)
-  }
-
-   
+  } 
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading the map";
@@ -81,6 +80,7 @@ function EventMap(props) {
 
         <EventsMarkers 
           events={props.events.all}
+          center={props.center}
           selected={selected}
           setSelected={setSelected}
           openModal={props.openModal}

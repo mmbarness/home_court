@@ -62,3 +62,4 @@ export const fetchUserEvents = (id) => (dispatch) => {
     dispatch(receiveUserEvents(event))
   );
 };
+

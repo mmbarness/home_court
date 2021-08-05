@@ -2,6 +2,7 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 import "../../style/css/event-form.css";
 import * as _ from "underscore";
+
 class EventForm extends React.Component {
   constructor(props) {
     super(props);

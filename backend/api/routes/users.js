@@ -15,7 +15,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     res.json({
       id: req.user.id,
       username: req.user.username,
-      email: req.user.email
+      email: req.user.email,
     });
   })
 
@@ -134,5 +134,12 @@ router.post('/register', (req, res) => {
         res.status(400).json(err)
       })
   })
+
+  router.get("/:user_id/coordinates", async (req, res) => {
+    User.findById(req.params.user_id).then(user => {
+      res.json(user)
+    })
+  });
+
 
 module.exports = router;

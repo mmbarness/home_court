@@ -16,7 +16,12 @@ export const Profile = () => {
   const renderEvents = () => {
     let events = currentUser.events;
     if (!_.isEmpty(events)) {
+      // debugger;
       let eventsArr = events.data.filter(event => event !== null)
+      const attendingEvents = eventsArr.filter(event => (
+        event.attendees.some((user) => user.username === currentUser.username)
+      ));
+      console.log(attendingEvents)
       eventsArr.forEach(event => event.visible = true);
       return (
         <div className="user-prof-events">

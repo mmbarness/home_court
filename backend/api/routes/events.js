@@ -31,27 +31,18 @@ router.get("/user/:user_id", (req, res) => {
 router.patch("/:event_id/add_attendee", async (req, res) => {
   let userId = req.body.id;
   let user = await User.findById(userId);
-
-  Event.findOneAndUpdate(
-    { _id: req.params.event_id },
-    { $push: { attendees: user } }
-  )
-    .then((event) =>
-      {
-        User.findOneAndUpdate({ _id: userId }, { $push: { eventList: event.id } })
-      }
-    )
-    .then(async (user) => {
-      let fixedEvent = await Event.findById(req.params.event_id);
-      return(res.json(fixedEvent))
+  try {
+    let patchedEvent = await Event.findOneAndUpdate({ _id: req.params.event_id },{ $push: { attendees: user }}, {new: true})
+    User.findOneAndUpdate({ _id: req.body.id }, { $push: { eventList: patchedEvent.id }}, {new: true})
+    return(res.json(patchedEvent))
+  } 
+  catch(err) {
+    res
+      .status(404)
+      .json({
+        noeventfound: "No event found with that ID - attendee not added",
     })
-    .catch((err) =>
-      res
-        .status(404)
-        .json({
-          noeventfound: "No event found with that ID - attendee not added",
-        })
-    );
+  }
 });
 
 // remove user from event attendee list & remove event from user eventList

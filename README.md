@@ -2,6 +2,8 @@
 
 Home Court is web application that lets you create, join, and search for ongoing pick-up games in your area.
 
+![Alt Text](https://i.imgur.com/nMvzDeO.gif)
+
 ## Team
 * Matthew Barnes
   * [Github](https://github.com/mmbarness) | [LinkedIn](https://www.linkedin.com/in/matthew-barnes-61162b64/)

@@ -30,6 +30,10 @@
   cursor: pointer;
 }
 
+.event-item-content {
+  padding-bottom: 0.5em;
+}
+
 .event-item-content:hover {
   cursor: pointer;
 }
@@ -43,7 +47,8 @@
 
 .event-item-footer {
   display: flex;
-  padding: 0.5em 0;
+  padding-bottom: 0.4em;
+  justify-content: space-between;
 }
 
 .event-item-button {

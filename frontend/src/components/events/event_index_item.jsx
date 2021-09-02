@@ -1,6 +1,6 @@
 import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
-import JoinOrNot from "./joinOrNot";
+import JoinOrNot from "./joinOrNot"
 import { displaySportWithEmoji } from "../../util/sport_emoji";
 
 

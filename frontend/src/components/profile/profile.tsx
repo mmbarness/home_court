@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { fetchUserEvents } from "../../actions/session_actions";
 import EventIndexItemContainer from "../events/event_index_item_container";
+import {Event, Attendee} from '../events/eventTypes'
 import * as _ from "underscore";
 
 export const Profile = () => {
-  const sessionState = useSelector((state) => state.session);
+  const sessionState = useSelector((state: RootStateOrAny) => state.session);
   const currentUser = sessionState.user
   const dispatch = useDispatch();
 
@@ -16,16 +17,14 @@ export const Profile = () => {
   const renderEvents = () => {
     let events = currentUser.events;
     if (!_.isEmpty(events)) {
-      // debugger;
-      let eventsArr = events.data.filter(event => event !== null)
-      const attendingEvents = eventsArr.filter(event => (
+      let eventsArr = events.data.filter((event: Event) => event !== null)
+      const attendingEvents = eventsArr.filter((event: Event) => (
         event.attendees.some((user) => user.username === currentUser.username)
       ));
-      console.log(attendingEvents)
-      eventsArr.forEach(event => event.visible = true);
+      eventsArr.forEach((event: Event)=> event.visible = true);
       return (
         <div className="user-prof-events">
-          {eventsArr.map((event, i) => {
+          {eventsArr.map((event: Event, i: number) => {
             return(<EventIndexItemContainer key={i} event={event} />)
             })}
         </div>

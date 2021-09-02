@@ -11,7 +11,7 @@ const initialState = {
   user: {},
 };
 
-export default function seesionReducer (state = initialState, action) {
+export default function sessionReducer (state = initialState, action) {
   const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
@@ -34,6 +34,7 @@ export default function seesionReducer (state = initialState, action) {
       nextState.user.events = action.events;
       return nextState;
     case REMOVE_EVENT_FROM_USER_SESSION: 
+      // debugger;
       let users_events = nextState.user.events.data.filter(event => event !== null)
       const event_id = action.event.event_id
       let event = users_events.filter( event => event._id === event_id)

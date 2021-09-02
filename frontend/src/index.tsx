@@ -8,12 +8,12 @@ import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
-  let store;
+  let store :any;
 
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
 
-    const decodedUser = jwt_decode(localStorage.jwtToken);
+    const decodedUser :any = jwt_decode(localStorage.jwtToken);
     const preloadedState = {
       session: { isAuthenticated: true, user: decodedUser },
     };
@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore({});
   }
-  window.store = store;
   const root = document.getElementById("root");
 
   ReactDOM.render(<Root store={store} />, root);

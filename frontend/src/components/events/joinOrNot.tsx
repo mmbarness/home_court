@@ -1,22 +1,41 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import * as _ from "underscore";
 import { joinEvent, unJoinEvent } from "../../actions/event_actions";
+import {Attendee} from './eventTypes'
 
-export const JoinOrNot = (props) => {
+interface JoinOrNotProps {
+  event: {  
+    attendees: Attendee[]
+    dateCreated: string
+    description: string
+    endDate: string
+    lat: {$numberDecimal: string}
+    lng: {$numberDecimal: string}
+    postedBy: string
+    sport: string
+    startDate: string
+    title: string
+    visible: boolean
+    __v: number,
+    _id: number
+  }
+}
+
+export const JoinOrNot = (props :JoinOrNotProps) => {
   const event = props.event;
   const attendees = props.event.attendees;
-  const currentUser = useSelector((state) => state.session.user);
-  let postedByName;
+  const currentUser = useSelector((state: RootStateOrAny) => state.session.user);
+  let postedByName :string;
   !_.isEmpty(event.attendees)
     ? (postedByName = event.attendees[0].username)
-    : (postedByName = null);
+    : (postedByName = "");
   const dispatch = useDispatch();
 
   const joinedOrNot = () => {
-    let bool;
+    let bool :boolean = false;
     if (!_.isEmpty(attendees)) {
-      bool = attendees.some((user) => user.username === currentUser.username)
+      bool = attendees.some((user :any) => user.username === currentUser.username)
         ? true
         : false;
     }
@@ -39,8 +58,7 @@ export const JoinOrNot = (props) => {
     );
   };
 
-  const unJoin = (e) => {
-    e.preventDefault();
+  const unJoin = () => {
     let obj = { user_id: currentUser.id, event_id: event._id };
     setjoined(!joined);
     dispatch(unJoinEvent(obj));
@@ -49,7 +67,7 @@ export const JoinOrNot = (props) => {
   const unjoinEventButton = () => {
     if (currentUser.username !== postedByName) {
       return (
-        <button onClick={(e) => unJoin(e)} className="unjoin-event event-item-button">
+        <button onClick={() => unJoin()} className="unjoin-event event-item-button">
           ✔ Attending
         </button>
       );

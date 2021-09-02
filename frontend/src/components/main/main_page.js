@@ -1,6 +1,6 @@
 import React from "react";
 import EventMapContainer from "../map/event_map_container";
-import EventsIndex from "../events/events_index.jsx";
+import EventsIndex from "../events/events_index.tsx";
 import "../../style/css/main_page.css";
 import "../../style/css/events.css";
 
@@ -41,7 +41,7 @@ class MainPage extends React.Component {
             events={this.props.events}
             fetchEvents={this.props.fetchEvents}
             openModal={this.props.openModal}
-            currentUser={this.props.currentUser}
+            currentUser={this.props.user}
             fetchUserEvents={this.props.fetchUserEvents}
             mapBounds={this.props.mapBounds}
           />

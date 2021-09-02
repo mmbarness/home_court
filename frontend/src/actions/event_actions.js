@@ -69,7 +69,7 @@ export const unJoinEvent = (data) => (dispatch) => {
       dispatch(receiveEvent(event))
       dispatch(removeEventFromUserSession(data))
     })
-    .catch((err) => dispatch(receiveEventErrors(err.response.data)));
+    .catch((err) => {dispatch(receiveEventErrors(err))});
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {

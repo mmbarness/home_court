@@ -3,7 +3,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { Switch } from "react-router-dom";
 import { Route } from "react-router-dom";
 
-import SplashPage from "../components/splash.jsx";
+import SplashPage from "../components/splash.tsx";
 import MainPageContainer from "../components/main/main_page_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";

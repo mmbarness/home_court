@@ -1,3 +1,7 @@
+export interface latLng {
+  lat: google.maps.LatLng;
+  lng: google.maps.LatLng;
+}
 export interface Attendee {
   createdAt: string
   email: string
@@ -22,4 +26,9 @@ export interface Event {
     visible: boolean
     __v: number,
     _id: number
+}
+
+export interface EventShowOptions{
+  styles: google.maps.MapTypeStyle[]
+  'disableDefaultUI': boolean
 }

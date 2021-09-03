@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import EventShow from "./event_show";
+import EventShow from "./eventShow";
 import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => ({

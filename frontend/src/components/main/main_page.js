@@ -1,6 +1,6 @@
 import React from "react";
 import EventMapContainer from "../map/event_map_container";
-import EventsIndex from "../events/events_index.tsx";
+import EventsIndex from "../events/eventsIindex.tsx";
 import "../../style/css/main_page.css";
 import "../../style/css/events.css";
 

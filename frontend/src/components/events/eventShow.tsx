@@ -1,7 +1,6 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-
 import { formatDateTime } from "../../util/date_util_short";
 import { FiClock, FiMeh } from "react-icons/fi";
 import { BsPeopleFill, BsCalendarFill } from "react-icons/bs";
@@ -11,21 +10,31 @@ import DeleteEvent from "./delete_event";
 import JoinOrNot from "./joinOrNot";
 import * as _ from "underscore";
 import mapStyles from "../../util/map_styles";
+import {Event, latLng} from './eventTypes'
+import { User } from "../globalCompTypes";
 
-const libraries = ["places"];
 const mapContainerStyle = {
   width: "480px",
   height: "250px",
 };
-const options = {
-  styles: mapStyles,
+
+const options: google.maps.MapOptions = {
+  styles : mapStyles,
   disableDefaultUI: true,
 };
 
-function EventShow(props) {
+interface EventShowProps {
+  closeModal: any;
+  currentUser: User;
+  event: Event;
+  startLocation: latLng;
+}
+
+const EventShow = (props: EventShowProps) => {
+  console.log('eventshow: ', props)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: libraries,
+    libraries: ["places"],
   });
   
   const { startLocation, event } = props;
@@ -56,6 +65,7 @@ function EventShow(props) {
   };
   
   const googleMapsLink = `http://www.google.com/maps/dir/${startLocation.lat},${startLocation.lng}/${center.lat},${center.lng}`;
+
   return (
     <div className="event-modal-container">
       <div>

@@ -2,29 +2,37 @@ import React from "react";
 import { formatDateTime } from "../../util/date_util_short";
 import JoinOrNot from "./joinOrNot"
 import { displaySportWithEmoji } from "../../util/sport_emoji";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../actions/modal_actions";
+import {Event} from './eventTypes'
 
+interface EventIndexItemProps {
+  center?:{
+    lat: number;
+    lng: number;
+  };
+  event: Event
+}
 
-class EventIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.openEventModal = this.openEventModal.bind(this);
-  }
+export const EventIndexItem = (props: EventIndexItemProps) => {
 
-  openEventModal() {
-    this.props.openModal({
+  const dispatch = useDispatch()
+
+  const openEventModal = () => {
+    dispatch(openModal({
       modal: "event-show",
       data: {
-        startLocation: this.props.center,
-        event: this.props.event,
-      }
-    });
+        startLocation: props.center,
+        event: props.event,
+      }}
+    ))
   }
 
-  render() {
-    const { event } = this.props;
+  const renderEvent = () => {
+    const {event} = props;
     if ((event !== null) && (event.visible)){
       return (
-        <li className="event-index-item" onClick={this.openEventModal}>
+        <li className="event-index-item" onClick={() => (openEventModal())}>
           <div className="event-item-content">
             <div className="event-item-header">
               <h1 className="event-item-title">{event.title}</h1>
@@ -33,7 +41,7 @@ class EventIndexItem extends React.Component {
               </h2>
             </div>
             <p className="event-item-date">
-              {formatDateTime(this.props.event.startDate)}
+              {formatDateTime(event.startDate)}
             </p>
             <div></div>
           </div>
@@ -42,10 +50,12 @@ class EventIndexItem extends React.Component {
           </div>
         </li>
       );
-    }else {
+    } else {
       return (<div></div>)
     }
   }
+
+  return(renderEvent())
 }
 
 export default EventIndexItem;

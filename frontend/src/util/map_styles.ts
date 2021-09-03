@@ -1,4 +1,5 @@
-const mapStyles = [
+
+const mapStyles: google.maps.MapTypeStyle[] = [
     {
         "featureType": "landscape.man_made",
         "elementType": "geometry",

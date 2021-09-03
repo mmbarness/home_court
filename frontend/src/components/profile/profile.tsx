@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { fetchUserEvents } from "../../actions/session_actions";
-import EventIndexItemContainer from "../events/event_index_item_container";
+import EventIndexItem from "../events/eventIndexItem";
 import {Event, Attendee} from '../events/eventTypes'
 import * as _ from "underscore";
 
@@ -25,7 +25,7 @@ export const Profile = () => {
       return (
         <div className="user-prof-events">
           {eventsArr.map((event: Event, i: number) => {
-            return(<EventIndexItemContainer key={i} event={event} />)
+            return(<EventIndexItem key={i} event={event} />)
             })}
         </div>
       );

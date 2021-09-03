@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import EventIndexItemContainer from "./event_index_item_container";
+import EventIndexItem from "./eventIndexItem";
 import { findEventsInMapBounds } from "../../util/map_util";
 import {Attendee, Event} from './eventTypes'
 
@@ -36,7 +36,7 @@ export const EventsIndex = (props: EventsIndexProps) => {
           <h1>Find a Game Near You</h1>
           <ul className="event-index-ul">
             {allEvents.eventsArr.map((event :Event, i :number) =>{ 
-              return(<EventIndexItemContainer
+              return(<EventIndexItem
                 key={i} 
                 center={props.center}
                 event={event}

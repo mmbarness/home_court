@@ -18,9 +18,6 @@ export const Profile = () => {
     let events = currentUser.events;
     if (!_.isEmpty(events)) {
       let eventsArr = events.data.filter((event: Event) => event !== null)
-      const attendingEvents = eventsArr.filter((event: Event) => (
-        event.attendees.some((user) => user.username === currentUser.username)
-      ));
       eventsArr.forEach((event: Event)=> event.visible = true);
       return (
         <div className="user-prof-events">

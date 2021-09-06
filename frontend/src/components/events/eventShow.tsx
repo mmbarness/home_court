@@ -49,9 +49,14 @@ const EventShow = (props: EventShowProps) => {
 
   const renderPostedBy = () => {
     let postedByName;
-    !_.isEmpty(event.attendees)
-      ? (postedByName = event.attendees[0].username)
-      : (postedByName = null);
+    if (!_.isEmpty(event.attendees)){
+      const attendees = event.attendees!
+      if (attendees.length > 1){
+        postedByName = attendees[0].username
+      }
+    } else {
+      (postedByName = null);
+    }
     if (!_.isNull(postedByName)) {
       return <p>{`Hosted by:  ${postedByName}`}</p>;
     } else {
@@ -95,7 +100,7 @@ const EventShow = (props: EventShowProps) => {
               <div>
                 <BsPeopleFill />
               </div>
-              Attendees: {event.attendees.length}
+              Attendees: {(event.attendees) ? event.attendees.length : 0}
             </span>
 
             <span className="event-show-span">

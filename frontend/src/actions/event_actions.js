@@ -57,11 +57,11 @@ export const fetchEvent = (eventId) => (dispatch) => {
   );
 };
 
-export const createEvent = (data) => (dispatch) => {
-  return APIUtil.createEvent(data)
+export const createEvent = (data) => (dispatch) => (
+  APIUtil.createEvent(data)
     .then((event) => dispatch(receiveEvent(event)))
-    .catch((err) => {return(dispatch(receiveEventErrors(err)))});
-};
+    .catch((err) => {return(dispatch(receiveEventErrors(err)))})
+);
 
 export const unJoinEvent = (data) => (dispatch) => {
   return APIUtil.unJoinEvent(data)

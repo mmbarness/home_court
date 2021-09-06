@@ -11,13 +11,14 @@ interface DeleteEventProps {
 export const DeleteEvent = (props: DeleteEventProps) => {
   let currentUser = useSelector((state: RootStateOrAny) => state.session.user);
   let event = props.event;
-  let postedByName = event.attendees[0].username;
+  let postedByName = (event.attendees) ? event.attendees[0].username : 'unknown' 
+  let eventId = event._id!
 
   const dispatch = useDispatch();
 
   const localDeleteEvent = async (e: MouseEvent) => {
       e.preventDefault();
-      await dispatch(deleteEvent(event._id.toString()))
+      await dispatch(deleteEvent(eventId.toString()))
       await (dispatch(closeModal()))
   }
 

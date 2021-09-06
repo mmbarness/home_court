@@ -2,34 +2,24 @@ import React, { useState } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import * as _ from "underscore";
 import { joinEvent, unJoinEvent } from "../../actions/event_actions";
-import {Attendee} from './eventTypes'
+import {Attendee, Event} from './eventTypes'
 
 interface JoinOrNotProps {
-  event: {  
-    attendees: Attendee[]
-    dateCreated: string
-    description: string
-    endDate: string
-    lat: {$numberDecimal: string}
-    lng: {$numberDecimal: string}
-    postedBy: string
-    sport: string
-    startDate: string
-    title: string
-    visible: boolean
-    __v: number,
-    _id: number
-  }
+  event: Event
 }
 
 export const JoinOrNot = (props :JoinOrNotProps) => {
   const event = props.event;
-  const attendees = props.event.attendees;
   const currentUser = useSelector((state: RootStateOrAny) => state.session.user);
   let postedByName :string;
-  !_.isEmpty(event.attendees)
-    ? (postedByName = event.attendees[0].username)
-    : (postedByName = "");
+  let attendees = event.attendees!
+  if (!_.isEmpty(attendees)){
+      if (attendees.length > 1){
+        postedByName = attendees[0].username
+      }
+    } else {
+      (postedByName = "");
+    }
   const dispatch = useDispatch();
 
   const joinedOrNot = () => {

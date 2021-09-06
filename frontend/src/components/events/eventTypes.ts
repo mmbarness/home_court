@@ -13,19 +13,19 @@ export interface Attendee {
 }
 
 export interface Event {
-    attendees: Attendee[]
-    dateCreated: string
-    description: string
-    endDate: string
-    lat: {$numberDecimal: string}
-    lng: {$numberDecimal: string}
-    postedBy: string
-    sport: string
-    startDate: string
-    title: string
-    visible: boolean
-    __v: number,
-    _id: number
+  attendees?: Attendee[]
+  dateCreated?: string
+  description: string
+  endDate?: string
+  lat: {$numberDecimal: string}
+  lng: {$numberDecimal: string}
+  postedBy?: string
+  sport?: string
+  startDate?: string
+  title: string
+  visible?: boolean
+  __v?: number
+  _id?: number
 }
 
 export interface EventShowOptions{

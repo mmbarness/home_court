@@ -18,11 +18,17 @@ export const EventIndexItem = (props: EventIndexItemProps) => {
 
   const dispatch = useDispatch()
 
+  
+
   const openEventModal = () => {
+    const startLocation = {
+      'lat': parseFloat(props.event.lat.$numberDecimal),
+      'lng': parseFloat(props.event.lng.$numberDecimal)
+    }
     dispatch(openModal({
       modal: "event-show",
       data: {
-        startLocation: props.center,
+        startLocation,
         event: props.event,
       }}
     ))

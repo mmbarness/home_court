@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import EventMapContainer from "../map/event_map_container";
+import EventMapContainer from '../map/event_map_container'
+import EventMap from '../map/event_map'
 import EventsIndex from "../events/eventsIindex";
 import "../../style/css/main_page.css";
 import "../../style/css/events.css";
@@ -53,7 +54,7 @@ export const MainPage = () => {
           />
         </section>
         <section className="main-page-map">
-          <EventMapContainer center={center} />
+          <EventMap center={center} />
         </section>
       </div>
     )

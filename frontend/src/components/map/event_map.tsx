@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
 import * as mapUtil from '../../util/map_util'
 import EventMapMenu from './event_map_menu'
@@ -7,49 +7,55 @@ import CurrentUserMarker from './current_user_marker'
 import EventsMarkers from './events_markers'
 import {Event} from '../events/eventTypes'
 import { User } from "../globalCompTypes";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { closeModal, openModal } from "../../actions/modal_actions";
+import { receiveMapBounds } from "../../actions/map_actions";
 
 interface latLngEventMap{
     lat: number 
     lng: number
 }
-
 interface allEvents{
   all: Event[]
 }
-
 interface EventMapProps{
-  events: allEvents
+  events?: allEvents
   center: latLngEventMap
-  currentUser: User
-  openModal: any
-  closeModal: any
-  receiveMapBounds: any
+  currentUser?: User
+  openModal?: any
+  closeModal?: any
+  receiveMapBounds?: any
+}
+interface MapBoundLatLng{
+  min: number
+  max: number
 }
 
-function EventMap(props: EventMapProps) {
+interface MapBoundsType{
+  lat:MapBoundLatLng
+  lng:MapBoundLatLng
+}
+
+
+const EventMap = (props: EventMapProps) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries: ['places'],
   });
 
-  const [selected, setSelected] = React.useState(null); // selected is a current event whose infow window is open
-  const [creatingEvent, setCreatingEvent] = React.useState(false); //true: waiting for pin to drop to create event
-  const [eventLocation, setEventLocation] = React.useState(null); //eventLocation are the coordinates of a new game
+  const dispatch = useDispatch()
+
+  const [selected, setSelected] = useState(null); // selected is a current event whose infow window is open
+  const [creatingEvent, setCreatingEvent] = useState(false); //true: waiting for pin to drop to create event
+  const [eventLocation, setEventLocation] = useState(null); //eventLocation are the coordinates of a new game
+
+  const events: allEvents = useSelector((state: RootStateOrAny) => state.events);
+  const currentUser: User = useSelector((state:RootStateOrAny) => state.session.user);
   
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
-
-  interface MapBoundLatLng{
-    min: number
-    max: number
-  }
-
-  interface MapBoundsType{
-    lat:MapBoundLatLng
-    lng:MapBoundLatLng
-  }
   
   const onBoundsChanged = () => {
     const current:any = mapRef.current!
@@ -63,11 +69,11 @@ function EventMap(props: EventMapProps) {
         min: sw.lng(), max: ne.lng()
       }
     }
-    props.receiveMapBounds(mapBounds)
+    dispatch(receiveMapBounds(mapBounds))
   } 
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading the map";
+  if (loadError) return <div>"Error loading maps"</div>;
+  if (!isLoaded) return <div>"Loading the map"</div>
 
   return (
     <div className="event-map-flex-container">
@@ -111,15 +117,15 @@ function EventMap(props: EventMapProps) {
           setEventLocation={setEventLocation}
           creatingEvent={creatingEvent}
           setCreatingEvent={setCreatingEvent}
-          openModal={props.openModal}
+          openModal={() => openModal()}
         />
 
         <EventsMarkers 
-          events={props.events.all}
+          events={events.all}
           center={props.center}
           selected={selected}
           setSelected={setSelected}
-          openModal={props.openModal}
+          openModal={() => openModal()}
         />
       </GoogleMap>
     </div>

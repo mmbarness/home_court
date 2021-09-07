@@ -5,11 +5,28 @@ import EventMapMenu from './event_map_menu'
 import CreateEventInfoWindow from './create_event_info_window'
 import CurrentUserMarker from './current_user_marker'
 import EventsMarkers from './events_markers'
+import {Event} from '../events/eventTypes'
+import { User } from "../globalCompTypes";
 
-function EventMap(props) {
+interface latLngEventMap{
+    lat: number 
+    lng: number
+}
+
+
+interface EventMapProps{
+  events: Event[]
+  center: latLngEventMap
+  currentUser: User
+  openModal: any
+  closeModal: any
+  receiveMapBounds: any
+}
+
+function EventMap(props: EventMapProps) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: mapUtil.libraries,
+    libraries: [...mapUtil.libraries],
   });
 
   const [selected, setSelected] = React.useState(null); // selected is a current event whose infow window is open
@@ -20,13 +37,29 @@ function EventMap(props) {
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
   }, []);
+
+  interface MapBoundLatLng{
+    min: number
+    max: number
+  }
+
+  interface MapBoundsType{
+    lat:MapBoundLatLng
+    lng:MapBoundLatLng
+  }
   
   const onBoundsChanged = () => {
-    const mapBounds = {}
-    const ne = mapRef.current.getBounds().getNorthEast();
-    const sw = mapRef.current.getBounds().getSouthWest();
-    mapBounds.lng = {min: sw.lng(), max: ne.lng()}
-    mapBounds.lat =  {min: sw.lat(), max: ne.lat()}
+    const current:any = mapRef.current!
+    const ne = (current) ? current.getBounds().getNorthEast() : null
+    const sw = (current) ? current.getBounds().getSouthWest() : null
+    const mapBounds = {
+      lat: {
+        min: sw.lat(), max: ne.lat()
+      },
+      lng: {
+        min: sw.lng(), max: ne.lng()
+      }
+    }
     props.receiveMapBounds(mapBounds)
   } 
 

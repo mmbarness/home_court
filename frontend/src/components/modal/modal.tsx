@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import EventForm from "../events/event_form";
-import EventFormContainer from '../events/event_form_container'
 import EventShow from "../events/eventShow";
 
 export const Modal = () => {

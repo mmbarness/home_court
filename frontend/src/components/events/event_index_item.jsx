@@ -11,10 +11,15 @@ class EventIndexItem extends React.Component {
   }
 
   openEventModal() {
+    const startLocation = {
+      'lat': parseFloat(this.props.event.lat.$numberDecimal),
+      'lng': parseFloat(this.props.event.lng.$numberDecimal)
+    }
+    console.log('startLocation:', startLocation)
     this.props.openModal({
       modal: "event-show",
       data: {
-        startLocation: this.props.center,
+        startLocation,
         event: this.props.event,
       }
     });

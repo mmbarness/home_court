@@ -7,6 +7,7 @@ import CurrentUserMarker from './current_user_marker'
 import EventsMarkers from './events_markers'
 
 function EventMap(props) {
+  console.log('libraries:', mapUtil.libraries)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries: mapUtil.libraries,

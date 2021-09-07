@@ -13,6 +13,7 @@ class EventsIndex extends React.Component {
   }
 
   render() {    
+      console.log('event index props:', this.props)
       if (Object.keys(this.props.events.all).length === 0 || Object.keys(this.props.mapBounds).length === 0) {
         return null;
       } else {      

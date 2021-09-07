@@ -25,7 +25,7 @@ const options = {
 function EventShow(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: libraries,
+    libraries: ['places'],
   });
   
   const { startLocation, event } = props;
@@ -33,6 +33,7 @@ function EventShow(props) {
     lat: parseFloat(event.lat.$numberDecimal),
     lng: parseFloat(event.lng.$numberDecimal),
   };
+  // console.log('startLocation: ', startLocation, 'center:', center)
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;

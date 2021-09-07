@@ -29,7 +29,7 @@ interface EventMapProps{
 function EventMap(props: EventMapProps) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: [...mapUtil.libraries],
+    libraries: ['places'],
   });
 
   const [selected, setSelected] = React.useState(null); // selected is a current event whose infow window is open

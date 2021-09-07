@@ -12,6 +12,8 @@ import * as _ from "underscore";
 import mapStyles from "../../util/map_styles";
 import {Event, latLng} from './eventTypes'
 import { User } from "../globalCompTypes";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { closeModal } from "../../actions/modal_actions";
 
 const mapContainerStyle = {
   width: "480px",
@@ -32,6 +34,10 @@ interface EventShowProps {
 
 const EventShow = (props: EventShowProps) => {
   console.log('eventshow: ', props)
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state: RootStateOrAny) => state.session.user)
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries: ["places"],
@@ -65,7 +71,7 @@ const EventShow = (props: EventShowProps) => {
   };
 
   const showJoinOrNot = () => {
-    if (props.currentUser.id !== props.event.postedBy)
+    if (currentUser.id !== props.event.postedBy)
       return <JoinOrNot event={props.event} />;
   };
   
@@ -74,7 +80,7 @@ const EventShow = (props: EventShowProps) => {
   return (
     <div className="event-modal-container">
       <div>
-        <div onClick={props.closeModal} className="close-x">
+        <div onClick={() => dispatch(closeModal())} className="close-x">
           <MdClose size={28} />
         </div>
       </div>

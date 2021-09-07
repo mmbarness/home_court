@@ -8,7 +8,7 @@ import MainPageContainer from "../components/main/main_page_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import Profile from '../components/profile/profile'
-import Modal from "../components/modal/modal.jsx";
+import {Modal} from "../components/modal/modal.tsx";
 import { NavBarHook } from "./nav/navbar_hook";
 
 import "../style/css/application.css";

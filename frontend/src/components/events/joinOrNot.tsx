@@ -8,9 +8,10 @@ interface JoinOrNotProps {
   event: Event
 }
 
-export const JoinOrNot = (props :JoinOrNotProps) => {
+export const JoinOrNot = (props: JoinOrNotProps) => {
   const event = props.event;
   const currentUser = useSelector((state: RootStateOrAny) => state.session.user);
+  const dispatch = useDispatch();
   let postedByName :string;
   let attendees = event.attendees!
   if (!_.isEmpty(attendees)){
@@ -20,15 +21,10 @@ export const JoinOrNot = (props :JoinOrNotProps) => {
     } else {
       (postedByName = "");
     }
-  const dispatch = useDispatch();
 
   const joinedOrNot = () => {
     let bool :boolean = false;
-    if (!_.isEmpty(attendees)) {
-      bool = attendees.some((user :any) => user.username === currentUser.username)
-        ? true
-        : false;
-    }
+    bool = attendees.some((user :any) => user.username === currentUser.username) 
     return bool;
   };
 

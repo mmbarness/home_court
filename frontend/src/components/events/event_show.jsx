@@ -25,7 +25,7 @@ const options = {
 function EventShow(props) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: ['places'],
+    libraries: ['places']
   });
   
   const { startLocation, event } = props;

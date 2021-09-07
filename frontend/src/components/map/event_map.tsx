@@ -13,9 +13,12 @@ interface latLngEventMap{
     lng: number
 }
 
+interface allEvents{
+  all: Event[]
+}
 
 interface EventMapProps{
-  events: Event[]
+  events: allEvents
   center: latLngEventMap
   currentUser: User
   openModal: any
